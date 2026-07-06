@@ -1,0 +1,6 @@
+{
+  "_comment": "이메일 구독자 목록. web_app.py의 /settings/subscribers 라우트에서 추가/삭제된다.",
+  "subscribers": [
+    "cykim@prrun.co.kr"
+  ]
+}

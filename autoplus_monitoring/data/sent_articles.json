@@ -1,0 +1,1335 @@
+{
+  "_comment": "기보고(발송 완료) 기사 URL/제목 이력. rule_filter.py의 filter_duplicate_sent()가 이 파일을 참조해 기계적으로 중복을 제거한다. formatter_docx.py가 문서 생성 완료 시 자동으로 갱신한다.",
+  "sent_articles": [
+    {
+      "url": "https://dummy.example.com/news/20260706/1",
+      "title": "리본카, 여름 성수기 맞아 인증중고차 물량 확대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/2",
+      "title": "오토플러스, 3분기 거래액 전년 대비 30% 증가",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/3",
+      "title": "케이카, AI 기반 차량 진단 서비스 신규 도입",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/4",
+      "title": "헤이딜러, 여름맞이 세차 쿠폰 증정 이벤트",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/5",
+      "title": "KB차차차, 10주년 기념 경품 이벤트 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/6",
+      "title": "엔카닷컴, 신규 투자 유치 및 사업 확장 발표",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/7",
+      "title": "국내 중고차 시장 규모 40조 돌파 전망",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/8",
+      "title": "렌터카 구독서비스 이용자 급증",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/9",
+      "title": "캐피탈사, 중고차 금융 상품 다양화",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/10",
+      "title": "BMW, 신형 전기 세단 국내 출시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/12",
+      "title": "테슬라, 국내 판매량 3개월 연속 1위",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/14",
+      "title": "수입차 업계 판매 동향 분석 기획기사",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/15",
+      "title": "국산차 5월 판매 순위 발표",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/16",
+      "title": "전기차 충전 인프라 확충 계획 발표",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/17",
+      "title": "자율주행 관련 법규 개정 추진",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/18",
+      "title": "리본카 차량 결함 논란, 소비자 불만 확산",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dummy.example.com/news/20260706/20",
+      "title": "케이카, 여름맞이 특별 할인 이벤트 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.chosun.com/special/2026/07/06/VEKE6PF7F5CMVLOG2UI43SI6BY/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news",
+      "title": "중고차 불만족 땐 3일 이내 환불… 업계 최초 도입",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20063823?ref=naver",
+      "title": "한투증권, 인수금융 1.9兆 독주…하나銀 2위 수성, 미래證 3위 도약 [시...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.economytalk.kr/news/articleView.html?idxno=422480",
+      "title": "[사회공헌 특집(163)] KB캐피탈, \"10년간 진화한 '제빵 나눔'에서 미래세...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://dealsite.co.kr/articles/164346",
+      "title": "[오늘의 딜 PICK] [영상] 상생 역설에 갇힌 현대차 인증 중고차 사업",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.smartbizn.com/news/articleView.html?idxno=147814",
+      "title": "렌터카 이력 공개로 신뢰 강화···롯데렌탈 T car, 침수차 불안 낮춘다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.fnnews.com/news/202607061051092568",
+      "title": "롯데렌탈, 침수차 판명시 전액 환불·500만원 보상한다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.dt.co.kr/article/12071295?ref=naver",
+      "title": "롯데렌탈 T카 “침수차 판명시 전액 환불·500만원 보상”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.asiatime.co.kr/article/20260706500086",
+      "title": "\"믿고 구매해요\"…롯데렌탈 T car, '이력 투명성' 통해 침수차 선별",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.news1.kr/industry/auto-industry/6218553",
+      "title": "롯데렌탈, 판매 중고차 침수 판명시 전액 환불·500만원 보상",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.newspim.com/news/view/20260706000080",
+      "title": "롯데렌탈 T car, 침수차 판명시 전액 환불·500만원 보상",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://view.asiae.co.kr/article/2026070309075341190",
+      "title": "[PE는 지금] 롯데렌탈 매각전 가른 렌터카 비즈니스 '현실'과 '미래'",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.newsroad.co.kr/news/articleView.html?idxno=61228",
+      "title": "세계은행 '중상위소득국' 오른 베트남·필리핀… 韓 기업 동남아 셈법 ...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.koreadaily.com/article/20260705202049594",
+      "title": "가주 전기차 보조금 부활…신차 3500불·중고 1750불",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.munhwa.com/article/11600555?ref=naver",
+      "title": "대법 “법정 상한 넘긴 오토론 중개수수료는 비용 인정 못 받아”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://digitalchosun.dizzo.com/site/data/html_dir/2026/07/06/2026070680085.html",
+      "title": "볼보자동차, '셀렉트 대전 전시장' 신규 오픈… \"중부권 최초\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.cstimes.com/news/articleView.html?idxno=712312",
+      "title": "볼보코리아, 인증 중고차 '볼보 셀렉트 대전 전시장' 오",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://sports.khan.co.kr/article/202607061051003?pt=nv",
+      "title": "볼보자동차코리아, 중부권 첫 인증 중고차 전시장 ‘대전 셀렉트’ 오픈",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.segye.com/newsView/20260706505733?OutUrl=naver",
+      "title": "법정 상한 넘는 대부 중개수수료… 대법 “법인세 징수 대상”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.lcnews.co.kr/news/articleView.html?idxno=204471",
+      "title": "[수입차 Pick] 볼보, 대전 전시장 오픈…아우디, FC 바이에른 뮌헨 내한",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://biz.heraldcorp.com/article/10799059?ref=naver",
+      "title": "볼보 인증 중고차, 중부권으로 확대…대전 전시장 문 열었다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://autotimes.co.kr/detail.php?number=688343&thread=27",
+      "title": "볼보차코리아, ‘볼보 셀렉트 대전 전시장’ 신규 개장",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.etnews.com/20260706000123",
+      "title": "볼보코리아, 중부권 첫 인증 중고차 '대전 전시장' 오픈",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.newspim.com/news/view/20260706000235",
+      "title": "볼보코리아, 인증 중고차 '볼보 셀렉트 대전 전시장' 오픈",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.viva100.com/article/20260706500360",
+      "title": "‘고객 접점 확대’⋯ 볼보코리아, ‘볼보 셀렉트’ 대전 전시장 신규 ...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://lawtalknews.co.kr/article/KNKMYYKJNBJ7",
+      "title": "국제면허 없는 중국인에 제주 렌터카 허용?? 제안 뒤에 숨은 진짜 문제...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.fnnews.com/news/202607060958158931",
+      "title": "대법 \"위법하게 초과 지급 오토론 중개수수료도 세금 내야\"..KB 패소",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202607060939511760019",
+      "title": "대법 “법정 상한 초과 대부중개수수료는 손금 불인정”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.legaltimes.co.kr/news/articleView.html?idxno=94891",
+      "title": "[조세] \"KB캐피탈이 지급한 '상한 초과' 대부중개수수료, 손금 산입 불가...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.news1.kr/society/court-prosecution/6218222",
+      "title": "법정 한도 초과한 대부중개수수료…대법 \"불법적 지출, 세금 추징 대상...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.newsis.com/view/NISX20260703_0003695307",
+      "title": "대법 \"'상한 초과' 중고차 오토론 중개수수료, 법인세 내야\"…KB 패소",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.mt.co.kr/society/2026/07/06/2026070513534431336",
+      "title": "대법 \"상한 넘긴 대부중개수수료, 세법상 비용 인정 안 돼\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.tf.co.kr/read/life/2339831.htm",
+      "title": "대법 \"상한 넘긴 중개수수료…법인세 비용 인정 못해\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://amenews.kr/news/view.php?idx=67330",
+      "title": "1~5월 글로벌 전기차 배터리 사용량, 전년比16.3%↑",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.sisaweek.com/news/articleView.html?idxno=236525",
+      "title": "토요타, 신형 라브4 신차효과 톡톡… '1만대 클럽' 복귀 청신호",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.sisajournal-e.com/news/articleView.html?idxno=422210",
+      "title": "테슬라·BYD 돌풍에 기아 가세···전기차, HEV 턱밑 추격",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.sportsworldi.com/newsView/20260706504733",
+      "title": "BMW 코리아, 7월 온라인 한정 전기차 3종 출시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.mk.co.kr/article/12091110",
+      "title": "“전용 색상·고급 사양”…BMW, 7월 한정판 전기차 iX1·i4·i5 출시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.industrynews.co.kr/news/articleView.html?idxno=82939",
+      "title": "\"한정판으로 희소성 높인다\"…BMW코리아, 7월 'BEV 패밀리 에디션' 3종 출...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://it.chosun.com/news/articleView.html?idxno=2023092165222",
+      "title": "非 중국 전기차 배터리 사용량 느는데… 韓 점유율은 하락",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.dizzotv.com/site/data/html_dir/2026/07/06/2026070680076.html",
+      "title": "60대만 판다…BMW, 온라인 전용 전기차 한정판 출시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.fnnews.com/news/202607061053344231",
+      "title": "BMW 코리아, 7월 전기차 3종 출시…\"60대 온라인 한정 판매\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.autodaily.co.kr/news/articleView.html?idxno=545485",
+      "title": "한국자동차기자협회, 2026년 7월의 차로 토요타 올 뉴 RAV4 선정",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.sidae.com/article/2026070609014460320",
+      "title": "한국자동차기자협회 7월의 차에 토요타 '올 뉴 RAV4'",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.newscj.com/news/articleView.html?idxno=3414712",
+      "title": "[자동차오늘] 현대차, 월드컵서 '아틀라스' 공개 外 아우디코리아·BMW코...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.newspim.com/news/view/20260706000241",
+      "title": "토요타 올 뉴 RAV4, 자동차기자협회 '7월의 차' 선정",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20064123?ref=naver",
+      "title": "한국자동차기자협회, ‘7월의 차’에 토요타 올 뉴 RAV4 선정",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.inews24.com/view/1982589",
+      "title": "한국자동차기자협회, 7월의 차 토요타 '올 뉴 RAV4' 선정",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.mt.co.kr/industry/2026/07/06/2026070609405271065",
+      "title": "자동차기자협회, '7월의 차'에 토요타 '올 뉴 RAV4' 선정",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.newstopkorea.com/news/articleView.html?idxno=46052",
+      "title": "'휴가철 대비 끝' 채비, 고속도로 휴게소 급속 충전망 본격 가동",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.gukjenews.com/news/articleView.html?idxno=3627202",
+      "title": "테슬라 부사장 베이징行…AI 혁신 전략 실천 사례 발표",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.imaeil.com/page/view/2026070610561594351",
+      "title": "[미리보는 하반기 증시]고태봉 iM증권 본부장 \"피지컬 AI가 대한민국 먹...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=681524",
+      "title": "테슬라 로보택시, 마이애미까지 넓혔다…서비스 지역 확대 속도",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=681519",
+      "title": "2026년형 테슬라 모델Y, 뭐가 달라졌나…기본형 vs 프리미엄 전격 비교",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.ngetnews.com/news/articleView.html?idxno=551291",
+      "title": "현대차그룹, AVP 개발인력 200명 남양 집결…상용화 중심 조직 재편",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=310740",
+      "title": "'1만대 질주' BYD 급제동…'보조금 제로'에 하이브리드 승부수",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.sportsseoul.com/news/read/1620786?ref=naver",
+      "title": "“오토바이도 앞에서 식별한다”… 조인철 의원, 전면번호판 도입 추진",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.namdonews.com/news/articleView.html?idxno=915952",
+      "title": "조인철 의원, '오토바이 전면번호판 도입법' 대표발의",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://weeklytrade.co.kr/news/view.html?section=1&category=5&item=&no=100482",
+      "title": "KT, 'AX 플랫폼 컴퍼니' 선언… 3년간 18조 대규모 투자",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.munhwa.com/article/11600591?ref=naver",
+      "title": "구윤철 “AI에이전틱 커머스 선점해야”… 서비스산업법 제정 추진",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "http://www.newsroad.co.kr/news/articleView.html?idxno=61230",
+      "title": "\"심판에 공 건네는 로봇\"…현대차, 월드컵 무대서 '아틀라스'로 미래 모...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.news1.kr/local/kangwon/6218847",
+      "title": "\"전기차로 바꾸면 최대 130만원 추가지급\"…양양군 하반기 보급사업",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.kmaeil.com/news/articleView.html?idxno=644409",
+      "title": "인천TP, 모빌리티·반도체 '레전드50+' 협의회 열어 지원사업 공유",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.munhwa.com/article/11600592?ref=naver",
+      "title": "케인 세리머니 따라하는 ‘아틀라스’… 월드컵서 묘기",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.etnews.com/20260706000209",
+      "title": "전북대 총동창회 “정부 메가프로젝트서 전북 배제는 국가균형발전 후...",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1271832",
+      "title": "양양군, 하반기 전기차 보급 사업 추진",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxObnd3bHA2ZU9hVWh1d0xScGVhQnE4VHZTdHQxZmU5WUREUU5IbDdHSnBUbHFBUE1sckZZVHEzQ1M2VXlYa0ZUUnQ2ZDlOY1JPMW5GU0xTWnB4dUZPYmRWVmxGLWQyaElLc1pyYWo0WUZNeHFQbUZTQ0lIcnhGWEVmMUFYRGg1V0HSAZsBQVVfeXFMUFRXR21hSlJjUmt2aGR1djdpXzdMN2xhYmJnMGdfY3kyY2pUazl4M2J2TzQ3NUtxdXRudFpqM2ZNSXg0c2JWLWJaNlI3bVFvUlFsLWVMcHhGTDV2WEhwYzVHQk8yYTBwZlVza0JqYUtsU09WQ0IzQ3Q1cWx1eW1SVHdnZnZ4YU9Yd3FjOE9HeDJyWUJxTFdpVEhNU2M?oc=5",
+      "title": "[단독] 현대글로비스, ‘리본카’ 운영하는 오토플러스 인수 추진 - 조선비즈",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1Sbjc1Q1g2alVhYjh2aUFCU1QwREFXZ05sbkl4U3ZILWVRWmZCY0hwWG5hMk9YVkRITVZycmh1dTZFcmZuZUY3aWJBeEp1LU12blpEcy1pOXZ4NnRfZEFVX3FvZ1E5NmJXSW81UWVsUWc5Wk42?oc=5",
+      "title": "오토플러스, ‘지구의 날’ 맞아 한강공원서 플로깅 캠페인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5yYkotUVBlUmhzZzNJUTYwdV9UN3B4bkg0U21aYkF1Y214Wm10eXM0d0kzQkV2eUIwZVFDRlg2WTFHZ0tmS09SNWlta3J0NjJjQk42Umd4TzJKZy1oQ1ZsMncxU0Y?oc=5",
+      "title": "오토플러스, '중고차 정비 프로세스' 글로벌 인증 7년 연속 획득",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1DUGo5Q3NkdDJUOVRiMGs0bmdvMDFEQUlSUWlXUG1KZl9MU0REZlhnenB5cElqWTBoREhDRjhneEIxbnZ1LVBlTmxtZmRSdU9WSi1PRllQQV9UYzRzSTAtNHVvdTRaa2NvM1E?oc=5",
+      "title": "오토플러스, ‘지구의 날’ 기념 ‘오플로깅’ 진행…임직원과 함께 환경 보호 실천",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9yQkdibk9yVUNSb2hQcmVuNGZXaHBOVk9TbnlPSGlRRmxKV3FrVnhHVHVjNERvVXFIR1p6OHh1Q2pOdmx1OHRDcjBUZGNBTGRsNlZMNkw2S1JiWVpV?oc=5",
+      "title": "오토플러스, 티유브이슈드(TÜV SÜD) 인증 7년 연속 획득",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9aV1V6M0s1LVJ6RWdIWjdhZ04yQk9wazQtRi1zZjBWWmFWODFOX2lFM3pBTW5hay0taloyMnl4VVR4ZG5tZ2lMX3h0THROVzFCZmZfd2ZubWdsMzE0Q2pF?oc=5",
+      "title": "중고차 수출 플랫폼 비포워드, 리본카 운영사 오토플러스와 한국 중고차 수출 글로벌화 위해 MOU 체결",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9aUURDcHRUcU1NbmtJOGNlN1U0dHN4YWg4QTJ5OFJ6eWpCM2l4bGpzN29GS0MyenZhVEJ0anBRbkxsam4tNk5VcmlnTFJjZktIYnVCZVItWHdNUXAtODZwN01vYTA2MmVoZGhBbzVRTm5GRDduV2N5X2RYRQ?oc=5",
+      "title": "오토플러스, ‘지구의 날’ 기념 ‘오플로깅’ 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE13Q3ljZFNucHExSXM5RnNkTGRZSEhsZXNZVXFILXFjQUVPYmpYUHRQRDNRb05KelRxMjZyLVdDYldRNUN1U2MyczFuR2N4LW9nRGxQS3h3?oc=5",
+      "title": "오토플러스, 日 중고차 수출 플랫폼 ‘비포워드’와 MOU 체결",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB5cTRyQVZaVEtVc1MxWjRrYjh6bWRVdlViNWFVU2xjNWlMbFZNc1ZOQkJEUHgwRkIxMktlbENfMzFyUzY1MzM5N0F1RzdvUVYyZS1mSVNTQ1VWQmZXZ2FMS2stOERfUU9McWJSSkUzaw?oc=5",
+      "title": "리본카, “중고차 살 때는 가격보다 관리 이력 먼저 봐야”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB5NXk5NEkwYjAwcHdtVkVlVkFlc1ZvU0dIQWpyVjFtaF9mWUlRZnVNY1dxbmI3U3ZQQVZHbGJmZk1KUWdfRml4ZnloU0FXeXhVZ2ZycFNnVjlJelh2aG5jSktjT051R1l2eWJPRGdn?oc=5",
+      "title": "오토플러스, 일본 비포워드와 업무협약 체결…중고차 시장 일본으로 확대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE90b2pfS0FXMldYeWM4M1UtdGI2QTQ3SmZORjFPYXE3Vy1LV3FGdERzNWZ6RHFGU0EzQkZnc1RfYWdodVBHU29XVzRFR19GemNreWFfeXowRkZaUkZDR1ZVWHhBdHlQYTZ3aVBTMG9sZUk0Smc1?oc=5",
+      "title": "[CAR 브리프] 한국타이어ㆍ금호타이어ㆍ넥센타이어ㆍ벤츠ㆍBMWㆍ폴스타ㆍ오토플러스ㆍ아우토크립트ㆍ스트라드비젼",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB4bmx6VTI0b3ZrOTJoT3NYY1RqUGNpYklTdWZvYzhJeFFhZDJxb09BeVh3TmVCa2ZOQnJfMGtNOWt5UnBNUXJ0OXFaQTNJU1pJbDhlLTRjTjB0M3o4Q2JQMDR3R1g?oc=5",
+      "title": "오토플러스, 지구의 날 기념 '오플로깅' 진행…\"환경 보호 실천\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5hdVJOcElvb3k0cFBuX09mVlVxaHJ1TTF0SlBTZ0NVUUkzVi1IeG0xcmNzc2lFVHZXUW1Ya1dfcmVPWF8tckpkZ2Fsa25yNWwwQ3U0UUpBSThxck90a2JqNA?oc=5",
+      "title": "오토플러스, 日 중고차 수출 플랫폼과 맞손…글로벌 판로 확대 나서",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNVVFBMlEwRTZ0MUZvWU5oWUpNREpSdTc1QlM3VEtzOUtNQjcwRS1oelMyR2pjWVdZeWVtekxpZlhoWHNCaEw3T2NoM2I3aU42Y2ZMX1NuUk9FVThpbHRNMV9lSGc2cHR5dHpQam0wWFFtU3ZLRmVRSDM3dTNqUjlFNQ?oc=5",
+      "title": "\"중고차 시장 격변기, '불안 없는 차'로 존재감 드러낼 것\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE4zNHdnNUpabjZsWjY4U21yMjVwaVB1eVhOaEl1ZElBNHptQ1dfNkJ5VlBjNWhwdllIWHRvcy1MUGdCemY3Y2JzVzNpSnV4a044d2NN?oc=5",
+      "title": "중고차 시장에서 현대차는 왜 고전하는가?",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE04QmRNdi1iQW4yOVBNNDVtcWJ0VHB1dnNmSWxuenJXWDlRQmg2TUNZX0Jqa3lKUlBNd3lpMEZSTFJmN1ZmeU5IR1gxaU1BbW1VaXNOUjBuQnhrRTgzTlJBRnNueUtaNXBGYzNqQlRaWQ?oc=5",
+      "title": "리본카, 황사·미세먼지 대비 봄철 필수 관리 요령 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFA1MV9qZ2NnazMydnQyLVBQUGJCV3VYV2ZHeGNjN2c4X1oxNXBmRTNRb1FBRUZiQW1RczNTQy15NTVzVVRUUTBKZWw2bFJIdHNtLUlOakFQclhSLUFrbVRKNUdrRkx3eTBaX29JOXpYNA?oc=5",
+      "title": "아반떼 선호도 1위, 엔트리카 선택 기준 바뀌었다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBuSFVyd29jcnJNWjdjWGNmVHhWWG0yY29xMk1DZEdYdXJJc2tZMFpubnhnWU1NamY4c2Zya0c5OVlxS0V3ZzFiWUNBT0w4dE5HVXRsX0U3OS1SWVJNMkRCMDNBTmR0bDJKNzFLQjd2S2hmZTVVMjVZTk5rR2U?oc=5",
+      "title": "중고차 전문가 이정환이 보낸 SK렌터카 1년",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBydnBYRk51bUplZjhSc0tGcHdtQ0xCNWdlZVRTNENmOTB5c3I0SUFReThFYV9EQWUtYlB6MUUtdFYxSEc0WnhWYXg5UVNFMEpONEcwaWhXYVd2RWJFSkJFcV84NWlqUHB2UU52QdIBcEFVX3lxTE1ubEZMWnlFbnBySFFtTTF1eUgxaVBLM0UxWjZuQjBvSndXYTFaOEtBcGZXQzJSVlRuLU0zMlV3eHJlWGNFVE8wSlJNMGUyM3ZGSkZBakNPVWNOS0JRV09jdE5jU0oxaGJKNFplMFV0Vjg?oc=5",
+      "title": "(르포) 최상급 중고차를 신차처럼… 오토플러스 리본카 상품화 공장을 가보다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB1Mlh5ZXdSS0lXczdRalNMZUxlQS1yZ211dzhrbVduUG1DT1NZSUhGZXNFMWhNVTR0RHY0RkQ0UmNMSjZxbnA3aXlvUlhqSUtKdENhclpsbkNmQmZmNFp6RDV5NWR2emVWYWV4SWl3?oc=5",
+      "title": "SK렌터카 신임 대표로 오토플러스 출신 이정환 대표 선임",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9faFBpUnJvbUwxOG9XUks5YVVkaExuSjJrdkJtd2g1czNQdkFycmk3OXd1OUhTdVRYSjA2SklSaGVFOE1kcFYtejFZM0pud2J1al9IYnpwckRMTEFqd1VTYWZLRWRuTjVPNGRQWGxDS3LSAXRBVV95cUxQS2FYb3FZVWY1YzYwZFZ2WE5QejJ4NGJ0blRQSTI2ZzZwZTJpRGRESHEwOGZLVmNmOE1KbkJZdHd1dVhFV29nTl9URVhVU2dMejNaajMtZHNrSnhacmI5Y3RjZzhZbU1QVTROaVJSZmZaOXJiZA?oc=5",
+      "title": "[르포] 중고차 상품화도 인증·특허 기술로…리본카, 경쟁력 확고",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBnR2xGNHppcE15RnE2d0RyTnBJZVhlXzVsTmlmeWNWZHdObFhpMmZpOVhubmtsaUVUS05rNENNOUc1SU5lTzlEbThENzFadw?oc=5",
+      "title": "오토플러스, 'EV·PHEV 정비 부문' 2년 연속 글로벌 기관 인증",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE92UTFDZ3NLeTZhc3JNdUVwcXFwczhKYVpybzlTc19vOVlFUWxSQWJDUFZPNEltWk9xTzF2YjE3QS1qWG45R3RGZ1MxZk1NMWJmeWlEYQ?oc=5",
+      "title": "“260가지 점검으로 소비자 신뢰 얻는다”…오토플러스 年 1만 대 판매 ATC센터 가보니 [르포]",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9OX0NLenN1Q0FheFRwSE43N09TQ2QxSUVscG9oMGtYSGd2M0xEM1UxdDJLNWZKcjlaNUZ1dU9OQzc4ci1janZpWE11Y0hOQQ?oc=5",
+      "title": "오토플러스, ‘ESG 플로깅 캠페인’ 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9VdDN5X1NLNktmX1Ayc1ZEeUhYdnFrTVFpbGtONTY0b0ktUTlNRVpCUHF5SzBHN1FqYS1QSnh0WkxKTDNqSkhlTUxpM0h6UEcyeC1JSHNxM2lmZzJENEpfeVN1MlJyR0dhSzNGcGtvSnpKb0JY?oc=5",
+      "title": "오토플러스, 2년 연속 ‘자동차진단평가 기능경진대회’ 3관왕",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBIRlpZbW1hTXdJUWRNVWV3M2x0dUtSZHZFZ2Q4MVFzY0VnS2g3SVNGaHlLR0pYaEpJMC1xQnVjVmV5dkpvckx0NFFHNVMxQQ?oc=5",
+      "title": "오토플러스, 독일 시험인증기관 ‘티유브이슈드 인증’ 5년 연속 취득",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5KcnlRMGRjeDRVa0tJc3VnTVFKLVo5QmEyVW5aVE15ZjRlWHJGd09jc2VKNDJSZmhOcFdwOW4xUkNUOV9TanVudlpWSUlid19nWkdsNDFjeExhb3ZCZHRpX0Y4SUtaVWpTUnRzaVhn?oc=5",
+      "title": "자동차 월동 준비…오토플러스의 ‘찾아가는 서비스’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1xNXVwNEhqWXdheUtmb21EaEZ4TGxqV1pQamhLanMxNmM5ODkwU19kQ3FjRUpMWldKNm5NemRYX0QzTjFkSTdMT2w3ajFQXzR1d2ZoZzZFcVJpZw?oc=5",
+      "title": "[비바100] 이래서 ‘칭찬’ 일색⋯ 리본차, 중고차 시장서 신뢰받는 이유 있었네",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5BQTFRYmZxRDBJZENRbm55al85UWs1NS1PWTJfcHNxSHg5VWtGM1Q0V2RzYjROamhpWG4yZlZFX1BFc0stRXBKTi1FQTBvTG11NDNlOXVsRHZ2QWZGTngzNU15OEdnM196NFNLdjNlb0VGekk1?oc=5",
+      "title": "오토플러스, NS홈쇼핑과 협력…‘중고차 구독 서비스’ 채널 확대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9iWTc2VUt3RXhsRElDLVNXRjFQOG9JWXVkWnI2VGdfSHN4VjhwRFd4YXdJV3hFS3ZvYTdzeDhGU05TVl9McGw2M3lUZlZlT1JzMnZQQURGY2FuSkY2SDJZbnNBdkVYeFdQOWY4?oc=5",
+      "title": "오토플러스, 비대면 중고차 시장 확대 나서",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9pYmFOcmt3R2E1eHJ2MTJwNUFUREhFdWxvR3A0cGQ5ZjZGUi1yRWk1OVlCYk03WUZSU2ltamQ0SHZwMlhaMGkzZTdZbmpoeEtvdzRRcHhlelZFSHFvRjNTc1ZWSWZFU0IxMDhxVNIBcEFVX3lxTE1ZVHpWeXgwdDUwMk0zaEVyNWtiUUhrc28xUmRaSDF3dWZMR1RqeHFlcy14UjdqWFU5Y3ZRSjBMaVdoWm1NWEhTczdBa2Noa2JWTWRzd2ZjNjRNNDZrR0E0YXJJZ0RHNy1CRVVSaHZqNGQ?oc=5",
+      "title": "오토플러스, 브랜드 통합 웹사이트 오픈 기념 이벤트",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1QWXZVMWplZVN3aDNTd1BBQTYzaHlqSmljYWc3V1hINE9JWTlNTURvTUMzRjdoYzJwM2U0Q2Q0OG9ib2QxTXlIbE8tVnFIQkdvREJZNTBtUFVVd9IBVEFVX3lxTE42THNUR1U2UUxJVlB4eVZWOGR5ZVRNbXktZzEyM2hRRVdyY2U4bndIbE1hMGthVUJiVGFUblZqNms0ZURtWEw3UDNBU0RVNnR1a2l5RQ?oc=5",
+      "title": "오토플러스, 세계 최초 ‘EV·PHEV 정비 부문’ 2년 연속 글로벌 기관 인증",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1DNDR6XzlfR2JMM0F6aW5vOUNuZEY1cVduS1IzcmtmLXBGeWJkZUlNdG5YQWNQUkU1RDc0SXFmZXRPbkdzQ0VVN3NNXzZwQUY1QktN?oc=5",
+      "title": "아우디 A6 가능? 3천만원대 가심비 중고차 TOP 5",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5EZ2tVWlNiT1hFZ1ZrOUk0TFcyNXhGRTFUYjBZandLRjBGQVFiT0hKbDlBd3J4blMzdC1JMHdfMDJXb3p6aFFWN0dRRW1TdFdfai1DRmY5NFVmaW54bXZHem1KTkI3bDUzZHRuNjJHN3bSAXRBVV95cUxPTlVSV2ZxaG5kbFNrUXVBSV9sNWIwQjQ4RENMcnhPelRGNmpUNXY2UVdZUXdfWmxRLWtORFJsUWd4QWVlaEtRLTczOHJfTXMyZER6V0g5WEVHSlliRGlnTnRuRzNIMTFhVHExWnl3V240NFpxRw?oc=5",
+      "title": "오토플러스, 업계 최초 ‘자동차 번호판 발급’ 전용 앱·로봇 도입",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA5MUFXSVR5Y242LURXWENhTW1fTkI4RDh3c0hjbUJxZ0JlMkJOU0RUQ3lkRHlmNTdHd3JlZkgxUHhaM2szOWR6eVBJVzVtODRYakdCMFRDcHV2MFl3QXFmNE5kdS0zY1XSAWtBVV95cUxOUEJ4VmlfY01WZUZwb2JZNFlXU05MQ0VvTU9Ka0dYSVF6WEdYcWxYWm5jcklwYzdfcVBlQW1qZW1oUXlJNHNpSTZxanhRMzFvYTdFM3pZOUpLSHBxVUJEeDA5TWc3SUJfZnA2TQ?oc=5",
+      "title": "오토플러스, ‘자동차 번호판 발급’ 전용 앱·로봇 도입... “번호판 신청부터 수령까지 비대면 진행!”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA1bm1XN0t5MUY3YWUydzdObW1MOXU5ZnFmUlE5VWtWMVYtc1gwbFVOV181S1EtclRsTlh4SGxSZ1J6OFJobnpCMjhzYVVDSE83cElXeTFWeWRRSmw5Y2JQYzNvWmpOZmFGcnJlNEh4azVkRDTSAXdBVV95cUxNdWRQWUNzQlo5a2w1Z2Q0dEVoeGdNeTBmTms5akZVY3R3Sjd3eW1vYTNqV3J2RVp0MkR4LW1yZnVDMFpUUlQxZXZtMGE2Rm1NYm9vTXdVZFlscFpVa2VJaEI3NjhwZkl6MzR1cnVQWldRc0hOMUdTZw?oc=5",
+      "title": "요기요, 이정환 전 오토플러스 사장 신임 대표로",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9wTWVuVExkVVdFemZyeXJMT3V3U2x1YnFPQ2ZyZWNxNHV2eXB6bE1ydTJDUWxpNWE3MklsWURLWVlXSEhBT0ZhNFV6LXlFV2wwNWNjRw?oc=5",
+      "title": "오토플러스, 온라인 중고차 경매 플랫폼 ‘차옥션’ 리뉴얼",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5vazB4aHB0T3p2ZzRHQjlNV1FCcy1XSFRQRGxvc2Z3OEFNenJ5VEJzb0NZUU0wdlBuR2NrcXdkd0ZrSE53UXhCc0NfaU9YQmdqQXM3MXZQR3BaM1JlY3ZjS3NkaXpPZE1iYkNtX0N3?oc=5",
+      "title": "오토플러스 리컨디셔닝센터 세계 최초 'EV∙PHEV 정비 부문' 인증 획득",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9fUW5XcHRxRTk4OHpBb1ExS2hZdmF4RjJaUERZWXJSS1hqMmF0VlZHd2JmQlJDZm5CeE9aal9oMThMM0dmVl9tUlVVbUVDTHJfU0RVR3Rzc0phdVg5SE84cDVyRHF3TUlwVFQ0Y2tR?oc=5",
+      "title": "이정환 오토플러스 대표 “국내 최초 중고차 라이브 쇼핑 시대 연다”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5YbEx1S3RvQkMwTTRFU3oyM3A0M1ZueFNkLTlHVWI4TGZuUklWVkJYSlJvQjBweUNlYmJ1T2YtamJJYk9nNVVVcnl0YWEwUkJoa3FVTDB3?oc=5",
+      "title": "요기요, 이정환 전 오토플러스 대표 신임 대표로 선임",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE96R0dvM3p1MVJEeWxweHlRNkhWMkpDUkRzdW9Xbl9iUXQtLUZsOHRJY2tfOEN3eXdsZlNPTXZJdUNPdE0zX0w1V190ZjM3UVB4dDR0NnB1SkJXNHZBSWtIWWNzVjc?oc=5",
+      "title": "오토플러스, 상반기 결산 ‘썸머 페스타’ 실시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE16RHdUTVJtMm1ibXBmVjlGREZBTUVrMDZWMmdtY3ptQW5wWkg3T194bXZEVHctLTA3cmdpT2dLUl9FOFRONXAzbm45T3lwNXgzNjFqOFN2aHNnSzkyckQwM0FlQmlpZWxNbjQzSGlFb2dFQlXSAXdBVV95cUxQRWxpSHVoSnpLRUcxcU5EU2FENDNEb1o2SkF5ZFRRbExqbkdPZTJ4UzVoai1mNmhULVJJREkyR01yNVRlZUJLNV81SzhhZ2g4MlZ6MnRvVnRoLWpyZEt6WmMxM05QU05qczlFNTdQRzJseGdUSEUtaw?oc=5",
+      "title": "[마켓 단신] 오토플러스 리본카, 중고차 브랜드 최초 '실버 버튼'",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5RNWg2cjVaeHdEc1huSjNkUWFzcmRoS1VIdENuQ0dZUUUxa3FlSlpBSUZCaDhSeldhTXJxRFlFeTQyYVR3aU5xTDF6U3FhWVpOdkM2MjdFWnlYcmpQcUhaSkFYUUVTeWhZRnNV?oc=5",
+      "title": "오토플러스, G90·K9 경험 기회 ‘프리미엄 세단 렌트·구독’ 특가전 선봬",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4yZkJNTkhNeFFSZzJyMmNiTWctUk9xWEdOTDZfNmU3Y3lNQks0aTE1a2tWWG5wOHR1ZjVmWkctNGx3cXF0dEU2cXJSUnI2MnFqLXRFdVA0VC1id9IBVEFVX3lxTE54MEZtdXEtUWV2YUNReGJkaklLVmdoZVp3WnJWVFFmVXRuMzRBNlAxR0NPZ0dzMWEtLUxaa2tUNWhBOWY2anVZenVMZTBDM1NYVmpVLQ?oc=5",
+      "title": "오토플러스 서울 직영점, ‘중고차 온·오프라인 복합매장’ 새단장",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBacl9jTzdFS2pTMlp2YlJDTThpcWRZWGsyaHhScm1EbXFJV1lNamRUYUJpYkozS2NPVVA0V09nNmx4LTVlY19Xa2NWWGVFTThERmo3SDk1eHliMGxHOWhfWi0tZ2kwc1lPbDg0eNIBcEFVX3lxTE1ZZndBcFlMajVBUVNyeUFRRnFKSTBxd2l1Wm0zWkZqY3lmeUNXeWJsbGgtY1RHU3BweGRXeml2aFIwdTlqUGZjNXJHdzJWd1VWSDF5Z2hNeVVvUkdxcGh1V1NfT3FaTTdGektIUmlGZGQ?oc=5",
+      "title": "오토플러스, 온라인 중고차 2차 경매 ‘리본카 반갑데이’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNSlA4RW1idjJDTVJsREVsTjBlUVNFdGlmaDl5WTM1LTBUQ2hLbkphVGtGUnc3WTJEdHVsbjVZZ19QOE5LUEJqZzJWbTRJOURXRXo1b3lXdUJQUUpSSTg0VDd0cFJLbS1oTE9DTDkwQ0RoUEwwUnZWb1hGenFhVzdSVFpGenJYdDl3TktfSlZuT00?oc=5",
+      "title": "오토플러스, NS홈쇼핑과 맞손...'중고차 구독 서비스' 채널 확대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1IUXpNYjRESzVYN09Da2tFcXVad29HeXpfUVQ2REg3VHRIVDNVaWdKejR6OXlPWGg2ck41dWpVQTdvWURFTWdrTU03UXNxNm45QUkyLWliVHRiMVl5U2o1dGl3YUl0bkxKZkZrY9IBcEFVX3lxTE4xVW91MXBCSGhFMWF1R2c0OVRRVk5aTjdkZXA0WmNQb1NWcXZwVjdUYnFfa1ByNEc3OWNKVm80b2VIQ1AzQXFWd1VSeWVpQUpELUZUMXRVcHBFN085em5RRy1KaWlZV25OUGoxODhEQ28?oc=5",
+      "title": "오토플러스, 서울 직영점 리뉴얼 오픈...중고차 구매 채널 융합",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1pbzE3eWtncnVRajdnZVVDN3laUEZyM0tXYmZLMGp1UUNTN2NYRENWb2JwVTNCNGhReDlzd1YzaS16UHp3by1OSFlXbmVvSUlyUE9CVHdGVmNGaUM1NXBmb1hzV1pfQmNX?oc=5",
+      "title": "오토플러스, M캐피탈과 맞손...\"자동차 플랫폼∙금융 파트너십 강화\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBhUzNTcXRGNW16UllEa1J3RjE0dXVSQ0QwY3ByQW1NQjhFMHZHQWROWVJQMEFDQ29Ocm9mUkpjNUZUZDR5QllEWUFwbW1hbFo1VTlFUHc1UFdpT1doSHhhMW1OVUdWd2Q0VDlXREUzRDZnRjRuaDhIWGFQODQ?oc=5",
+      "title": "오토플러스, 인천 중고차 상품화 시스템 TUV인증",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE8tUUpUbXJPQlByeXJDMVlpa3paTUFHN3VFNEVIaWw1NTUxWDZKQkR3UG53dnp6djFOZmNjb3RtdTFGX09YYU14TFdPMnozSmY3U3ZJdXpOaw?oc=5",
+      "title": "오토플러스, 업계 첫 '車 번호판 발급' 전용 앱·로봇 서비스 구축",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0yMFpBZDFXbjJaNUJnNEo0THl5OUEtUTR6Ml94VGtNbXhKd2UtanlORldrby1XSmYwUE1mcTBYX043Z1Bkb1pVdkFrVDhMN2wzTXRybjBWLW1mOUtIbVNydmJGRGVfNGRnSlQyUS1B?oc=5",
+      "title": "[르포] 중고차가 신차로 다시 태어나는 곳… 오토플러스 인천 청라 ‘ATC’를 가다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9UZEg2empqOWJnaUdvVEc5Uk5Zbms4T2Zuenp4dUpjb2dKc3VSU0hiVGxCdEJxaTVRbHFlMGkyb0xlS29iV3FHRXBrSHN5dEI1WDFBaGo3aFFVd9IBVEFVX3lxTE5fV0ZHdGZpdnJ0ekVLY19WNVhMNzE5Q2xxdG4xRmNaTFFObjFiVHFYWVZhcDRZYVdFX0MzUmM2cko2UzdhbjlsYnZMa2lZbE1JY2MySg?oc=5",
+      "title": "요기요 신임 대표에 이정환 전 오토플러스 사장",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1CVkZsZUtZWE9hd29XcFVYZkpsWVJHR0ZfazRvVGU0X001b3RWc3hlY3ZUZWhzRXkyYjhTMTNpX0lZLWs4SmFLblh3OWtMczdmcnBzTQ?oc=5",
+      "title": "[PEOPLE]車 구매·금융·수리·정비 ‘원스톱 서비스’ 김득명 오토플러스 대표 | 신차 같은 중고 ‘리본카(RebornCar)’로 업계 판 바꾼다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE4xVDZNNG8xdkcySmQ5ZGt4cGd3Y3JxU2d1c2lnZGJLeXo2ak1wYVlsQ29xWWNva0o1TVZ3N2ZXMDRNZVI3SGo1RjBkLXl4Z2xNU3JVRnhtakw0eFN5MDNRc2hIZlN2WFpfMDM5RWN2blZWc2hOSDhkcjdzMlA?oc=5",
+      "title": "오토플러스 ‘자동차 번호판 발급’ 전용 앱∙로봇 도입",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5JWWU4VVBIc2M4NVM0N2lYUjRjX0tDMm4xWHoyY2JLUkcwQ1NUb2E2TjMtLVdIZTJVVWtyZDlub0cwVFBoWEYya3F2UFA5bmYzTmZaTVp0dEk4RUpXZmZoaDNjenJuT03SAWtBVV95cUxOWWdpU0FkVXBnODlxal9rUDBhZElzYkxhS1I2dVlrcWZNcHZGMUZDakpDeXVaejJLQmc5cmUtbHo3cFotTVFaLWNPS3o5dUM2QXRjT1Q2bnFMTXQ0UVREV0pseHZ6REJWUjYybw?oc=5",
+      "title": "“원클릭으로 손쉽게!”... 오토플러스, 온라인 중고차 경매 플랫폼 ‘차옥션’ 리뉴얼",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1TaGtfWmlkM0ZFT0paTy1mY1M3T1VPOUhPMkU5U1BQd3prOTZZajRrWGF5NDlVZXFVV2c0Um40Ym9aM2wzUjNNTWhsRVpYWmhhRDBFWVhORTJOZXZqOXlCcUdtRXhVT1BOOHVzM3pRNTDSAXRBVV95cUxNVEtuY29PNTVsY1lBZ05pdklFZ3VEQjVYcE9VWmM3QkFXR1BYeXpWLUpIelNJZDcxdi1na0h1YjdxNXZWVGl6OUhhOVM3TEM5b29EVzh6WVlkWU1DTlZEWl9yWU9GVjhuRFlBcmVrbzhnWHdkSg?oc=5",
+      "title": "[르포] 세계 최초 중고 전기차 정비 인증···오토플러스 ATC",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQRThwY0JiS3JYUWM2ckY0cUtNSmhFM0QzMnR4aEtqUHZaWnh1Sy1pdE1tRWxWekM1eHNoLWZhcmFhYkVRTE9zR05HeHZ3Y2htT0JMN1lGOG1Zd01WQ3BpYktiMkZpaFVtdVZEdnNFODFuSkl3YWVsMmdEbmItUDhuZA?oc=5",
+      "title": "[포토]오토플러스, 세계 최초 ‘EV?PHEV 정비 부문’ 2년 연속 글로벌기관인증",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE03bDFqQ2VLMkNPLWhZWVNrd0RKd0Z2TC1SbTBiYjBfODR3a3BsRTJCeEpZYjFFbGtTNmRBR0NkRWstNlI2dGUyZmhBa3RrbkRYU1k1QnhUU3pubFpFczJ0Y1JPRUc5STV1U0E?oc=5",
+      "title": "[특허 in 마켓] “활성화된 중고차 시장의 신뢰성 확보”…오토플러스㈜, 객관적 차량가격 정보 제공하는 특허 취득",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5YU3RUQXhKV0luSGd4OU5XTkVldmxybnVQTnBnWXJqNk5QUFlQLWdFSTZRZUtGaWVxcDhNb25VM3R2bXM5NEVLOFVrRXF5REMzV0tCaEgybw?oc=5",
+      "title": "비대면으로 중고차 쇼핑한다···리본카, 부산서 '라이브 커머스 스튜디오' 오픈",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE4tNnpIRGlaVUxheDQzNGY3Vjlya1NyZGNQUmRpY2NudDgxWDJ2WXdUUVhJa1FfNnlXdnAxYzd6QWREamNzVGx2dWUzWXhIakJwN0FfZkZqblk5SmhtMnFvRzdsZ0N4bG9Nd0pFVQ?oc=5",
+      "title": "“냄새 4등급? 나가주세요”…내시경으로 중고차 따져보는 오토플러스 [ER현장]",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBQODkxOEVrZkc1TGdqY2NqWk82UkZsVUJJR0twMW9tSFNkNHFSaUduckFON0FpZmI4MzY3VndqYVJFVG9tYkc1YXJETFhyZw?oc=5",
+      "title": "[이슈분석] 렌터카·카셰어링 성장에 중고차 시장 격변",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB3MXdpa1RXUkZBX2NsT3E4NTl0Mm9HRXF2dHdBWUo1eUJMM05QU2NJNWV6WE0xUmtIaEtDd3V5WWVweGRFT2E1ZDRIT3BCdGhVTEc1Nw?oc=5",
+      "title": "[인터뷰] 김득명 오토플러스 대표 \"중고차도 `명품`만 팝니다\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBRVUY5RENSR2pRRC1ZLTl6R2M0OHlwWGZLdC1kVnNtNTdCN3dvRlpNX0ZLenRYck9HamJxSHZhMVdLUHpVUTQxTmVidVlrbFMwcDJqTC1lejVQMnpVckE?oc=5",
+      "title": "오토플러스, 신한카드와 리본카 구매 이벤트 개최",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9xckpodnBHc1M3cXk5VXpYZGhXdXAxX2tYN2tqZjc3ZjFnSmFSNWNiVHQxQXFpa0NxUURrMTFOM3pYRmF4djVDVDVVazc0NENLSU5TVnhhX19LUkdHUGdOdnRtVEE1b0Q4SzBCSVJ3MW8?oc=5",
+      "title": "DGB캐피탈, 자동차플랫폼 '오토플러스'와 업무협약 체결",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQd2FzdjB0SGtuc1VpVGU3NURLRjNlTFhldEtiRGZTamNHTWdDdzdlaTBaV3BSOWRtdVRnaWRJYlZfZ3ZhT3ZsQU5WY29rcjhNZkRNQkNwVjBPZHF0UVVvdXNWWF8zOE9mNTkwaFl5dDNTOW9kSXZ0Z2l0MEVFUVZfNg?oc=5",
+      "title": "\"대기업 진출 후 시장 정화작용…중고차 품질·판매 껑충\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBacUZMTXJFdi1uam5RU0NKb0NaRXZsRFZuLTc4WGFDMUV2bjZmLU5Fd1VCWHR3ZFE3cXlDUDRPQUN2WnhuNDNxNHlldWJNajBqdk9xVHBreUt3V2RsbXZ3dlpGVVUzdXFRTXlUM2JBc9IBc0FVX3lxTE10dEduMVczZnVUNUFfb2lybXNVNVMyQ2VqdGoweEM4UUtxeHFYQmQ2MGNta0hQYVRMNWN5WFdrVzVLdzltMXBveUc1NWlaaVdmNGNhOFdyN0o1WDlnYnVycUZteG9neDdHbnQwUVFXQl9Fd00?oc=5",
+      "title": "'오토플러스 리본카'ㅇㅅㅋㄹㅅㅂ캐시슬라이드 초성퀴즈 정답은?",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE40Tkl5SWd5U0J5Y3FFOWVUbko2cG5uS1BsUGhJV1d2cDVDQlpkbHdxdDJGNlNiSW5HaVZRdkQxTGY4RVVnMG5yOXAxR2xGZkJDUzljbFFB?oc=5",
+      "title": "SK렌터카 새 대표이사에 이정환 전 오토플러스 사장",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNSHRBSktPeFRlbzcyZV9KZWpEVFFPU1B2QS1FdE1JSXlLaE5wRWZ2OURTVGJUYTRVT2FabGFLOTVIb1ZQTkVsS0x4X09SMndldVFxV2hUYVR5Z0NaWm9NMWIycXdKWUVyVW9qbE84NWVGVkdxc0J6cGZDSmg4MTlzamxTNzRUZXRJZ0tMUnVmTUpDX3dmcHh4c3J0TG5sMVltX2xfZVdycl9GTXdFNzZnVjdTcU5SMFV4a2VTR3hTVkprTkswZl9iUjBJY3hZNVBVVktrSlY2U1FWMkZXcENfMnFxZnVfenI4X1JGcG52bjRyd0szNVR0aE1ZQ3NpdTQxQm9ORVRDc2w4d0FMTGJLbWxTQUVGVUE?oc=5",
+      "title": "냄새로 완성한 비대면 쇼핑, 리본카의 디테일",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1xZGFmX2M5Z3ctNnpzTllhdWdXTVFoaXRsakRSM0RMaERZeGFvbllHUlBMbkNPLU8zYTNzZ1d4VFFIOGJmUFQyYmljUWFqaU94dzV4T2stdFNEMUhWeFBySUlHbmxBZmZxTVk5ckdSTXlPdWZs?oc=5",
+      "title": "리본카, ‘앱 리뷰 이벤트’ 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1WLUV4YWtWRkQ4UGlmVWxtVVNCaFF3WVVLQS1TMWp0THoyZ0xxUndFTFRFOXk5T2tvX3VlaWtGRE4yLTlZR3phZG9SUlZ6UF9pLUNBMHFZVkVSLXNVWG51VnlKdVljZ9IBakFVX3lxTE91OHZ0VUpYdGV0cWNCLUNmWjhKNUpId1FDOXBlZTMtYjZvNFdyLU55cTZMMzMtZThWU3RSdEMtc2doTFF3dUlZRVNkaERIUTJobkZXZDNOdHlwRnVTM0tUZ0V3WlA5NXM4TXc?oc=5",
+      "title": "[라방 톺아보기] 오토플러스의 중고차 '라방'이 특별한 이유...'침수차 걱정 NO!'",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE00V1plaUE4YUs1MlRTWi1GRHBNU2ZzTzBneG96bTc5NlU4SVlKcTVrU3NyckQ5QXZrZ2NJN0d2M1E5Y01ITjdyQUVWOWdEUl80UmFhNVZidkRJcFZXMU5NakZXc0x3dFhQ?oc=5",
+      "title": "리본카, 중고차 업계 최초 맞춤형 ‘라이브 상담' 도입",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1tbEplY0hGQmpHWjNDeWJkUGxQa0NzaFZoTVRBREtPbk1jWnpQcDVCS1dEMHo1bGVYa2xLdmYxUy1Zcm5KbF9hZmJ4TkdKclVoVkRZTWxrampPZmRpeUYxckVpYUtJaHdoUDRWWA?oc=5",
+      "title": "오토플러스, 고품질∙비대면 DNA로 중고차시장 혁신 가속화",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOVXBHaXA2VlVwTzlCSTlxTXFucnBPTkphdWY0UVVjcXcxRG1NdVJaLTRocVZmTTFDMnlVRGtjMUdVZnNDTGJIbDV4NHZIYi1MRkhKdVhOZ2RsUDhYRGlUUWxIcDNiZk5JQWp3VWZVd2NBdUh6OWxDRVlDTnNRM0dpSQ?oc=5",
+      "title": "‘중고차도 쿠팡처럼’ 오토플러스 “온라인 판매에 당일배송, 전액환불까지”[르포]",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4tQUNhV2xYaGpqTmFkdWdqb0otMEwySzJCWEE1b2M0bHBWUDRrell4bWR6bGNobVJUR1hnLXAzVmZCM3poOEZVU3NXdU1rNThKSVB4djNoQ3VpZTBDdWJrR2ZlUUEyNjhhUFE?oc=5",
+      "title": "오토플러스,중고차 브랜드 `리본카` BI·홈피 리뉴얼",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1mUmtIMW5DM1pNTXJMODJuR0RFcF94TWNVcHd1Ylo3bU1XZXlXU1VtYktoa2s0dlhuOEJ2WUFvaU5uU3RYNnFRd3JtV2JwQ280STJyeU9US0ZEZjJJUG9Ybm5ncDBtSG8?oc=5",
+      "title": "오토플러스, '아재들의 로망카' 특집으로 패밀리카 SUV 추천",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5iYjNRNjduSUQ3dFBDN3RZbWY2NXpUME1rSVgzb0pqVlRROGk3ZXdVeU9ub2pzbW5NZ25RTWtIV0pqenhuYjZuWlllaVVWZUVqWVdBVnhBUlB5eDktMWJWbXRQM1JfM2JYTWlQZ1ZUOC1id08x?oc=5",
+      "title": "오토플러스, 새 차 부럽지 않은 중고차 브랜드 ‘리본카’ 출시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9PVmpSQmh6MlEzUXdLemI4QndZOHdxMHdfVkxWWE9SNWJ6YV9YaGt2TVMyeFYyQmh1SkVXVnc2RnZkR2xhbkNaZHhZejZOWHJNelZQWERUQWZYbXluRGgtRHlrT2lfUE9sZjdqRdIBcEFVX3lxTE5IT1I4RzRkWmkzOTNhaHVidVB4aFVNNzZ4ZWMyNWxaZGVIXzlhRVgxTDNhTThONGhUT2VPV2t2ZDFXMEp1Ylk4anFqOHJlY0plZEJ4dUlTWmtNLW00ZmowUTNTVmxGdUczQ2ptOEprc3Q?oc=5",
+      "title": "오토플러스, 긴 장마로 인한 침수차 구매 우려 해소 및 소비자 신뢰 구축 위한 업계 최대 규모 ‘침수차 책임 보상 프로그램’ 실시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE03bURKR080UlpxWFduQTlfSnN0cVM0R1czV0hMSXBQUkhKUHVBYzB0OUp1OE5tSlRDLTNDcUdOYVJLa0pxQ2tMVUtFejFrTWg3bTdyLV9YNmhPZw?oc=5",
+      "title": "국내 유일 중고차 직영공장 앞세운 오토플러스 \"한국판 카바나에 도전\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5hLWtXMnlPUnN2OGE3eTc5N05GYjRrZklNanVNN01sQURwd3Z2RHJnWG9wTjV0V3lVVGVLcUljZVEweFk3RU03MDRNaDJ4bE5LVnRHbjBpeV9ScXhvRlJxOHZIVVQxOEnSAWtBVV95cUxQWHRUQWNGOGVsTGlhTzVPSzlfVThRQllDZ2QzLWJRemxTY0tCOW9pWktBbTJydlh3Uk96Mm55QXBLQm4tT0dEQmZfS0QxMkF3SHhBaEJ6cTBldmJ5VzItYTR0RVhualNXM0FSVQ?oc=5",
+      "title": "오토플러스, ‘리본카’ 유튜브 구독자 10만 돌파... ‘실버 버튼’ 획득!",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5aWk9fQVAzYllHSE5wZTBLbkJlSzdpS2pZV0FTQWlVOEhfVF9uUkREVURKZ2FWSWtXV0w1U3RaUTlyV1dDbjJZVXJFSWVHMmU1LTYtV3JWNE1YaU5HUkFWYW9laDc4ek3SAWtBVV95cUxQQmRDUnZwcUZDMU5IbXBXY0h0bFBkcU1Yb0FsMWtSSXVJT2pjWU1kb1NMX0hwQjAzOFBVc1pjN2NHMEVBOC1xT3JRX2txRnU0UWhCUWdCVXE3MTdBb2UzNXA3Y3Fpa1B2SGV1QQ?oc=5",
+      "title": "오토플러스, 기업고객용 '전기차 가격 보장 프로그램' 출시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE80U21DcGtKMVhxU1Z4VU8zeU43X0JSaEhMQjd5Ql9JLTZjTXJGYk01bHZLVHhia0ZwRmdSRHBMWFNydTNEd0c1anFMTVVBNlNJUm1GWm9DVTZaR2haV2NTdFhYUkFQNnFvRmtTdzJJS0HSAXRBVV95cUxOd2NTVkl2YmpqZWFQdUhlYzdpUlpqUjVRUnNNS3A3ckNnZ2VadXBXaExhbWlYeUhfZTlVQkRUS19Na2NkWV9JeFlVY3FQNFJxc0RJNnVZVTdDS2lIVXUyZjZqblFhTjBMdWtuZG5QZTFDM0RlcQ?oc=5",
+      "title": "“폭염과 폭우에 대비하세요”···리본카, 차량점검 서비스 제공",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbENuT3g0N2FNVjNIZFQtN0VGQm8tRF9veU1FMFZVU3VRX3gzYVVVU2FlSS1QMUZNT0hGWUg5SFdMaVFEU2R2MHZfaEtSXzNpNjJ1TGZLb1lQMVN6eW8zSVNIZW5jREJZRHpXalJlZkc4TXVxelFMbkZTZE9FMnl0RVlYa0xsd3M?oc=5",
+      "title": "노앤파트너스, 중고차 플랫폼 리본카 인수 타진",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01dzZXYktWN2pNQjFwNVR0RHFnRnpRWkVmMFFKVFlZYjZQTDNCLVNJTjUxU0ZQemsyeExqb2FJY3luZmgyaGJQLWtqZ3c0ZjlZSlVaYmRmMHV5bzNTLXRBNGZBVlB6dHc?oc=5",
+      "title": "오토플러스 ‘신차 말고 신차급 특집’ 리본쇼, ‘G80∙GV80∙K3∙레이’ 소개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9mWUx6TklOZFdfSFZUbGVwUkFEMU5wejVFTlNOdDlBY0d4ZEdQUV9Ma1NtNlEtUEhLOXVLR3ZzM1ZpaGt6OFFLN0piemQyT05pZWZCakxRaUp1T1laZ3ZzS2czOWVmXzc0aWtQMUttTVdxUkxUVHJpUDZmVWw?oc=5",
+      "title": "오토플러스 ‘새봄맞이 힐링 특집’ 자동차 라이브 방송 실시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE82OXhvLXctZ3loSE9ZUGVFSTdFRV9fLXN3cnBxd3NXTkNQUm8wbTNlRmtGUzdxdlJ6eDk0cW9TblN2Rm15SDN1ZGhSeUoyRUN2SlBtMDliTjBiQdIBVEFVX3lxTE1DWEk2QjBMUC1lWVdOZXJVYjZSSkpsQ2taOGtzemo4V2VodTJCN1FSNFFVMG9CNTlMMHRqQXRfbDRvZlNtTUZFYlRSUWlCU1k0eUhnSA?oc=5",
+      "title": "차량 실내 냄새까지 5단계로 나눴다…\"그래야 중고차 믿고 사죠\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE52ZUk5T3ZiTExrbXQwNG1aSno0a1hJRDJTaFpZTWN0cHlMVnQycFRfbWFUM0tIeW9SLWJCNEdmTVM2RmlWZFJrVzVpRm0zbTNBay03dk1HdnFURE5pYTR4R3NIRERfZ2F5R1NUemg5WVjSAXRBVV95cUxONTJCTHBZOUdoanBHcnhLRTdoVmtVeDRRM3ZNbmwwcTNXUFRQZjROckxWWWtpc1J2SHI0TTZXajBrRGRRM2RzaW83ZzlEMEtISk5oaU1QZGdrLUNrdjFfUVlzWUY0QjgzN3ZVYWJ5cEJBcFhaYg?oc=5",
+      "title": "리본카, 부산서 '중고차 라이브 스튜디오’ 열어",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBiaE9hS0lGWDJINzBlZUFzZmQxQ2pkT21FaGFwaXJvQV8yVkxzb3YzREdZM1RKdkEwZXVNM3YwNDBhNzk0SWowem9hQTY1c0dwX2o2TV85VUotOVZaNU5RQ2xiN3JkOWVSVVYzNHBWMHpJdmJy?oc=5",
+      "title": "리본카, 중고차업계 첫 일대일 맞춤형 ‘라이브 상담’ 도입",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1WODZ3dVA0VG1ZajZnbjFKb3A4Zk5fN09RbGRKamhTem1nanZ2X1JsQ0o1dVloMlRmT0VMMjJBZ3FteXB1ZWF3MlF3akxnQUZjeU5kRlMtZ3k1c29SQV9yTlF3cGtzRnPSAWtBVV95cUxNd2R1UmZmSlA1Nm5IXzRFTkdrME93Wkc0V1lHOC1JN2syY0xfT1V2WVFocHA3MXZSX2RUV21QalBZYVJVdE5tSUxhTnR1TnN2ckUzQ0dxNlNaVDE2QWNPLUtXM2U0am5OMTBNZw?oc=5",
+      "title": "요기요 새 대표에 이정환 전 오토플러스 사장 선임",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB0WHhPdmU2ekg3OWNCVFhUdDVVSHRrZlpjZUpjcEQ1azBIYlEyM3B0SlZmSmNkMnp0Vmg0elJIUmRpXzZPdXVQZk5DQUtPbFZjU2t2a2dVdVhwZ0VGRWJSYlJ2VGNNbmNy?oc=5",
+      "title": "리본카, 'CM송 챌린지' 공모전 성료...총상금 1억원",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1kOG1kRGxCUHNQcVhvVzZiTUUyRmtaY3lBX2V4ZkI2MWZrMUpLYXBiWmRYLWdUbVIzUURPS01BSXI3MlBsTmc?oc=5",
+      "title": "\"싸다고 다 좋은 게 아니다\"…리본카, 중고차 구매 노하우 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFB5NEJqbUxEZHdvcmtsMU5DbU8yWkR1aXlJS05tS3Z4dkduMDBCZHNsXzFYR0I2WUkwaHBYWXdNY3l6Z19Ob1FkNWVCZnVYbjU5cDFfeTRB?oc=5",
+      "title": "리본카 “중고차 가격보다 관리 이력·옵션 따져야”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB2ZTlaVHk4TmxxbjdLaWNJY0JXdlUtX0FCYXA3ZjN1bWtBc1AxY2prX3VHenNsODZvaEhkcFQ4NXhkRmhkTUxEcHp1TFQzOVo0YVJYZGFfQmlVOVRXdnNwRTZFNzU3TERoTlhn0gFvQVVfeXFMUEJ6OXc3RF9HcnhZS200NExBeW9BUk1acVRQRG83ZkpzUGV5Q1p2YU1xNFpPd3dQYmk2TDNqOWdoRFViSU5lcXlpbE1qQzBRV1FNM3F6RnhCYWdvOS1JY0pVRWZXWXB0WG9GRUJKbldR?oc=5",
+      "title": "리본카, 중고차 구매 증가에 “품질 관리 강화”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE41aXZ4VmdMQ0I0WjJiaUJTMWdlanAwRHdfZWlSSGo1anhUaUV1NEZnRzBfcWoxMDVwc0pRT3diTGlHQUdpdG9GcmhFSVFkN0RNd1Zxa1JKeFVNZExfMWU1LVJKYkVUMXlmX3FVRQ?oc=5",
+      "title": "최대 400만 원 할인, 리본카 여름 맞이 타임딜",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE53bWZ3WWx3Y1VGV2cwbHdaOXNfU0JMX1psVEZuZk1sUU04U2owVUdSNW1vOTVhVjZUcTNsNlVmSnVubV9MaTBtSm5GaENGdlFkaE10NzdpX092ZWhxdkVPTFIya2FpZTNENnRxSdIBcEFVX3lxTE5aVnJDTlhRRnJVeFdSNFgtOHh5cVVLY1Uxa3d3RlpZNGVXMW1HZ1dtRDBhOW9VWC1iUnlZWWphVnRWbTRUSXl6YS1MYTZNODZROWZsY1lRaEk0TDVFTnFZOThzU2xBdVZyalBfSl9Nenk?oc=5",
+      "title": "리본카, 중고차 구매 요령 공개...\"정비 이력·옵션 확인 중요\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxONi1BQlNFSEd0S1NuM0tCclA1eTQzTzRUZzl2OWlSbEFCeURuRTI5MU9sME1zQnA4TGVqUFd3bHkxZk9YZmI2dEVqdW9NNm9wWldqRE5obElGYXpZckszMlppYVZFUWlLTDJqbnk4Nm9RSGdRWktwYUlhSkxSS1MtRVJ4LXg?oc=5",
+      "title": "리본카, 전기차 배터리 점검 강화…RQI 리포트 개편",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1nTHBTNlNubXJSUkZ0bVc0SC1BVTRFWUIyckRaYUlRUXQxWnhCbDJYS0hsSHlIWHpxRlhyb0g4aHlXMGdZN18yZWpSNlhuVEUyLUNvVllWMVdNLS1EWFBIeHZRRWJwNzQ?oc=5",
+      "title": "리본카, 세일즈매니저 현장 경험 바탕 ‘똑똑한 중고차 구매법’ 소개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5IVktoNjcwRWRYOWt1ZGlZQ2JocWVMdnYzWTJkLVA4VDdvbDJVSndydURqZk9hYlhYWEFjdUFLRm1ZZ0hQQmxFeU9TeUtXVWZqTFZ2NldvN1Q1NjB3N25RNXBJUVhaNXVVZFVfWHFySG1yQmNlZUZlWUtZbjE?oc=5",
+      "title": "리본카, 비대면 구매 확대 '중고차도 라이브로 보고 산다'",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBIQXg2aFBQeElrQWUzVUhySUlGMVYtMkVxNlpnVTIwdUJKWkdYdnQ5M09YU0M0aU5ETGl6Qzlnc3dHaG40MnlhYTlBTnhKTS1qa0tpLUF1bUdLNl9helhZaUZNQ2RVcWYwM1BaVHNYc3dnUWMxMUk1TV9B?oc=5",
+      "title": "“리본카, 라이브 방송으로 비대면 중고차 구매 경험 강화”[재율 아빠 중고차 업계 소식] : 네이버 블로그",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFAtNndXdjRMdW9mcDdmMzdjaXU4dkhrWXNsbHdNVFdCWmRYR2htcWpISzd4ZFV5YnVPdW5ab04yQTM0RUdBNk8xTlFuTzYxQ21oaWhJNzZUbkhMX2M?oc=5",
+      "title": "리본카, 2025년 결산 데이터 발표… 판매 41% 증가",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBmdnladEJqZ3lBRkhIancwVjUxN3Q0UVZ2NVNlMHRNdXY2QjB3OHFVUVRZb3dSczUzU2ZkcGY5bXFNNEVxYzQ1WTVGUVo3bjU4ZmFxcUdR?oc=5",
+      "title": "리본카, 라이브커머스로 중고차 판다…비대면 구매 경험 강화",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBKWVRoREF5Z1VpOWxZaVJja2FmOVJEeUhCSWVBQ2RfV1Atekc5YnlVRVh5TmRRbEdhYVpFMldKTmdGMDZwX3Ytd256ZWU1X0RBdS11UkVMaHBROUpNWDdXM25SWmpVczA1ZUZWdFp1WQ?oc=5",
+      "title": "리본카, 라이브 방송·1:1 상담으로 비대면 중고차 구매 경험 강화",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1Wcm5oYWtiN2dHYk1jSi1OdWtiY3pkX3Y2d084SEJKYVFTS2wtQWxLRWd2OUE5dmNQT3lTS2J1TVVBRFY2ckd2cGpvR3d5Nkt5ZFlyZm5rV2JCbmxCaHdhYld0T28zNHJ0Ti1j0gFvQVVfeXFMUDZvZzJUcmRPUkN4ejRVUEg3eGJsU1g4Tm56OThmNzJoandSclZnS0J4dlUxZklNMG4xbFBNTHJUWWw5Z0RsdVhabXhHeFF5Yl9VeXIxd1gxMkRlMTliRnpXVnhzdHFKck5FU19YTDgw?oc=5",
+      "title": "리본카, 라이브 방송·상담으로 비대면 구매 경험 고도화",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1kMjRvdThBa1VxdGhaa2dYbnpiNWZheGZiMnNtSUtMUDVEaHN5bnFIZ2ZhT2M0al9Td096S2hsbTV5NTRZNkRsN01EcnZCaVZpc3N4U0ZOcWJGLTV6aVFRbVh3U3JUaVQ3QXFIcg?oc=5",
+      "title": "휴가철 차 바꿀 타이밍…리본카, 직영인증중고차 140여 대 타임딜",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAzd2RObDFkemFWQzMxM0dYYi1kLVJYMFYwSU1ialZkRko3NkxjY3FHTjBubUtsT3ZUY0VLY25ORldmVXJOYVNsSkhvb0VLTlhneUh6cQ?oc=5",
+      "title": "리본카, 전기차 중고차 점검 기준 강화…배터리 상태·실내 청결도 공개 확대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA3bElSVUZiUHRuMC1LR3FQdUNWd0FnNng0TVMxYllfMl9QaG1RUk52VmpINGtsT3JmLXpsOXZQZWZSdElMUHlrcXVGcmVBSmRBNE1WYTB1TER4dUk?oc=5",
+      "title": "리본카, ‘2026 대한민국 브랜드 명예의전당’ 수상 기념 타임딜 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFAxS1NQaW5MZXNqLWY0OFV5ZmhkX3ZrZDVJVVVEcXVpSWZINXdlT2Jub2UxN0JUZGVwR0JhOWl4RUZWRUlSOFJHRTJFUlRYNG1jM2hJMnd5R0pKYVU?oc=5",
+      "title": "리본카, 신혼부부 ‘예산별 중고차 구매 가이드’ 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5reU95LTIycHFiQnR0TFdsUVdxTlEtT0Z6MUNBbWVyTmdKYlBCdUZIS2RvXzNyMkNOT1FjcDZDREg3UDJaRjFGdW5wcWdTVThDUzdNaUFyc2VtRzh4bHpLcF84LXdWREk?oc=5",
+      "title": "리본카, 여름맞이 타임딜 진행… 직영인증중고차 최대 400만원 할인 혜택 제공",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBpWU00SE93d21aekZYSjRYeEEyLTNpR202NjFZSDRpWjNyNThNWFhkQ0FRY2hmZTRVM0gwLUMyQ3RSdG9uRHNVajNjMmc1UnVRWlVYLUNoZnpaYXptbFdLSTJzMGpPTkNO?oc=5",
+      "title": "리본카 6월 타임딜 14일간 진행, 직영인증중고차 최대 400만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBBaV9haURCTEM3Z2VIaFl5cTFhWHBWZ01rRVIyV3dUbWpmaTg0RUktS0x5ODAyVzd3aVpMSUo1SlRETS1fYnJ2d3lubVUzV3pvc0lnSlZRNzRyTEg4?oc=5",
+      "title": "리본카, 자체 품질 점검 기준 ‘RQI’ 개편",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1RbDI4ak1MdW5XbzBibTJJVXloeWdhaUwwX29meVdIcTFSZ29STlJkUWxSYUx4bEd0QkpRVFpIM0VDemJKQVBiVkRxeno5TEp0YXZmWjFod196V1k?oc=5",
+      "title": "리본카, 타임딜 실시…직영인증중고차 봄맞이 혜택 제공",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1EMkgtWmNISTd1dm0taTlLT01ZZGtSbjhlRjlhS3JpblQ5TnFGbWg1cVNxOWZhYWNXVXJ4QnFUMWRDaU11c0k1NjFHNDV1MG94T09uRVpabkI0V1QwRGZPMGdlT09BbURsLVRGTDRqakZVa3NSeEpmLXZCUzU?oc=5",
+      "title": "리본카, 직영인증중고차 최대 400만원 할인 타임딜 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE16TmR6S0Iwb2hQM01nUERfRXBCYTZVU0JsU0pseThud1FzOXlrWEVQeDNsdFBPeU9UVld1a3pfUTZiR0c0emMtMDF2bzl6NVNrRjdUaUtFOTl5QTNISFZFejZ6VUhhdjZoaUNWYw?oc=5",
+      "title": "리본카, 가정의 달 맞이 타임딜, 직영 인증 중고차 최대 340만 원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1TVEY3Z2RCWHJqMVhyd2k2V0ZwbnQ3elNmdVhLWHlZS3Q0TG5YZGhnSk5JdzdVeVhfYllMV3NlcV9LSWpfQWl5TEplZDJhcHhNLW5mUWhLaWJvVzA?oc=5",
+      "title": "리본카, 투명성으로 중고차 시장 공략",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5NMkEyNEJMTTducnVUT0JwRm53QXEyZTlVUW9ING4xYnF3V3hJWjlWenE0NUxucnRDQndrZEdiMTdkem5RN3ZaYWdydWpMbGpTOGtRYkFITWRrclVjNVJVeGh6anRKQk1iS1B5eWpmNUVfWDDSAXdBVV95cUxNa1UyN1JtMDB6UjI4LU14eHcwNG1KbFRid01CUzdUR251WU9wMjJiX1B4a3JDcHJ0OFc2a1V3MjliV1F2SWIxVnY5a09kbHRONHd2eHhBcFFBZ2dHa2dfTjdRZktTalJiYXpiMmhpYjdEUW16ekhuNA?oc=5",
+      "title": "리본카, 24일까지 ‘June비한 특가’ 타임딜…최대 400만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9Rd0lQZ0pQX2dDTkhpQWpWMUhudlA3VnRLMld5amg1OWtJOGJkQXdCcjlFaEJiTW1zUTNGWmlvVHVmVXd2cDJlU0N2NW0xRnB3cVhSXy1LSmNINkxiZzhtYUwwLTR2TVZNSWZtaENhUDlFdG8?oc=5",
+      "title": "리본카 '리컨디셔닝 센터' 국제 품질인증 6년 연속 획득",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8yZXpGY1RwWUxpUWYtMXE2NGVpV3pxMW01ekRoOVpRaWNxMlpMNUVISEdOLVpOanVGSjdRakVQZWxxSFJVMDFLN1V5U2dYZm1hZURjZUJhZ1BqcGM?oc=5",
+      "title": "리본카, ‘드라이브 떠나봄’ 직영인증중고차 할인전",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFAtbDVZNGN0dVlUU2F2cUY5Q2JITF9CWnNOUTRTUUhUTHZkMXNuSXVTaUE4Zld2Q3pZSnFqTndTV2NEdExIRXlLYXBnSTFpZWF2UUMxM3VnUGxfMHp6Yjcyc1NQOWhwQlBCWXFvUVpqS0JDaDBCOEp2aE9n?oc=5",
+      "title": "리본카, 라이브 상담 기반 중고차 비대면 구매 방식 확대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBKdHlCQjFtb3F4ZGFfMS04OHFBbURWeXBseEZmbDZNc3NIb3VCanpORmpJYzBqT0hpUjdkU3JoZ1padUFrejhhWFpFaEdpYkstaFFVdUdpczFYcEotVzBvUUF3MGxoV1BzVkE?oc=5",
+      "title": "리본카, 여름맞이 중고차 타임딜 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9ScGdpNURfUENqakN3N0k1RXNTUVBjaU11eGd0bGktaXdISk1uX3VmY0x0NW85eE82ZHlPY3pGUUJ2OTJ4cm1kNFB5N1o3ZHJGU1pkWU9HVmU5SzQ?oc=5",
+      "title": "리본카, ‘내차사기’ 서비스 주목",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1TaGFDVk5ub3p0YWFsaVBjN2FKVlZkTlVWN2tabHJFRzFDVVJKRGVWdVdLT25KaUE0SnlIYkpKQnZJT0ZLYUhNN1p2QXJFQUg1YUQzTmJ6WjJ4VGVzMTZ5QUlvNXFPdGFvSU1MQw?oc=5",
+      "title": "리본카, 5월 ‘선물’ 340만 원 할인 타임딜...K Car 오일류·타이어 점검",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1zUlRTQU9URzdWSENwYmZSNG85dnZNYkFKRVQwMzVpWmdGeWktLVZ1aUVsMjJWZWVmazVZWVBqSEd4VEZKcWd0SmNmd3g5ei1NVDRPVXlNbUl5MC12eV9zOEJHc21ZVy01ZlBvNQ?oc=5",
+      "title": "리본카 중고차 판매 41% 성장, ‘차급 대비 실속’ 따지는 소비가 시장 바꿨다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBjbUlLaVBxMU1GSm5BRzV6blU1SzdQX3lfVGtMc3NRMUdpZWEyRUxwR3cwRTdPeW12S293dER2cmVBSVpoLXQxQ2ptS0FrZW9yZGt5elQ1SlZ3Q09TOHdSSFhLYVE2c1hxQWZETWxncUlQa1XSAXdBVV95cUxNc1lYTE5IdFc5MGhBZnh0MUl6YWFTeEdJNWdLNDlLcjIwYXd1OEc3M0VBb2xkQmdxVGhNc1RLdnNQVTlMLVNJZXVSNC1ZUG0zR3prMHZJUVlWS0FqVEZCS1dZWjlSUVViZnYwMnVlN2R6MGhVbUJhdw?oc=5",
+      "title": "리본카, 중고 전기차 10명 중 8명 “구매 고려”…배터리 상태·품질 신뢰가 관건",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5sUW1wRkhDWHRuMlZlSEs0VXJkc2RMTi16ckluT1pwaWJIR21haGpjN0ZJbF85clBMQzBONENEMFoyWkw2X0tTaXROV1RidnZsdFotdUFUZTF4X1FzamxhWUdwekFHWW03NUJIeg?oc=5",
+      "title": "리본카, 가정의 달 맞아 직영인증중고차 최대 340만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE03VmZHeXRPd3VsU0Q2Mzlka0VMdC03bUIzcGlMTjc3N1h6RGh3MDVudE45c3VCNlEyb05VNkJaaHBsaERKRHZnTnlsUzFtelNOVmtvUW1BaG5fREFWWDc3TmE3c0F2dnZGQmQ4a0hDVnNIS3otSjd2Sk1NQUk?oc=5",
+      "title": "리본카, ‘리본카타고 드라이브 떠나봄’ 타임딜 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB3Unl5eG1uRlBYSmZ6SkZuSUNvZWNMMFlMRG4tUUJSNTRYOGVxTHRwYkxiMF9BcTlKa25tSWJRSEQtOThRdXlWWUx1WEFEY2U3Vjd4ZWl5NnV3cW9IV3J6anBfRmItbVc0VG5HZjlvYw?oc=5",
+      "title": "리본카, 현대 팰리세이드 등 최대 340만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE54ZFFjcmxFTnp5OENLd0ZKVFk0c0c5ZGptV1hmamZOTERMTXUzM29nUWV2Rk1pTUxpc05DUnU5RkktdjNxck9uMEQzYld2MU1BdUJLMVNjM2I5cVhPLVZQOUE2cy1kakxIQWMxVg?oc=5",
+      "title": "중고차도 ‘투명 경쟁’ 시대…리본카, 데이터 공개로 신뢰 승부수",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBvZTZacHUwdVRYelB3N0t2UzNRblZibFNPMmRvRm9FOWF5OFVMQU85MXBGd1VHZnVxNGtxcC1IMmd0d0J1Z2JjdHQxTDROYVpXOUxHWHM4R0daRkwtbFpvbl80V1J1WE1kQS1WVA?oc=5",
+      "title": "유가 상승, 전기차·하이브리드 중고차 조회 증가…리본카 투명한 진단",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFAzOWFCa2VlSFl1b0tEMDl0V2l6TFA4SUcwUEM2M2VFblFKbm0wd1NOWVI5WmFoOV9IX0x5T2JScEI4dmhaOFZQSkZnclAzZXdBWWlCYjRLZUtkeVd6VWZCY3kwSjZjQQ?oc=5",
+      "title": "리본카, 가정의 달 맞이 타임딜 진행…직영인증중고차 최대 340만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5fWG5jRHJRSkFrZjFfRGQ2cGppczR5SV9TMDdaNHMwTU9DSVIxMDVkWV9CVWN3M0gwT3V4LU5hazdmYUdNSG12VC1mdmtNZ0habUVEVTJ4U2x4OEV3V1l4a1lLQmhWdks1QV9iLXFVMA?oc=5",
+      "title": "리본카, 중고 전기차 구매 기준은 ‘배터리 신뢰’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBGdFRRQlV3Vjc1VlIxSzQ2M1Vza29BZlRlZmFWcVNNRzRxa1J5VVltVjRXLU5fNldmdFFhbFJNVFdhM2dESHkybDZVa1lHazFpMFUxbzNuajV0bHpuUXAwMHdMMnlFSU9mYUdMZQ?oc=5",
+      "title": "“1위는 아반떼” 리본카, 엔트리카 구매 트렌드 설문 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB1X3JZOTV0dUhvbVExREtwX1ZHMDlxSGN1TlMxTW1ITXVFWFA0TDlnalJRSWRQZUFGeHBRNks4R0wwSjZLXzJhaG9OcmZQQXhQLVpmMm1yVldoM2xVakJoOTl6M3k4UQ?oc=5",
+      "title": "리본카, ‘드라이브 떠나봄’ 타임딜 진행… 봄나들이 맞춤형 직영인증중고차 할인전",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE44U2ZqLVYwbXNDaHhOTmVDZlRSeVpieHZLQ3NZZ2htOGtxNjhNZ21ETXI5cWNMNkY0d2FtXzJnb1BnV2JpUnVtZFV4Y00teHp0MVQ3VTZhRFhBeFVaU25FeFdtMmY1bUU?oc=5",
+      "title": "리본카, 라이브 방송과 1:1 라이브 상담 통해 비대면 구매 경험 확대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1SLWx1bnVkVnQ4Zy1hWDczanh6cVRVR08zbjVlNWhyQkctazNwTXJtd2Rad2VIZzVrb2Zwc0pndmlsTHpDdWlnV2JFOXktN1VEbmgyUmY5OGJDT0RwdXN0WTIyRFRpM1ZtZEVaWQ?oc=5",
+      "title": "리본카, 최대 850만 원 할인 타임딜 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5zWUVUaXFWb1U4SzVLcnZMOFk4cGo1QkZtN2NZUldab1hzeVlySy1faXZGRzNQc08yMUhJc0tyU19jbmxPSEhSdmpZbHowZDVIUnZFQzFBczJYdVB4?oc=5",
+      "title": "리본카, 신혼부부 중고차 가이드 공개…예산별 맞춤 추천",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE53VUVuMHBUMjJuXzJjQkRPcEtqRXFtU1N4bC0xZS15QWFDVTNXbi1XVnFYdXBsM2ZUX1g0YXpySDhGSVdXZlFmNVpTczY0dHN6U2ZYbGZjeW43ZUFMQmxTUXJXT3lDajRoYU10eGM2cw?oc=5",
+      "title": "리본카, “정보 없으면 못 산다” 투명성으로 중고차 시장 공략",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5GVVN0bFBOZ0lzZW5pWTZBWVNYZm1lYTU2eHpZZkVaSHlWaVRTZWdLSzE1ZFRNYkdTb1FPZE1Eb0owVmtKWHpIT2lBeWZXdndZakt4OTZUX1FKb0xaamoxOHd0SVd3SlNTekJQQVNqaw?oc=5",
+      "title": "리본카, 자체 품질 점검 기준 ‘RQI’ 개편",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8wVGNxUjA1SGtzcVJDTjJyaWtMRGdMWnNvbEVkT3Fuc2FlRko1NW1NX2ljbmVDVkpibVB0UUtjd1lxVkFYeGZNTVdHNjRTZ3VRRkJ6RGtvVjJRb3FkbDRoMjMtcTZ5XzF6?oc=5",
+      "title": "가족을 위한 가장 안전한 선택, 리본카 ‘가정의 달 맞이 타임딜’ 실시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBITEt0aW5TZ3dydVpleUpkQ1kxcVAtZ2JRbUE0ek52MlJaWWxTek1Uc2ZnakdGNnNILUw3YTJPWU1Gb21Fa3FqMTNlanJ5Qk9Sd2hIMzFNSm4wTEJ5MWNYVmFNY1JMUQ?oc=5",
+      "title": "리본카 소비자 인식 설문 결과, 중고 전기차 구매 기준 ‘배터리·품질 신뢰’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBSVFEtU3JoZkdwRHprWmtJR0VlaVVpN0VfT1pIUHpKdk5Xc1hTOHZxYzZtbHlBaDg5NDlYYWNOc0dTb3lmSW43N2JPc2xvcU5vRE5EblFnVW5pc1VnQnZ5XzBPaGgyYnpPNWU1Sg?oc=5",
+      "title": "“그랜저가 인기” 리본카, 2025년 직영인증중고차 판매 41% 증가",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE00ZWhzMUdlOFlBbXoyOExST185MUs2MXlJR0lKNnY3cVRSbngtOWl4N0wzNnhDRjRzRkhBTGM1TzZYbmVpenhYTnRpZTFnRmpvTGMtbTdreUFDN0hhcUhpc1g2TUpMYWhaZWE0Qw?oc=5",
+      "title": "리본카, 2026 대한민국 브랜드 명예의전당 중고차 플랫폼 부문 대상 수상",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9QV0lWdEozakRFS1dMY2tqczRuQjhMRnpmVHFWdkszeHZabGIzSVlFSU10Yi14d3laS19aOUNTOTNjNDJ0bTRhdFJwUXdpZndyNHFRUk1pN2FjRmU4SmVZa0JyLUpSdw?oc=5",
+      "title": "리본카, 2025년 결산 데이터 발표…지난해 직영인증중고차 판매 41% 증가",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5OU1lPMDY5SnBER1VPUE1kc3RWUkpsRFZ1dDBrbWlIRHAyRE1qdVJmLVJvdndXZEEzM29qZ1pBNEJXekZjaGxTb3ZydzdzRzgzMldpbVdwVm05MU5BOXplbWlOazdYcm8zLVlFbtIBcEFVX3lxTFBURmRCUVJNV2ZtMExZSXNnVHZlZVAtWVhOdFJFNy13ZXFDODZLc19CTzdDakVaZ1dNNjBnN3U3SGd1MkFMYWtIY0lQTDdxREtKRGRhcndua1BaME92N2phbWw4X250TlpCSDV2Q21FaV8?oc=5",
+      "title": "리본카, 신혼부부 위한 예산별 중고차 구매 가이드 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Oa3kwQ01ITG5xOTBpM00zTjJYVDBIVmo2Mm9FcERBdUpCenMtV29VaDk5ZHRpNFdSWnhlZFZwdHpzT2w5cUVNQ2szUERGLVpqa19fUUVlUWpqTWtacVVwSU1UeTh2UGhUU1c2WA?oc=5",
+      "title": "리본카, 직영 인증 중고차 최대 500만 원 혜택 제공",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9IcnV5bktQdlFFSFNaZHVzUWJCRzFKcDM0MGZXQmZlNmMtWGI0ZlNGckM0Zl9TakVlZUk2MDlRS25rOURyVHZ2SU1MU3JtTDFxQ01RaURmUkhUa3RpNGJlWDlNb2dYZXJI?oc=5",
+      "title": "중고차 엔트리카 1위는 현대 아반떼, 리본카 설문조사로 확인된 구매 트렌드",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5qU1NfNS1sVF9JekZ1eURrRlVEMzMwRXBxMG9CZE9tcWpiTTkwUlF4VlYwQ2UwTnQ5aXBrdnRYVUVMZmx0MjlMQVkwbmIxTlhtLU92dF8wcGNaeVlRLUZjTmw3NFpQa3VVYmc?oc=5",
+      "title": "중고차 거래도 온라인 직영이 대세…리본카, ‘내차사기’ 서비스 주목",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE84M3REV1hzT3B0UXl3TXBhTk1NbjgtSjhGSlpmZEZSSGUwOG5Jb2dwd3BLbDhtbDhzdWc1Sm4ySkVMSzRCdnp4V2dpNUtkOERGbXdVQTRYQmZXa2dGeUMweW1HMVpfZTg?oc=5",
+      "title": "리본카, 전문 세일즈매니저가 꼽은 엔트리카 선호 모델 1위는 '아반떼'",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE16c1M2aGJNUUI0eF92MjFWWVVqanFrWUo5aVUwbHZWM241aTBRdjB0LXVYazBZSkp3dXk1M3otN25FR3lSR2lwbVBCUHFiOElBUkhlSw?oc=5",
+      "title": "리본카, 중고차 플랫폼 대상 수상 기념 프로모션…선착순 50명 상품권",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8xd3otSVZCMGdHMkVYNGNZd0FQTGtKa2VnTzllQTMyU29ER0JVa3B6TTBreUVFeHdzdk5KOXJKeGZFUkVhdDFlSGsxMTQ1bnl2SDlRTXdvZjhyUE9uWXljYVhLSGxtT00?oc=5",
+      "title": "리본카 소비자 인식 설문 결과, 중고 전기차 구매 기준 ‘배터리·품질 신뢰’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9mUWZMVU4yd29RN1RGQWw5Wkg3RUlPbndadUF1bzRYd3ozNnVrS3VOOW05a040TEQyOGdjS2hwYk9TQ01tYTI3bkJGNUFYOExRaGswMGhn?oc=5",
+      "title": "“투명성이 경쟁력”…리본카, ‘RQI’ 결과 리포트 공개로 고객 신뢰도↑",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBlYldRYnhod05lS3RxMUJGcFVheHNmX1hjZzRCaXl2cWRZTXAzbzFLX1ltbC1OUVZLR194cVlsNzdHZjcxZXZZeWRQSjgzVTNfZVhzcVdmR0swMmR1LUxyaTBFUndJNmQtd2FSR1JJcndpSDBxUWlBNmNXOHI?oc=5",
+      "title": "리본카, 전기차 배터리 점검 강화한 ‘RQI’ 개편",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE84WDR6WEpEMmIzdXF2dXF1YnBlUDlZemRhZmNsZ3ZyTU1EaDA3UmNUOTdVQTk0ZlMxM2paVjRsMXZydG5odnNTb3BEdDVmM2RqWm1weVZBcXBzV1dLdnloTzRZOHRKSHVBYVpNM0dQSUZwaW8?oc=5",
+      "title": "리본카, 직영인증중고차 '최대 880만원' 특별 할인 타임딜",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9ZeGFoMV9yc1Fhdy1JVDJ0R1BhYmNkNVU5ZnNlNlBaTENrMTUwaDNkeVViYU8yZ2hKbHJUQkNET0JZejRpTDRZRnBBdjdmMWZCRzFESFFzeTJ3c2JrRkpSZXY1TFcxeUxEWnJTbw?oc=5",
+      "title": "혼인 증가에 커진 첫차 수요…리본카, 신혼부부 예산별 중고차 가이드 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwenBjYndOVWphdW1SU2NzRE0zYW9GT1hFS2dfRjFfU0FTejRISGhvSVV4cDlvY1o0Sk5ZSlo2X0I2ZEVVanBXTTVPS0lGMUplRzVXWWlBTEJDSTFiRzlTRndPbDNva055ZmtSYQ?oc=5",
+      "title": "리본카, 가족·나이·용도별 맞춤 중고차 제안…인증 모델 추천 강화",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE03bUhCSjM0bG9TRGNGUnoxeTVWQWNzdnFnQU4zbDdLeDlOcjJBSUl3dnVETDZ2TmhPaDMwOWNsOFVYLWktRG5XNGdtWWg5Y2RNMjE4U0hQd1U4bzFobU01OF9sWWlKNU0?oc=5",
+      "title": "리본카, ‘2026 대한민국 브랜드 명예의전당’ 중고차 플랫폼 부문 대상 수상",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBoRW9HdE1faVBmZmwxNHhROWcwT0pxLWhlc3FSNXZ6ZzRKcEJpZnhyUm5ocXl4ODFob0JtUGktdzFjSGxicjV2WmNKMml2bWNpaEZYYVZsc19NYnRXSWtZNXcycGhEZkxqQU9F?oc=5",
+      "title": "점검에서 경험까지 확장한 리본카…브랜드·서비스 전면 재정비",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE91R3M3RlVwcmk4cW5PWlJsVlFRT19tUU9nb2VMMmdVMVV1bU82ZUNIRDBBVkhoR3pTM19IQTFBQTExLVhsUGRQOW8xeWZib0pzYnZ2Zmc2VEJhYU1BNlZLQlVvRXQyZw?oc=5",
+      "title": "리본카, 가정의 달 맞이 타임딜 진행… 직영인증중고차 최대 340만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBJSXowQ3FwZVBfMDVRMUw3Qk1QSVNPeDk0UTQzYUVLNGVrUmpHWTZmUWVvZWRLMVBfaEJxdG0wckdvUk53bGZVcXJ1dmNHeTB2UDdHeGsyVlpTblBUcS1SQzhsMzBldw?oc=5",
+      "title": "리본카 소비자 인식 설문 결과, 중고 전기차 구매 기준 ‘배터리·품질 신뢰’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1CREsxLVk4X2Y0M0ZjME1zWG1sOWcySE84RUlJUFF6YllTVWZIM2dFX2o1QXh6aFI1bDl6V2phOFpvNVlIVFV4Z0dZUkI2UEdIUUV2N0pyRmIySW5qYUNrb3drSjNYbzRjcmpmemh3?oc=5",
+      "title": "리본카 수도권 서부 접근성 제고 김포지점 오픈",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5SejN5cHN3Q0I0WWtpcUVnNjFMTXpIOVBWRmw3UFVBS1Q2RDN4SjNDb2xaMEI1dEQ5Vnd3eG5vRWlJNzNJd09hUUMtaUlkYm9jVElDNGdRRHlfQVNpVVhzRW5sSzRreklXY1E?oc=5",
+      "title": "리본카, 정보 투명성 강화로 중고차 시장 공략 나서",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBvbEhaZHMwZGppaFQtWGhHMV9mT1k2WFpEa3RKSHdvM0gwbEJFSUF5dFgwTGwxTHh3M2pqOTBjam14endPUE4wVExOWjRNUkh5UUlKYg?oc=5",
+      "title": "리본카, 리브랜딩 단행…“이동의 자유‘ 제공하는 브랜드로 거듭”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFAyMFBvczNzT2J6bnZrUFZkeVRSUDNaaFp2bEhQd3VPcVAtMWJxbVlnNi1laHlJQTJHbTRSUjlBSTE2WVplWG5rVVRDQU96OWltYmtCbFd0TmNDVDZoUHYyTHB0aWRtWmZsUlh3?oc=5",
+      "title": "리본카, ‘2026 대한민국 브랜드 명예의전당’ 중고차 플랫폼 부문 대상 수상",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9uMDNmZ01pa2dJQUQyWGw1cTcxeE5CTG1BcllBTjlEcmVydjJkVlZqaXYtZ1dtZHYxYS0xNXVHMHdjSENOX011LWwtZlpYSTlaN1V0MFpCSXp2cnlwVlFQWS1rd2xwQS1oVFpSRDZCSUl4NXdvcnp4Z2Zn?oc=5",
+      "title": "리본카 설문, 전기차 구매 의향자 10명 중 8명 “중고 전기차 살 의향 있다”",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBwSk9JeWJwSldJS3ZndHc0ZmphNFlfQ2lPU0V5Z05uMjM3QjE2NzBhbWtPMEo2bTUyN25RSXc3N25MOWlOTUw3M0hmM3pOdkRlaEJYemtIaGctUmhyY2RxVDR2Tm54VnJTdlZnY3VLdw?oc=5",
+      "title": "리본카 소비자 인식 설문 결과, 중고 전기차 구매 기준 ‘배터리·품질 신뢰’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1NS0g0LVIxQWFqR3BNOWo3NVExbjdsNjcySWdKem9LamdPVGs3UlVLa29XdUdRSHlScmVOZ3VfY2lPSXVjSVRBWEFhY2FPeml2c1lpVkFwamlIdmtBZHdlLW02MEtfaW9zRWlzUg?oc=5",
+      "title": "“온라인 자동차 판매 확산” 리본카, 중고차도 직영 비대면 시대",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4xdGtPdVNhWC15MDNCY3NuMkhXZjhYN2RoR1NxSmRmZktyZHc0aGt5RjJuZDhDemNuWXB3RTd4SjVmLXdwem5xUW9kc2tpR0VvUDJ6a2JRMXBqZ0xiM1JKMU9pdkZqWXVlVHc?oc=5",
+      "title": "리본카 브랜드 리브랜딩 단행 -‘이동의 자유’를 선물하는 모빌리티 브랜드로 거듭나",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9OcFhud0FlblctblVWUjFtdkktNVVjNWpROUl6TnZ3ZEYyRUg3XzRZc1gxcUQtcUlLdHJJUnU3a01DcFBmRER1TGIyMjlVa1BqV2dUejNCRDZFVDhldnQyNkoyelhkOFExaWdSR9IBcEFVX3lxTE53dmlGZnhpeEFmM1JLYndUOGlkZUJnblFCV1lPc0ptcmVGWGk4NUFhbnNIS0w1SnczUmZLRU80Q3k3X1d3ZlJZQmRoVHROcEJLTzE0eWxIdGZJSFhsclU1R3BjeGVRRi1vTE9LYTA4RFo?oc=5",
+      "title": "리본카 \"현대차 아반떼, 전문 세일즈매니저 엔트리카 선호 모델 1위\"",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBuM2lXS2lJcW40eHNxWlVlUWVXZnVWZWlmRHAwbVhUMWtaU1J4R19KeXdmZmpjbW5JZVZlUERjYUJOaEs3LWRNTS1uc3hYdVg4Y2dfVDFkR0N2ZWJCZ1ZKQllyZHcweEdMdWE0cw?oc=5",
+      "title": "“팰리세이드 최대 700만원 할인” 리본카, 중고차 타임딜 기획전 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBpYTVUSThrYWVlYmhIdkFDdHpaZ1dQRmMwekU2VVM3TmpGTFhKMTRuN3g4QzBSSkpTRVdKY0VFRWxaMWtMRFF2V2dUM2J4YkxLa3o1bDZfVENLUEZvV2Z4NmJPTG5DTTJCSGdhTXBBdFJPVHZKY2xVWnA5WU4?oc=5",
+      "title": "리본카, 신혼부부를 위한 '예산별 중고차 구매 가이드' 소개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5GQkpRWXRRVFpUSU8wb2ZEV0FVWEo3OVJKUlFuWHBZVHI3UDRuU2l6bTE2MmRQem5TSjE2amVWdHc0Z2pzQ3VjY3V2eUdPbHlDMS12eV9R?oc=5",
+      "title": "리본카, ‘대한민국 브랜드 명예의전당’ 수상 기념 타임딜 프로모션 시행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5ZTHRrNU9vUlJWVWNaNzNOQ09RWXJOV1BZWWdKLXFNSl9xMXhUYjR0bWFsbTF1c3BSaENVMC1oZWI4RnEzekVDemxhTXBEYzZUUGVtT3JzVGM5SlNZQWFsU0steWVSUnNvQzV0bHJRSGhBRjRMeU5hamNkY1o?oc=5",
+      "title": "리본카, 3월 ‘새출발 특가 왔나봄’ 타임딜 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1RYl9nSTRuWDRwV3RVSElySmtVQllkN01BQV9BRlJ1QTdjRnJfTjJSYTdiYk1RcFM3NUVRVEpiNkRHQTJxbWI5MWd6QXBHakZONUlwUktTRFczTHdHWGVYeGhtOTZTLThq?oc=5",
+      "title": "리본카, 1월 신년 특별 할인 이벤트 실시하며 인증중고차 720만원까지 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBsUHRhbWZ0Wkl1OTRqNkxGS00wUFAwUDhkeG9LWlkydjRJc1VtUUt6YjAwSnQ4eU9VbWl4VDNfYlVjb3M5dENOTktjTHVDd28tbTd4QzBB?oc=5",
+      "title": "“예산 1000만원대면 아반떼 추천드려요”…리본카, 신혼부부, 예산별 중고차 구매 가이드’ 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5kNmtRSnJDOGowdUVRVzFEVUdSdXl6QVFtTVg5ZGh2ekI0dXFXSk1oamtRLXZFT0J6SnkyRmlQLUc4eEVEQWlLM0l1YmtPMkwwQmpYVkdXcHpTLVFQc0tXeS11a2I1UVFFc0V2eQ?oc=5",
+      "title": "\"차량 할인·신세계 상품권 10만원 증정\" 리본카, 타임딜 프로모션 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMirgJBVV95cUxOU1UzWWhVVmtneWdMZXhvRWJKUGlkTzNpclYwN09JbExzenQ1a01xcm1ObjA3OEl3dlFlcXpHaFRsZW9zckFlanBocmR1UXhvblVKT1Y3WXBCM1RoVFdOMWhpa2FtTDM0ZDlxWlFWdE9VVi1mcWZlZ01pT0RGbHpKMExuaDRNOU03aFFITWlDdEVqV2V6SVVrM1RLR1Fnc1d6bTRjYVRKLXZfa3pJdnNTZm9MSDNWWWl4ZmJOcmZxRzZqX205bW5BeUFoUThzV2tzT0R3dllBYUZRazFpSFMxZ183S2xldjlNbjVqUWFWQXFiRmpWMmJtbnhrUVlRNVQ3NC1ZaXBiVjV2cWd2Vjl1bW83S2NqaUlvRUNEdG55aUw0bGQwdVJRUkVSeFpjd9IBsAJBVV95cUxPUGJudGt4QUtWaV9RZ1h4RDN2QUFGQmk0OTlNeFpXY2I3MVFDM21sWFYzZmt4WlJJM1RjMDFXUWo4cElLNlRHanhnMTBJVHFaYlhHdThEUldBUEtEZ0VrOWN6bUJzR2ZSNS1pc0F5a0FaNWlfMDdwMVRkQ0JJN3pUWGV2eUloRlJ1U2pCbVVtVkNiSnhqTGdDVTVnZDFEWV84NlBka29aUGJFOUh3b2c1bjV1eUtSbnljX3I3dHoyNmUwOWg4YURhNHprSFBVbE50Q0RtT25iZXU4Z243ZVJYVlFYemo3MVloRXBPckhRbkgxYmdRWDdKQjFCYjFQaVVDSlprdlRlWWQzZlk1QlR2V2pXcktJTXk2bFhRTlJBaVo1UnY1SXk5NndmVVcwX21f?oc=5",
+      "title": "리본카, 블랙프라이데이 타임딜 오픈…직영중고차 최대 410만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE01VV9RLXJHMFp6Ymw1WV9BMDNiOTZReWFUNG9QQ2dNQ0Q1bnZCUHBwZEJZamwtN25GYjZvTWF2R0xkbGxsVkpVeTdDQzJsY05Vdm9TSWJLLWFRc204a0FVa2dwRnBxQXlZc1E?oc=5",
+      "title": "리본카, 블랙프라이데이 타임딜 오픈...직영인증중고차 최대 410만원 할인",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE96TzNWUlhhdlR2NXZPcUd3SHBRYmhRSldsMmZXRm9KQzJwOEpjaXVUVkZhUGxhZklZWDkwbVBfY3JCa2xVamUwd2xlTjF5ck9jWFpzUXdFXzhNSEx4UXZGZ0RjeERPY1E?oc=5",
+      "title": "리본카, ‘전기차에 대한 소비자 인식’ 설문조사 결과 공개… 구매 핵심 ‘배터리·품질 신뢰’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE51cGxXWlZWeVhyRWMtVlRlOUpBTHBPUWpEcjJGSFZLb2hkWHVTaXhVbVhrZzlVMkxmSkNGZ01ONS1ZWHFlMXBDTXhCR3pxUlhwS0pJZHpwbThHTjZxTURMOThrNDM2Y1BYdWc?oc=5",
+      "title": "여름맞이 타임딜 진행…직영인증중고차 최대 400만원 할인 혜택 제공",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBjaHVDVzlPRnI0OVpCLXlPZGlBekVHSEh1YnZKaXFwdHhlRnJfUTBYT3ZKWk5SNHFkYzQ1N2VIcEVWUUVIbmd4Mk1YVXRselJnR3NmTEdRTXVHb1VyWTFoU19xck5idG11emM4VtIBcEFVX3lxTE91b1RPN0JMenhxT0FFTFp3emVObDZaODB2THpJR09xeDZJand4M2lhX1ZYYUJBbnNvS084akVFZG0tOEgyVWNGRFA2eXI0Q19maThpdjNhd0V5Uk1semRIcmJsbXVSY3d6VjhOR0c3eDQ?oc=5",
+      "title": "리본카, 신년맞이 '최대 720만원 할인' 프로모션 실시",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE14a1JJYllkV0ZMbUhMY2hQeVEySmlxa0Z1QW5fYy03ck9OeVRoekFxWFkxaF80aDgxLV9BTlJmUjQ4clpyM1VEb3hyNVRwVnFQRWJKempDMEIzZHU0R3BqT25NWFhfVjB1Z2dvYkJBU2FTZGxCdTRadlpn?oc=5",
+      "title": "리본카, 가정의 달 맞아 중고차 100여대 할인 진행",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1rTTBqZWhFZ1JydkhyaUZjejh4Nk5aSmdQcndnN09XTllENHZ1UHNYa2xyWmp6cnR5SXFFdEdQZkllamlPQkxqYmtpaUROYXRXNWhUVmR4cGFMYUt1cWlaRUVfeDFwTHRlQUZIWg?oc=5",
+      "title": "“1인 가구는 준중형·신혼부부는 SUV” 리본카, 구성원별 맞춤 모델 공개",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5nbjZWZ1kyMi1yRHQyR08zTTJJTFU5OV9FMmMtOW5waXhsdGd3ek5MOFhfMFhoY1cwU3pIN1Y3VTBGcXpHclotRVZfUGxLaVdQd2ZobDRjX1phdFkzajRIb1FEODJUMy1mRWc?oc=5",
+      "title": "리본카, RTC·RQI 기반 품질 점검 시스템으로 소비자 신뢰 높인다",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8xTWdYVE1iT3FmQ2JLWnQ4OVJ6UVZRcFVpVm95c3lYQTRzS3VCcmVEY0RIajhKMWstckNaQ3c5eFVDaEJhZ3hTN2stWVRtZnNqdEpwTER1ckJJWG9ROTNkcHRBY2RGT2M?oc=5",
+      "title": "리본카, ‘엔트리카 구매 트렌드’ 설문조사 결과 공개… 선호 모델 1위 ‘아반떼’",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9ZeTB3Y25Ec3N3dnNGTkF6NlBXaENuS1V5LXVNRXlRMUkxMkdSLU05OUlZcllHekw3Q0ZjTnNObC03TVA4dWEwZ1BxREJSUUh1WXprY1Q3UmVOQWkxamRYUm5UQnBodGlCOUFHVkl4LWJGX0E?oc=5",
+      "title": "[CAR 브리프] 한국앤컴퍼니ㆍ벤츠ㆍ렉서스ㆍ아우디ㆍ리본카ㆍ케이카ㆍGMㆍ콘티넨탈ㆍ한국에머슨",
+      "sent_date": "2026-07-06"
+    },
+    {
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA5bEZwNDZwTFVmRjJwNFhUbjNpRms1Z3NzX2JwdFBBMmVVNVRSUXZFbGtOVDh1N0JSRWRvZG1YTXBiYjBYRkswX1N4Njg0VnRGZjBpR0JmSXRFVnN3MjJWSWI1czR6N2NuSHEyZw?oc=5",
+      "title": "리본카, ‘통-큰 혜택이 왔시월’ 타임딜 진행",
+      "sent_date": "2026-07-06"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>설정 - 오토플러스 뉴스 모니터링</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<header id="main-header">
+  <div class="header-inner">
+    <h1><i class="fas fa-newspaper"></i> 오토플러스 뉴스 모니터링</h1>
+    <nav id="main-nav">
+      <a href="/">대시보드</a>
+      <a href="/settings" class="active">설정</a>
+      <a href="/review">주간 리뷰</a>
+    </nav>
+  </div>
+</header>
+
+<main id="settings-main">
+  <section class="card">
+    <h2>발송 주기 설정</h2>
+    <p>현재 발송 주기: <strong>{{ send_frequency }}</strong>
+      (MWF = 월/수/금 공식 운영 기준, DAILY = 매일)</p>
+    <p class="note">
+      설계 판단 근거: "이메일 추가 시 매일 발송" 요청과 공식 운영 요일(월/수/금)이
+      문자 그대로는 상충하여, 기본값은 MWF로 유지하되 .env의 SEND_FREQUENCY 값을
+      DAILY로 변경하면 매일 발송으로 전환됩니다. (확정 사실이 아닌 합리적 판단)
+    </p>
+    <p>공식 모니터링 요일 코드(0=월): {{ monitoring_weekdays }}</p>
+  </section>
+
+  <section class="card">
+    <h2>이메일 구독자 관리</h2>
+    <div id="subscriber-add-form">
+      <input type="email" id="new-subscriber-email" placeholder="이메일 주소 입력">
+      <button id="btn-add-subscriber" class="btn btn-primary"><i class="fas fa-plus"></i> 추가</button>
+    </div>
+    <ul id="subscriber-list">
+      {% for sub in subscribers %}
+      <li data-email="{{ sub }}">
+        <span>{{ sub }}</span>
+        <button class="btn-remove-subscriber" data-email="{{ sub }}"><i class="fas fa-trash"></i></button>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="card" id="keyword-management-section">
+    <h2>키워드 관리</h2>
+    <p class="note">
+      자사/경쟁사/업계1~5/민감/부정 키워드 현황을 확인하고 추가·삭제할 수 있습니다.
+      변경 사항은 즉시 저장되며(data/keywords.json), 다음 모니터링 실행부터
+      바로 반영됩니다. 자사 키워드는 최소 1개 이상 유지되어야 합니다
+      (자사 언급 누락은 PR팀 입장에서 가장 치명적인 실패이기 때문입니다).
+    </p>
+    <div id="keyword-category-groups">
+      <div class="keyword-group" data-category="own">
+        <h3>자사</h3>
+        <div class="keyword-chip-list" data-category="own"></div>
+        <div class="keyword-add-form">
+          <input type="text" class="keyword-input" data-category="own" placeholder="키워드 추가 (예: 오토플러스)">
+          <button class="btn btn-outline btn-add-keyword" data-category="own"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      <div class="keyword-group" data-category="competitor">
+        <h3>경쟁사</h3>
+        <div class="keyword-chip-list" data-category="competitor"></div>
+        <div class="keyword-add-form">
+          <input type="text" class="keyword-input" data-category="competitor" placeholder="키워드 추가 (예: 케이카)">
+          <button class="btn btn-outline btn-add-keyword" data-category="competitor"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      {% for i in range(1, 6) %}
+      <div class="keyword-group" data-category="industry{{ i }}">
+        <h3>업계 {{ i }}순위
+          <span class="industry-label-hint" id="industry-label-{{ i }}"></span>
+        </h3>
+        <div class="keyword-chip-list" data-category="industry{{ i }}"></div>
+        <div class="keyword-add-form">
+          <input type="text" class="keyword-input" data-category="industry{{ i }}" placeholder="키워드 추가">
+          <button class="btn btn-outline btn-add-keyword" data-category="industry{{ i }}"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="keyword-group" data-category="sensitive">
+        <h3>민감 키워드 (VIG파트너스 등 - 전사 공유 전 실무 확인 필요)</h3>
+        <div class="keyword-chip-list" data-category="sensitive"></div>
+        <div class="keyword-add-form">
+          <input type="text" class="keyword-input" data-category="sensitive" placeholder="키워드 추가">
+          <button class="btn btn-outline btn-add-keyword" data-category="sensitive"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      <div class="keyword-group" data-category="negative">
+        <h3>부정 키워드 (제거하지 않고 경고 태그만 부여)</h3>
+        <div class="keyword-chip-list" data-category="negative"></div>
+        <div class="keyword-add-form">
+          <input type="text" class="keyword-input" data-category="negative" placeholder="키워드 추가">
+          <button class="btn btn-outline btn-add-keyword" data-category="negative"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  window.__INITIAL_KEYWORDS_SNAPSHOT__ = {{ keywords_snapshot | tojson }};
+</script>
+
+<footer id="main-footer">
+  <p>오토플러스 PR팀 언론 모니터링 자동화 시스템</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

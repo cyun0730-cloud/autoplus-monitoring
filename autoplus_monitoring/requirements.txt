@@ -1,0 +1,11 @@
+requests
+feedparser
+python-docx
+python-dotenv
+flask
+schedule
+holidays
+beautifulsoup4
+lxml
+openai
+gunicorn
