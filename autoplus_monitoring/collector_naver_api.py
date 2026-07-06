@@ -31,6 +31,7 @@ import requests
 from dotenv import load_dotenv
 
 from keywords import OWN_KEYWORDS, COMPETITOR_KEYWORDS, INDUSTRY_KEYWORDS
+from rule_filter import _now_kst_naive
 
 load_dotenv()
 
@@ -76,7 +77,7 @@ def _generate_dummy_articles():
     (자사 언급/경쟁사 신규서비스/경쟁사 단순프로모션/VIG민감/부정이슈/중복 등)를
     골고루 포함한다.
     """
-    now = datetime.now()
+    now = _now_kst_naive()
     dummy_titles = [
         ("리본카, 여름 성수기 맞아 인증중고차 물량 확대", "이데일리", "리본카", "자사"),
         ("오토플러스, 3분기 거래액 전년 대비 30% 증가", "머니투데이", "오토플러스", "자사"),

@@ -27,7 +27,7 @@ review_mode.py 피드백을 통해 지속적으로 보완되어야 한다.
 import os
 import json
 import difflib
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from keywords import (
     SENSITIVE_KEYWORDS,
@@ -41,6 +41,68 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 SENT_ARTICLES_PATH = os.path.join(DATA_DIR, "sent_articles.json")
 
 DUPLICATE_TITLE_SIMILARITY_THRESHOLD = 0.90  # 제목 유사도 90% 이상이면 중복으로 간주
+
+# =============================================================================
+# 시간대(KST) 고정 처리 (2026-07-06 추가)
+# -----------------------------------------------------------------------------
+# Render 등 해외 리전 서버는 OS 시간대가 UTC인 경우가 많다. 기존 코드는
+# datetime.now()(서버 로컬 시간)를 그대로 "지금"으로 사용해, 서버가 UTC일 때
+# 한국 시간(KST, UTC+9)과 최대 9시간까지 어긋나는 문제가 있었다. 예: 서버가
+# UTC 09:00일 때 실제 한국은 18:00인데, 코드는 "지금이 09:00(기준 시각)"이라고
+# 착각해 리포트 기준 창(전일 9시~금일 9시) 자체가 9시간 밀려버림.
+# 이를 방지하기 위해 서버 시간대와 무관하게 항상 KST 기준으로 "지금"을
+# 계산하는 헬퍼를 둔다.
+# =============================================================================
+KST = timezone(timedelta(hours=9))
+
+
+def _now_kst_naive():
+    """서버 OS 시간대와 무관하게 한국 표준시(KST) 기준 현재 시각을 naive datetime으로 반환."""
+    return datetime.now(timezone.utc).astimezone(KST).replace(tzinfo=None)
+
+
+def _parse_published_at(published_at: str):
+    """
+    매체마다 제각각인 발행일 문자열을 파싱해 'KST 기준 naive datetime'으로
+    통일한다.
+
+    - 오프셋 포함 RFC822 (예: 네이버 API, "Tue, 06 Jul 2026 09:15:00 +0900")
+      → 실제 타임존 오프셋을 반영해 KST로 정확히 변환한다.
+    - 이름 기반 타임존 (예: Google News RSS, "...GMT") → strptime의 %Z는
+      tzinfo를 채우지 못해 그대로 두면 "네이버는 되고 구글은 파싱 실패로
+      필터를 건너뛰는" 비일관 상태가 됐었다. GMT는 UTC와 사실상 동일하므로
+      +9시간을 더해 KST로 보정한다.
+    - 타임존 정보가 없는 로컬 포맷("%Y-%m-%d %H:%M" 등, 더미 데이터 등)은
+      이미 한국 로컬 시각으로 기록된 것으로 간주해 그대로 사용한다.
+
+    파싱에 실패하면 None을 반환한다 (호출부에서 "놓친 기사 방지" 원칙에 따라
+    보수적으로 통과 처리).
+    """
+    if not published_at:
+        return None
+
+    # 1) 오프셋 포함 RFC822 (네이버 등)
+    try:
+        parsed = datetime.strptime(published_at, "%a, %d %b %Y %H:%M:%S %z")
+        return parsed.astimezone(KST).replace(tzinfo=None)
+    except (ValueError, TypeError):
+        pass
+
+    # 2) 이름 기반 타임존 (Google News RSS의 "GMT" 등)
+    try:
+        parsed = datetime.strptime(published_at, "%a, %d %b %Y %H:%M:%S %Z")
+        return parsed + timedelta(hours=9)  # GMT(≈UTC) → KST 보정
+    except (ValueError, TypeError):
+        pass
+
+    # 3) 타임존 없는 로컬 포맷 (더미 데이터 등)
+    for fmt in ("%Y-%m-%d %H:%M", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(published_at, fmt)
+        except (ValueError, TypeError):
+            continue
+
+    return None
 
 
 def _load_sent_articles():
@@ -57,16 +119,20 @@ def _load_sent_articles():
 
 def _get_report_window(reference_time=None, boundary_hour: int = 9):
     """
-    "전일 09:00 ~ 금일 09:00" 형태의 고정 리포트 기준 창을 계산한다.
+    "전일 09:00 ~ 금일 09:00" 형태의 고정 리포트 기준 창을 계산한다 (KST 기준).
     파이프라인을 몇 시에 실행하든(예: 11시 스케줄 실행) 항상 동일한
     24시간 창을 기준으로 기사를 걸러, 실행 시각에 따라 기준일이
     들쭉날쭉해지는 문제를 방지한다.
+
+    reference_time을 넘기지 않으면 서버 OS 시간대와 무관하게 항상 KST 기준
+    "지금"을 사용한다 (_now_kst_naive 참조 - 해외 리전 서버 배포 시 시간대
+    불일치로 창이 최대 9시간 밀리는 문제 방지).
 
     - 실행 시각이 boundary_hour(기본 09시) 이후면: (어제 09시, 오늘 09시]
     - 실행 시각이 boundary_hour 이전이면: (그제 09시, 어제 09시]
       (전날 스케줄이 아직 안 돌았거나 수동 실행한 경우를 보수적으로 처리)
     """
-    now = reference_time or datetime.now()
+    now = reference_time or _now_kst_naive()
     boundary_today = now.replace(hour=boundary_hour, minute=0, second=0, microsecond=0)
     window_end = boundary_today if now >= boundary_today else boundary_today - timedelta(days=1)
     window_start = window_end - timedelta(days=1)
@@ -77,13 +143,19 @@ def filter_by_date(articles: list, days: int = 1, window_start=None, window_end=
     """
     발행일 기준으로 기사를 거른다.
 
-    기본 동작은 "전일 09:00 ~ 금일 09:00" 고정 창(_get_report_window)을
-    사용한다. window_start/window_end를 직접 넘기면 그 값을 우선 사용하고,
-    둘 다 없으면 _get_report_window()로 자동 계산한다.
+    기본 동작은 "전일 09:00 ~ 금일 09:00" 고정 창(_get_report_window, KST
+    기준)을 사용한다. window_start/window_end를 직접 넘기면 그 값을 우선
+    사용하고, 둘 다 없으면 _get_report_window()로 자동 계산한다.
     (과거 `days`만 넘기던 구버전 호출 방식과의 호환을 위해 인자는 유지하되,
     실제 판단 기준은 고정 09시 창으로 통일했다.)
 
-    published_at 파싱에 실패하는 기사는(형식이 매체마다 상이함) 보수적으로
+    [2026-07-06 수정] 발행일 파싱을 _parse_published_at()으로 통일해,
+    네이버(오프셋 포함 RFC822)뿐 아니라 Google News RSS의 "GMT" 표기도
+    정확히 KST로 변환해 비교하도록 수정했다. 기존에는 Google RSS 날짜가
+    파싱에 실패해 필터를 항상 건너뛰면서 옛날 기사가 계속 섞여 나오는
+    문제가 있었다.
+
+    그래도 파싱 자체에 실패하는(알 수 없는 형식) 기사는 보수적으로
     "최신 기사일 가능성"을 존중해 통과시킨다 (놓친 기사 방지가 오탐 방지보다
     우선이라는 PR 실무 판단 반영).
     """
@@ -93,16 +165,7 @@ def filter_by_date(articles: list, days: int = 1, window_start=None, window_end=
     result = []
     for article in articles:
         published_at = article.get("published_at", "")
-        parsed = None
-        # 다양한 날짜 포맷 시도 (네이버 API: RFC822, 더미 데이터: "%Y-%m-%d %H:%M")
-        for fmt in ("%a, %d %b %Y %H:%M:%S %z", "%Y-%m-%d %H:%M", "%Y-%m-%d"):
-            try:
-                parsed = datetime.strptime(published_at, fmt)
-                if parsed.tzinfo is not None:
-                    parsed = parsed.replace(tzinfo=None)
-                break
-            except (ValueError, TypeError):
-                continue
+        parsed = _parse_published_at(published_at)
         if parsed is None:
             # 파싱 실패 시 통과 (놓침 방지 우선)
             result.append(article)

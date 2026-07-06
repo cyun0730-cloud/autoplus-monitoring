@@ -148,6 +148,7 @@ function initDashboard() {
     <div class="article-card ${flagClass}">
       <span class="media-badge">${a.source || "미확인매체"}</span>
       <span class="media-badge">${a.keyword_category || ""}</span>
+      <span class="media-badge keyword-badge">검색어: ${a.search_keyword || "-"}</span>
       <div class="article-title">${titleLink}</div>
       <div class="article-reason">${a.ai_reason || ""}</div>
       <div class="label-buttons">${labelButtons}</div>
