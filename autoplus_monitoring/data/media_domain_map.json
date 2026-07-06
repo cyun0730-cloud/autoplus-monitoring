@@ -244,45 +244,5 @@
   "g-enews.com": {
     "name": "글로벌이코노믹",
     "group": "경제지"
-  },
-  "newsworks.co.kr": {
-    "name": "뉴스웍스",
-    "group": "온라인"
-  },
-  "getnews.co.kr": {
-    "name": "글로벌경제신문",
-    "group": "경제지"
-  },
-  "nocutnews.co.kr": {
-    "name": "노컷뉴스",
-    "group": "온라인"
-  },
-  "zdnet.co.kr": {
-    "name": "지디넷코리아",
-    "group": "전문지/무가지"
-  },
-  "bloter.net": {
-    "name": "블로터",
-    "group": "전문지/무가지"
-  },
-  "asiatoday.co.kr": {
-    "name": "아시아투데이",
-    "group": "일간지"
-  },
-  "dailian.co.kr": {
-    "name": "데일리안",
-    "group": "온라인"
-  },
-  "digitaltoday.co.kr": {
-    "name": "디지털투데이",
-    "group": "전문지/무가지"
-  },
-  "it.donga.com": {
-    "name": "IT동아",
-    "group": "전문지/무가지"
-  },
-  "hankookilbo.com": {
-    "name": "한국일보",
-    "group": "일간지"
   }
 }

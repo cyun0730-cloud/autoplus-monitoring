@@ -138,6 +138,84 @@ def _list_available_dates():
         dates = [today_str] + dates
     return dates
 
+
+# =============================================================================
+# 달력 기반 날짜(범위) 조회 (2026-07-06 추가)
+# -----------------------------------------------------------------------------
+# 기존 "조회 날짜" 드롭다운은 "그 날짜에 파이프라인이 실행됐는가"를 기준으로
+# 아카이브 파일 하나를 통째로 보여주는 방식이었다. 담당자 요청에 따라 달력에서
+# 날짜(또는 여러 날짜/기간)를 고르면 "그 날짜에 실제 발행(published_at)된
+# 기사"만 걸러 보여주는 방식으로 확장한다. 이를 위해 모든 날짜의 아카이브 +
+# 오늘의 실시간 결과를 하나로 합친 전체 기사 풀이 필요하다.
+# =============================================================================
+def _gather_all_known_articles():
+    """지금까지 쌓인 모든 아카이브 + 오늘의 실시간 결과를 URL 기준 중복 제거해 합친다."""
+    all_articles = []
+    seen_urls = set()
+
+    for date_str in _list_archive_dates():
+        archived = _load_daily_archive(date_str)
+        if not archived:
+            continue
+        for a in _all_articles_flat(archived):
+            url = a.get("url")
+            if url and url in seen_urls:
+                continue
+            if url:
+                seen_urls.add(url)
+            all_articles.append(a)
+
+    for a in _all_articles_flat(_latest_result):
+        url = a.get("url")
+        if url and url in seen_urls:
+            continue
+        if url:
+            seen_urls.add(url)
+        all_articles.append(a)
+
+    # 병합된 풀 전체에 대해 고유 id를 다시 부여한다 (오늘 실시간 데이터의
+    # _all_articles_flat() id 체계와는 별개 - 이 풀은 조회 전용이며 라벨
+    # 수정에는 사용하지 않는다).
+    for idx, a in enumerate(all_articles):
+        a["_id"] = idx
+    return all_articles
+
+
+def _parse_date_range(start_str, end_str):
+    """'YYYY-MM-DD' 문자열 두 개를 받아 [range_start, range_end) datetime 튜플로 변환한다.
+    range_end는 end_str 날짜의 23:59:59까지 포함하도록 다음날 00:00으로 계산한다."""
+    range_start = datetime.strptime(start_str, "%Y-%m-%d")
+    range_end = datetime.strptime(end_str, "%Y-%m-%d") + timedelta(days=1)
+    return range_start, range_end
+
+
+def _filter_articles_by_date_range(articles, range_start, range_end):
+    """기사 리스트에서 published_at이 [range_start, range_end) 안에 드는 것만 남긴다.
+    발행일을 알 수 없는 기사는 "그 날짜에 실제 있었는지"를 답할 수 없으므로 제외한다
+    (실시간 대시보드의 '놓침 방지 우선' 원칙과 달리, 여기서는 정확한 날짜 매칭이 목적)."""
+    result = []
+    for a in articles:
+        parsed = rule_filter.parse_published_at(a.get("published_at", ""))
+        if parsed is not None and range_start <= parsed < range_end:
+            result.append(a)
+    return result
+
+
+def _compute_summary_counts(articles):
+    """기사 리스트로부터 대시보드 상단 요약 카운트를 계산한다."""
+    included = [a for a in articles if a.get("ai_decision") == "포함"]
+    own_count = len([a for a in included if a.get("keyword_category") == "자사"])
+    competitor_count = len([a for a in included if a.get("keyword_category") == "경쟁사"])
+    industry_count = len([a for a in included if str(a.get("keyword_category", "")).startswith("업계")])
+    warning_count = len([a for a in articles if a.get("negative_flag") or a.get("sensitive_flag")])
+    return {
+        "total_count": len(included),
+        "own_count": own_count,
+        "competitor_count": competitor_count,
+        "industry_count": industry_count,
+        "warning_count": warning_count,
+    }
+
 FLASK_SECRET_KEY = os.getenv("FLASK_SECRET_KEY", "dev-secret-key")
 FLASK_PORT = int(os.getenv("FLASK_PORT", "5000"))
 SEND_FREQUENCY = os.getenv("SEND_FREQUENCY", "MWF")
@@ -225,40 +303,40 @@ def _run_pipeline_core():
 def index():
     """
     메인 대시보드: 요약과 섹션별 필터 UI를 렌더링한다.
-    ?date=YYYY-MM-DD 파라미터로 과거 날짜의 누적 아카이브를 조회할 수 있다
-    (없으면 오늘의 실시간 결과를 사용).
+    ?start=YYYY-MM-DD&end=YYYY-MM-DD 로 달력에서 선택한 날짜(또는 기간)를
+    조회할 수 있다 (둘 다 생략하면 오늘). end를 생략하면 start와 같은 값을
+    써서 하루만 조회한다. 이 값들은 파이프라인 "실행일"이 아니라 기사의
+    실제 발행일(published_at) 00:00~23:59 기준으로 매칭된다.
     """
     today_str = _now_kst().strftime("%Y-%m-%d")
-    selected_date = request.args.get("date", today_str)
-    is_today = (selected_date == today_str)
+    start_str = request.args.get("start", today_str)
+    end_str = request.args.get("end", start_str)
+    is_today = (start_str == today_str and end_str == today_str)
 
     if is_today:
-        source = _latest_result
+        # 오늘 하루만 보는 기본 화면은 기존과 동일하게 실시간 결과를 그대로 사용한다
+        # (라벨 수정과의 id 일치를 보장하기 위해 _gather_all_known_articles의
+        # 병합 목록이 아니라 _latest_result를 직접 사용).
+        counts = _compute_summary_counts(_all_articles_flat())
     else:
-        archived = _load_daily_archive(selected_date)
-        source = archived if archived else {
-            "ai_scored": {"포함": [], "제외": [], "검토필요": []},
-            "negative_flagged": [],
-            "vig_sensitive": [],
-        }
-
-    included = source["ai_scored"].get("포함", [])
-    own_count = len([a for a in included if a.get("keyword_category") == "자사"])
-    competitor_count = len([a for a in included if a.get("keyword_category") == "경쟁사"])
-    industry_count = len([a for a in included if str(a.get("keyword_category", "")).startswith("업계")])
-    warning_count = len(source["negative_flagged"]) + len(source["vig_sensitive"])
+        try:
+            range_start, range_end = _parse_date_range(start_str, end_str)
+            all_articles = _gather_all_known_articles()
+            counts = _compute_summary_counts(_filter_articles_by_date_range(all_articles, range_start, range_end))
+        except ValueError:
+            counts = {"total_count": 0, "own_count": 0, "competitor_count": 0, "industry_count": 0, "warning_count": 0}
 
     return render_template(
         "index.html",
         today=today_str,
-        selected_date=selected_date,
+        start_date=start_str,
+        end_date=end_str,
         is_today=is_today,
-        available_dates=_list_available_dates(),
-        total_count=len(included),
-        own_count=own_count,
-        competitor_count=competitor_count,
-        industry_count=industry_count,
-        warning_count=warning_count,
+        total_count=counts["total_count"],
+        own_count=counts["own_count"],
+        competitor_count=counts["competitor_count"],
+        industry_count=counts["industry_count"],
+        warning_count=counts["warning_count"],
         pipeline_status=_pipeline_state["status"],
         last_run_at=_pipeline_state["last_run_at"],
         test_mode=TEST_MODE,
@@ -333,6 +411,11 @@ def _all_articles_flat(source=None):
             all_articles.append(article)
     for idx, article in enumerate(all_articles):
         article["_id"] = idx
+        # 매체마다 제각각인 published_at 표기(RFC822, "YYYY-MM-DD HH:MM" 등)를
+        # 화면 표시용으로 통일한다. 대시보드에서 검색어 뱃지 옆에 발행일을
+        # 보여주기 위한 용도 (2026-07-06 추가).
+        parsed = rule_filter.parse_published_at(article.get("published_at", ""))
+        article["published_at_display"] = parsed.strftime("%m/%d %H:%M") if parsed else (article.get("published_at") or "-")
     return all_articles
 
 
@@ -386,6 +469,52 @@ def articles():
 
     result = _all_articles_flat(source)
 
+    if decision_filter:
+        result = [a for a in result if a.get("ai_decision") == decision_filter]
+    if section_filter:
+        result = [a for a in result if a.get("keyword_category") == section_filter]
+    if flag_filter == "negative":
+        result = [a for a in result if a.get("negative_flag")]
+    elif flag_filter == "vig":
+        result = [a for a in result if a.get("sensitive_flag")]
+
+    return jsonify(result)
+
+
+@app.route("/articles/by-date")
+def articles_by_date():
+    """
+    달력에서 선택한 날짜(하루) 또는 기간의 기사를 조회한다. 파이프라인
+    "실행일"이 아니라 기사의 실제 발행일(published_at, 00:00~23:59 KST)을
+    기준으로 매칭한다는 점이 /articles?date=...와 다르다.
+
+    쿼리 파라미터:
+      start=YYYY-MM-DD (필수)
+      end=YYYY-MM-DD (생략 시 start와 동일 - 하루만 조회)
+      decision/section/flag: 기존 /articles와 동일한 필터
+
+    예: /articles/by-date?start=2026-07-05&end=2026-07-05
+        /articles/by-date?start=2026-07-01&end=2026-07-05 (기간 조회, 여러 날짜)
+
+    주의: 읽기 전용 조회 전용이다 (라벨 수정은 오늘 실시간 데이터에 대해서만
+    /articles + /articles/<id>/label 조합으로 가능).
+    """
+    start_str = request.args.get("start")
+    end_str = request.args.get("end", start_str)
+    if not start_str:
+        return jsonify({"error": "start 파라미터가 필요합니다 (예: ?start=2026-07-05)"}), 400
+
+    try:
+        range_start, range_end = _parse_date_range(start_str, end_str)
+    except ValueError:
+        return jsonify({"error": "날짜 형식은 YYYY-MM-DD 이어야 합니다."}), 400
+
+    all_articles = _gather_all_known_articles()
+    result = _filter_articles_by_date_range(all_articles, range_start, range_end)
+
+    decision_filter = request.args.get("decision")
+    section_filter = request.args.get("section")
+    flag_filter = request.args.get("flag")
     if decision_filter:
         result = [a for a in result if a.get("ai_decision") == decision_filter]
     if section_filter:
@@ -687,22 +816,42 @@ def download_coverage_report():
     라우트에도 연결되지 않은 채 report_formatter.py만 존재하던 기능이라
     2026-07-06에 새로 연결했다.
 
-    ?release_title=... 로 보도자료 제목을 직접 지정할 수 있고, 생략하면
-    오늘 release_calendar에 등록된 배포 자료 제목을 자동으로 사용한다
-    (등록된 게 없으면 "전체 게재보고"로 표시).
+    [2026-07-06 수정 - 담당자 요청 반영]
+    - 게재보고는 원래 "자사가 배포한 보도자료가 어느 매체에 게재됐는지" 집계하는
+      용도이므로, 경쟁사/업계 기사까지 섞여 나오던 것을 자사(keyword_category
+      == "자사") 기사만으로 제한했다.
+    - 자사 언급 기사가 없는 날(보도자료를 배포하지 않았거나 아직 게재되지 않은
+      날)에는 빈 문서를 만드는 대신 명확한 오류 메시지를 반환한다.
+    - ?start=YYYY-MM-DD&end=YYYY-MM-DD 로 달력에서 선택한 날짜(기간)를 대상으로
+      생성할 수 있다 (생략하면 오늘 하루).
     """
-    if not _latest_result.get("ai_scored"):
-        return jsonify({"error": "생성된 결과가 없습니다. 먼저 /run 으로 파이프라인을 실행하세요."}), 404
+    start_str = request.args.get("start", _now_kst().strftime("%Y-%m-%d"))
+    end_str = request.args.get("end", start_str)
+
+    try:
+        range_start, range_end = _parse_date_range(start_str, end_str)
+    except ValueError:
+        return jsonify({"error": "날짜 형식은 YYYY-MM-DD 이어야 합니다."}), 400
+
+    all_articles = _gather_all_known_articles()
+    own_articles = [
+        a for a in _filter_articles_by_date_range(all_articles, range_start, range_end)
+        if a.get("keyword_category") == "자사" and a.get("ai_decision") == "포함"
+    ]
+
+    if not own_articles:
+        period_label = start_str if start_str == end_str else f"{start_str} ~ {end_str}"
+        return jsonify({
+            "error": f"{period_label} 기간에는 자사 언급 기사가 없어 게재보고를 생성할 수 없습니다. "
+                     "보도자료가 게재된 날짜(또는 기간)를 다시 선택해주세요."
+        }), 404
 
     release_title = request.args.get("release_title", "").strip()
     if not release_title:
         today_releases = release_calendar.get_today_releases()
-        release_title = today_releases[0]["title"] if today_releases else "전체 게재보고"
+        release_title = today_releases[0]["title"] if today_releases else "자사 보도자료 게재보고"
 
-    regrouped, _negative_flagged, _vig_sensitive = _get_current_grouped_result()
-    included_articles = regrouped["포함"]
-
-    filepath = report_formatter.generate_coverage_report_docx(included_articles, release_title)
+    filepath = report_formatter.generate_coverage_report_docx(own_articles, release_title)
     return send_file(filepath, as_attachment=True)
 
 

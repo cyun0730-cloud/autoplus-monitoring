@@ -63,13 +63,15 @@ main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
 .status-error { background-color: #ef4444; }
 
 .date-select-label { margin-left: 16px; margin-right: 6px; font-size: 13px; color: #555; }
-#date-select {
+#date-start-input, #date-end-input {
   padding: 5px 8px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
   font-size: 13px;
   background-color: #fff;
 }
+.date-range-tilde { margin: 0 4px; color: #999; }
+.btn-small { padding: 5px 10px; font-size: 12px; margin-left: 6px; }
 
 .archive-view-banner {
   margin-top: 10px;
@@ -220,6 +222,10 @@ main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
 .article-card .keyword-badge {
   background-color: #f0fdf4;
   color: #15803d;
+}
+.article-card .date-badge {
+  background-color: #fdf4ff;
+  color: #86198f;
 }
 .article-card .article-title { font-size: 14px; font-weight: 600; }
 .article-card .article-title a { color: #222; text-decoration: none; }

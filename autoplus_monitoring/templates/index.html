@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/static/css/style.css">
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body data-is-today="{{ 'true' if is_today else 'false' }}" data-selected-date="{{ selected_date }}">
+<body data-is-today="{{ 'true' if is_today else 'false' }}" data-today="{{ today }}" data-start-date="{{ start_date }}" data-end-date="{{ end_date }}">
 <header id="main-header">
   <div class="header-inner">
     <h1><i class="fas fa-newspaper"></i> 오토플러스 뉴스 모니터링</h1>
@@ -42,24 +42,24 @@
       <div>
         <span class="today-date">{{ today }}</span>
         <span id="pipeline-status" class="status-badge status-{{ pipeline_status }}">{{ pipeline_status }}</span>
-        <label for="date-select" class="date-select-label">조회 날짜</label>
-        <select id="date-select">
-          {% for d in available_dates %}
-          <option value="{{ d }}" {% if d == selected_date %}selected{% endif %}>{{ d }}{% if d == today %} (오늘){% endif %}</option>
-          {% endfor %}
-        </select>
+        <label for="date-start-input" class="date-select-label">조회 날짜</label>
+        <input type="date" id="date-start-input" value="{{ start_date }}">
+        <span class="date-range-tilde">~</span>
+        <input type="date" id="date-end-input" value="{{ end_date }}">
+        <button id="btn-date-today" class="btn btn-outline btn-small" title="오늘로 돌아가기"><i class="fas fa-calendar-day"></i> 오늘</button>
       </div>
       <div id="action-buttons">
         <button id="btn-run" class="btn btn-primary" {% if not is_today %}disabled title="과거 날짜 조회 중에는 실행할 수 없습니다. 날짜를 오늘로 변경하세요."{% endif %}><i class="fas fa-play"></i> 모니터링 실행</button>
         <button id="btn-send-email" class="btn btn-secondary" {% if not is_today %}disabled title="과거 날짜 조회 중에는 발송할 수 없습니다."{% endif %}><i class="fas fa-envelope"></i> 이메일 발송</button>
         <a href="/download/docx" class="btn btn-outline"><i class="fas fa-file-word"></i> Word 다운로드</a>
-        <a href="/download/coverage-report" class="btn btn-outline"><i class="fas fa-table"></i> 게재보고 다운로드</a>
+        <button id="btn-coverage-report" class="btn btn-outline"><i class="fas fa-table"></i> 게재보고 다운로드</button>
         <a href="/download/email-preview" target="_blank" class="btn btn-outline"><i class="fas fa-eye"></i> 메일 미리보기</a>
       </div>
     </div>
-    {% if not is_today %}
-    <p class="archive-view-banner"><i class="fas fa-clock-rotate-left"></i> <strong>{{ selected_date }}</strong> 날짜의 저장된 결과를 조회 중입니다 (과거 기록 - 읽기 전용, 라벨 수정 불가). 오늘 데이터를 보려면 위 날짜 선택에서 오늘 날짜를 고르세요.</p>
-    {% endif %}
+    <p id="archive-view-banner" class="archive-view-banner" {% if is_today %}style="display:none;"{% endif %}>
+      <i class="fas fa-clock-rotate-left"></i> <span id="archive-view-banner-text">선택한 날짜(기간)의 저장된 기록을 조회 중입니다 (읽기 전용, 라벨 수정 불가).</span>
+      "오늘" 버튼을 누르면 실시간 화면으로 돌아갑니다.
+    </p>
     <div class="summary-counts">
       <div class="count-box"><span class="count-num" id="total-count">{{ total_count }}</span><span class="count-label">전체</span></div>
       <div class="count-box own"><span class="count-num" id="own-count">{{ own_count }}</span><span class="count-label">자사</span></div>

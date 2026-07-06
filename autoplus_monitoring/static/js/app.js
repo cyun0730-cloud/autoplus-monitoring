@@ -12,15 +12,20 @@ function initDashboard() {
   const btnSendEmail = document.getElementById("btn-send-email");
   const articleList = document.getElementById("article-list");
   const filterButtons = document.querySelectorAll(".filter-btn");
-  const dateSelect = document.getElementById("date-select");
+  const dateStartInput = document.getElementById("date-start-input");
+  const dateEndInput = document.getElementById("date-end-input");
+  const btnDateToday = document.getElementById("btn-date-today");
+  const archiveBanner = document.getElementById("archive-view-banner");
+  const archiveBannerText = document.getElementById("archive-view-banner-text");
 
   if (!articleList) return; // index.html이 아니면 아무것도 하지 않음
 
-  // 오늘 날짜를 보고 있는지 여부 (index 라우트에서 body data 속성으로 내려줌).
-  // 과거 날짜(아카이브) 조회 중에는 라벨 수정/실행/발송을 막아 실시간 결과와
-  // 과거 기록이 뒤섞이지 않도록 한다.
-  const isToday = document.body.dataset.isToday === "true";
-  const currentDate = document.body.dataset.selectedDate || "";
+  // 서버 렌더링 시점의 값들 (오늘 날짜는 고정, 나머지는 페이지 새로고침 없이
+  // 달력에서 바뀔 때마다 아래 변수들을 갱신해가며 사용한다).
+  const todayStr = document.body.dataset.today || "";
+  let startDate = document.body.dataset.startDate || todayStr;
+  let endDate = document.body.dataset.endDate || todayStr;
+  let isToday = startDate === todayStr && endDate === todayStr;
 
   let currentSection = "";
   let currentFlag = "";
@@ -44,33 +49,123 @@ function initDashboard() {
     });
   }
 
-  // 날짜 선택 드롭다운 - 선택 즉시 해당 날짜 기준으로 페이지 재조회
-  if (dateSelect) {
-    dateSelect.addEventListener("change", () => {
-      window.location.href = "/?date=" + encodeURIComponent(dateSelect.value);
+  // 달력에서 상태를 다시 계산하고, 실행/발송 버튼 활성화 여부·안내 배너·
+  // 요약 숫자·기사 목록을 전부 새로고침 없이 갱신한다.
+  function applyDateSelectionUI() {
+    isToday = startDate === todayStr && endDate === todayStr;
+
+    btnRun.disabled = !isToday;
+    btnRun.title = isToday ? "" : "과거 날짜 조회 중에는 실행할 수 없습니다. '오늘' 버튼을 눌러주세요.";
+    btnSendEmail.disabled = !isToday;
+    btnSendEmail.title = isToday ? "" : "과거 날짜 조회 중에는 발송할 수 없습니다.";
+
+    if (archiveBanner) {
+      archiveBanner.style.display = isToday ? "none" : "";
+      if (!isToday && archiveBannerText) {
+        const label = startDate === endDate ? startDate : `${startDate} ~ ${endDate}`;
+        archiveBannerText.textContent = `${label} 기간의 저장된 기록을 조회 중입니다 (읽기 전용, 라벨 수정 불가).`;
+      }
+    }
+  }
+
+  async function onDateRangeChanged() {
+    // 사용자가 실수로 종료일을 시작일보다 앞선 날짜로 두면 자동 보정
+    if (endDate < startDate) endDate = startDate;
+    dateEndInput.value = endDate;
+
+    applyDateSelectionUI();
+    await Promise.all([loadArticles(), refreshSummary()]);
+  }
+
+  if (dateStartInput) {
+    dateStartInput.addEventListener("change", () => {
+      startDate = dateStartInput.value;
+      onDateRangeChanged();
+    });
+  }
+  if (dateEndInput) {
+    dateEndInput.addEventListener("change", () => {
+      endDate = dateEndInput.value;
+      onDateRangeChanged();
+    });
+  }
+  if (btnDateToday) {
+    btnDateToday.addEventListener("click", () => {
+      startDate = todayStr;
+      endDate = todayStr;
+      dateStartInput.value = todayStr;
+      dateEndInput.value = todayStr;
+      onDateRangeChanged();
     });
   }
 
-  // 요약 숫자(자사/경쟁사/업계/경고/전체)만 실시간으로 다시 불러와 갱신한다.
-  // 전체 페이지를 새로고침하지 않으므로 라벨 수정 직후 반응 속도가 빠르다.
+  // 요약 숫자(자사/경쟁사/업계/경고/전체)를 새로고침 없이 갱신한다.
+  // 오늘 조회 중이면 서버의 실시간 요약(/summary)을 쓰고(라벨 수정 반영),
+  // 과거 날짜(기간) 조회 중이면 방금 불러온 기사 목록으로 클라이언트에서
+  // 직접 계산한다 (라벨 수정이 불가한 화면이라 서버 재조회가 필요 없음).
   async function refreshSummary() {
-    if (!isToday) return; // 과거 날짜는 값이 고정돼 있으므로 다시 불러올 필요 없음
-    try {
-      const res = await axios.get("/summary");
-      const map = {
-        "total-count": res.data.total_count,
-        "own-count": res.data.own_count,
-        "competitor-count": res.data.competitor_count,
-        "industry-count": res.data.industry_count,
-        "warning-count": res.data.warning_count,
-      };
-      Object.entries(map).forEach(([id, value]) => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = value;
+    if (isToday) {
+      try {
+        const res = await axios.get("/summary");
+        applyCounts(res.data);
+      } catch (e) {
+        console.error("요약 갱신 실패:", e.message);
+      }
+    } else {
+      const included = lastFetchedArticles.filter((a) => a.ai_decision === "포함");
+      applyCounts({
+        total_count: included.length,
+        own_count: included.filter((a) => a.keyword_category === "자사").length,
+        competitor_count: included.filter((a) => a.keyword_category === "경쟁사").length,
+        industry_count: included.filter((a) => String(a.keyword_category || "").startsWith("업계")).length,
+        warning_count: lastFetchedArticles.filter((a) => a.negative_flag || a.sensitive_flag).length,
       });
-    } catch (e) {
-      console.error("요약 갱신 실패:", e.message);
     }
+  }
+
+  function applyCounts(data) {
+    const map = {
+      "total-count": data.total_count,
+      "own-count": data.own_count,
+      "competitor-count": data.competitor_count,
+      "industry-count": data.industry_count,
+      "warning-count": data.warning_count,
+    };
+    Object.entries(map).forEach(([id, value]) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    });
+  }
+
+  // 게재보고 다운로드 - 자사 기사가 없는 기간이면 서버가 에러 메시지를
+  // 내려주므로, blob으로 받아 성공/실패를 구분해 처리한다.
+  const btnCoverageReport = document.getElementById("btn-coverage-report");
+  if (btnCoverageReport) {
+    btnCoverageReport.addEventListener("click", async () => {
+      const url = `/download/coverage-report?start=${startDate}&end=${endDate}`;
+      try {
+        const res = await axios.get(url, { responseType: "blob" });
+        const blobUrl = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement("a");
+        link.href = blobUrl;
+        link.download = `게재보고_${startDate}${endDate !== startDate ? "_" + endDate : ""}.docx`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      } catch (e) {
+        let message = "게재보고 생성 실패: " + e.message;
+        if (e.response && e.response.data instanceof Blob) {
+          try {
+            const text = await e.response.data.text();
+            const parsed = JSON.parse(text);
+            message = parsed.error || message;
+          } catch (_) {
+            // 파싱 실패 시 기본 메시지 사용
+          }
+        }
+        alert(message);
+      }
+    });
   }
 
   // 페이지를 새로고침해도, 이미 실행 중인 파이프라인이 있으면 자동으로
@@ -143,9 +238,15 @@ function initDashboard() {
     const params = {};
     if (currentSection) params.section = currentSection;
     if (currentFlag) params.flag = currentFlag;
-    if (currentDate) params.date = currentDate;
 
-    const res = await axios.get("/articles", { params });
+    let res;
+    if (isToday) {
+      res = await axios.get("/articles", { params });
+    } else {
+      params.start = startDate;
+      params.end = endDate;
+      res = await axios.get("/articles/by-date", { params });
+    }
     lastFetchedArticles = res.data;
     renderArticles(applySearchFilter(lastFetchedArticles));
   }
@@ -179,6 +280,7 @@ function initDashboard() {
       <span class="media-badge">${a.source || "미확인매체"}</span>
       <span class="media-badge">${a.keyword_category || ""}</span>
       <span class="media-badge keyword-badge">검색어: ${a.search_keyword || "-"}</span>
+      <span class="media-badge date-badge">${a.published_at_display || "-"}</span>
       <div class="article-title">${titleLink}</div>
       <div class="article-reason">${a.ai_reason || ""}</div>
       <div class="label-buttons">${labelButtons}</div>

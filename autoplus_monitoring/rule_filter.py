@@ -105,6 +105,14 @@ def _parse_published_at(published_at: str):
     return None
 
 
+def parse_published_at(published_at: str):
+    """
+    _parse_published_at()의 공개(public) 버전. 대시보드의 달력 날짜 조회
+    기능(web_app.py)처럼 다른 모듈에서 발행일 파싱 로직을 재사용할 때 쓴다.
+    """
+    return _parse_published_at(published_at)
+
+
 def _load_sent_articles():
     """data/sent_articles.json 을 로드해 (url set, title list) 를 반환한다."""
     if not os.path.exists(SENT_ARTICLES_PATH):
