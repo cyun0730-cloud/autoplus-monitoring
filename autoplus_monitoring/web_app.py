@@ -437,6 +437,13 @@ def _get_current_grouped_result():
     이메일을 만들 때 _latest_result["ai_scored"]를 그대로 쓰면 담당자가 대시보드에서
     수정한 내용이 반영되지 않는다. 이 함수가 그 재그룹핑을 담당한다.
 
+    [2026-07-06 수정] 기존에는 negative_flagged/vig_sensitive([경고] 섹션 대상)를
+    negative_flag/sensitive_flag 원본 플래그로만 걸러서, 담당자가 대시보드에서
+    "제외"로 명시적으로 바꾼 기사도 Word/이메일의 [경고] 섹션에 계속 무조건
+    떠버리는 문제가 있었다. "제외"로 바꾼 기사는 경고 섹션을 포함해 문서
+    어디에도 나오지 않아야 하므로, ai_decision == "제외"인 기사는 여기서도
+    제외한다.
+
     반환값: (ai_scored_regrouped, negative_flagged, vig_sensitive)
     """
     all_articles = _all_articles_flat()
@@ -445,8 +452,12 @@ def _get_current_grouped_result():
         bucket = a.get("ai_decision") if a.get("ai_decision") in regrouped else "검토필요"
         regrouped[bucket].append(a)
 
-    negative_flagged = [a for a in all_articles if a.get("negative_flag")]
-    vig_sensitive = [a for a in all_articles if a.get("sensitive_flag")]
+    negative_flagged = [
+        a for a in all_articles if a.get("negative_flag") and a.get("ai_decision") != "제외"
+    ]
+    vig_sensitive = [
+        a for a in all_articles if a.get("sensitive_flag") and a.get("ai_decision") != "제외"
+    ]
     return regrouped, negative_flagged, vig_sensitive
 
 

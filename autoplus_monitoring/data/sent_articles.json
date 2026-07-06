@@ -1,4 +1,4 @@
 {
-  "_comment": "기보고(발송 완료) 기사 URL/제목 이력. rule_filter.py의 filter_duplicate_sent()가 이 파일을 참조해 기계적으로 중복을 제거한다. formatter_docx.py가 문서 생성 완료 시 자동으로 갱신한다.",
-  "sent_articles": []
+  \"_comment\": \"기보고(발송 완료) 기사 URL/제목 이력. rule_filter.py의 filter_duplicate_sent()가 이 파일을 참조해 기계적으로 중복을 제거한다. formatter_docx.py가 문서 생성 완료 시 자동으로 갱신한다.\",
+  \"sent_articles\": []
 }
