@@ -44,7 +44,11 @@
   <section class="card">
     <div class="summary-header">
       <h3>라벨 업데이트 후보 (체크 후 반영하면 다음 AI 채점부터 학습됩니다)</h3>
-      <button id="btn-apply-candidates" class="btn btn-primary" disabled><i class="fas fa-check"></i> 선택 항목 반영하기</button>
+      <div>
+        <button id="btn-select-all-candidates" class="btn btn-outline">전체 선택</button>
+        <button id="btn-deselect-all-candidates" class="btn btn-outline">전체 해제</button>
+        <button id="btn-apply-candidates" class="btn btn-primary" disabled><i class="fas fa-check"></i> 선택 항목 반영하기</button>
+      </div>
     </div>
     <p class="note">
       아래 체크된 항목이 <code>label_examples.json</code>에 실제로 저장됩니다.

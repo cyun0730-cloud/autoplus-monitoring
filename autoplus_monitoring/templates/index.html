@@ -53,6 +53,7 @@
         <button id="btn-run" class="btn btn-primary" {% if not is_today %}disabled title="과거 날짜 조회 중에는 실행할 수 없습니다. 날짜를 오늘로 변경하세요."{% endif %}><i class="fas fa-play"></i> 모니터링 실행</button>
         <button id="btn-send-email" class="btn btn-secondary" {% if not is_today %}disabled title="과거 날짜 조회 중에는 발송할 수 없습니다."{% endif %}><i class="fas fa-envelope"></i> 이메일 발송</button>
         <a href="/download/docx" class="btn btn-outline"><i class="fas fa-file-word"></i> Word 다운로드</a>
+        <a href="/download/coverage-report" class="btn btn-outline"><i class="fas fa-table"></i> 게재보고 다운로드</a>
         <a href="/download/email-preview" target="_blank" class="btn btn-outline"><i class="fas fa-eye"></i> 메일 미리보기</a>
       </div>
     </div>
@@ -92,7 +93,10 @@
     </aside>
 
     <section id="article-list-section" class="card">
-      <h3>기사 목록</h3>
+      <div class="article-list-header">
+        <h3>기사 목록</h3>
+        <input type="text" id="article-search-input" placeholder="제목/매체명 검색...">
+      </div>
       <div id="article-list"><p class="empty-hint">모니터링을 실행하면 결과가 여기에 표시됩니다.</p></div>
     </section>
   </div>

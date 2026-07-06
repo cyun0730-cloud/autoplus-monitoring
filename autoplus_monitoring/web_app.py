@@ -59,6 +59,7 @@ import rule_filter
 import ai_scorer
 import formatter_docx
 import report_formatter
+import release_calendar
 import email_sender
 import review_mode
 import keywords
@@ -153,6 +154,7 @@ app.secret_key = FLASK_SECRET_KEY
 _pipeline_state = {
     "status": "idle",  # idle | running | done | error
     "last_run_at": None,
+    "started_at": None,  # 이번 실행이 시작된 시각 (멈춘 실행 감지용)
     "error_message": None,
 }
 _latest_result = {
@@ -172,6 +174,7 @@ def _run_pipeline_core():
     global _pipeline_state, _latest_result
     try:
         _pipeline_state["status"] = "running"
+        _pipeline_state["started_at"] = _now_kst().strftime("%Y-%m-%d %H:%M:%S")
         _pipeline_state["error_message"] = None
 
         # 1) 수집
@@ -265,11 +268,37 @@ def index():
 # =============================================================================
 # 파이프라인 실행 & 상태
 # =============================================================================
+STALE_RUN_MINUTES = 40  # 이보다 오래 "running" 상태면 멈춘 실행으로 간주하고 새 실행 허용
+
+
 @app.route("/run", methods=["POST"])
 def run_pipeline():
-    """모니터링 파이프라인을 백그라운드 스레드로 즉시 실행한다."""
+    """
+    모니터링 파이프라인을 백그라운드 스레드로 즉시 실행한다.
+
+    [2026-07-06 추가] Render 무료 인스턴스는 15분간 요청이 없으면 슬립되는데,
+    실행 중(특히 LLM 채점처럼 오래 걸리는 단계)에 슬립되면 백그라운드 스레드가
+    죽어버려도 _pipeline_state["status"]는 영원히 "running"으로 남아, 이후
+    모든 /run 요청이 409(already_running)로 막혀버리는 문제가 있었다.
+    실행 시작 시각(started_at)이 STALE_RUN_MINUTES(기본 40분)을 넘겼는데도
+    여전히 "running"이면 멈춘 실행으로 간주하고 새 실행을 허용한다.
+    """
     if _pipeline_state["status"] == "running":
-        return jsonify({"status": "already_running"}), 409
+        started_at = _pipeline_state.get("started_at")
+        is_stale = False
+        if started_at:
+            try:
+                started_dt = datetime.strptime(started_at, "%Y-%m-%d %H:%M:%S")
+                elapsed_minutes = (_now_kst() - started_dt).total_seconds() / 60
+                is_stale = elapsed_minutes > STALE_RUN_MINUTES
+            except ValueError:
+                is_stale = True  # 시각 파싱 실패 시 안전하게 재실행 허용
+
+        if not is_stale:
+            return jsonify({"status": "already_running", "started_at": started_at}), 409
+
+        print(f"[web_app] 이전 실행이 {STALE_RUN_MINUTES}분 넘게 멈춰있어(started_at={started_at}) "
+              f"멈춘 실행으로 간주하고 새로 시작합니다.")
 
     thread = threading.Thread(target=_run_pipeline_core, daemon=True)
     thread.start()
@@ -628,6 +657,33 @@ def download_docx():
     _latest_result["docx_path"] = docx_path  # 캐시 갱신 - 이후 재다운로드도 최신 유지
 
     return send_file(docx_path, as_attachment=True)
+
+
+@app.route("/download/coverage-report")
+def download_coverage_report():
+    """
+    게재보고 Word 문서를 다운로드한다 (경제지/전문지·무가지/오토지/온라인
+    구분 집계). README에 명시된 3대 산출물 중 하나였으나 기존에는 어떤
+    라우트에도 연결되지 않은 채 report_formatter.py만 존재하던 기능이라
+    2026-07-06에 새로 연결했다.
+
+    ?release_title=... 로 보도자료 제목을 직접 지정할 수 있고, 생략하면
+    오늘 release_calendar에 등록된 배포 자료 제목을 자동으로 사용한다
+    (등록된 게 없으면 "전체 게재보고"로 표시).
+    """
+    if not _latest_result.get("ai_scored"):
+        return jsonify({"error": "생성된 결과가 없습니다. 먼저 /run 으로 파이프라인을 실행하세요."}), 404
+
+    release_title = request.args.get("release_title", "").strip()
+    if not release_title:
+        today_releases = release_calendar.get_today_releases()
+        release_title = today_releases[0]["title"] if today_releases else "전체 게재보고"
+
+    regrouped, _negative_flagged, _vig_sensitive = _get_current_grouped_result()
+    included_articles = regrouped["포함"]
+
+    filepath = report_formatter.generate_coverage_report_docx(included_articles, release_title)
+    return send_file(filepath, as_attachment=True)
 
 
 @app.route("/download/email-preview")

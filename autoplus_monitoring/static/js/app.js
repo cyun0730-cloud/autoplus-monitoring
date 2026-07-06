@@ -24,6 +24,25 @@ function initDashboard() {
 
   let currentSection = "";
   let currentFlag = "";
+  let searchKeyword = "";
+  let lastFetchedArticles = []; // 검색어만 바뀌었을 때 서버 재조회 없이 다시 필터링하기 위한 캐시
+
+  const searchInput = document.getElementById("article-search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      searchKeyword = searchInput.value.trim().toLowerCase();
+      renderArticles(applySearchFilter(lastFetchedArticles));
+    });
+  }
+
+  function applySearchFilter(articles) {
+    if (!searchKeyword) return articles;
+    return articles.filter((a) => {
+      const title = (a.title || "").toLowerCase();
+      const source = (a.source || "").toLowerCase();
+      return title.includes(searchKeyword) || source.includes(searchKeyword);
+    });
+  }
 
   // 날짜 선택 드롭다운 - 선택 즉시 해당 날짜 기준으로 페이지 재조회
   if (dateSelect) {
@@ -52,6 +71,16 @@ function initDashboard() {
     } catch (e) {
       console.error("요약 갱신 실패:", e.message);
     }
+  }
+
+  // 페이지를 새로고침해도, 이미 실행 중인 파이프라인이 있으면 자동으로
+  // 폴링을 재개한다 (기존에는 새로고침하면 폴링이 끊겨서, 완료돼도 화면이
+  // 자동 갱신되지 않고 버튼도 다시 눌러 409 에러를 보게 되는 문제가 있었다).
+  const initialStatus = document.getElementById("pipeline-status")?.textContent?.trim();
+  if (initialStatus === "running") {
+    btnRun.disabled = true;
+    btnRun.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 실행 중...';
+    pollStatus();
   }
 
   // 모니터링 실행 버튼
@@ -117,7 +146,8 @@ function initDashboard() {
     if (currentDate) params.date = currentDate;
 
     const res = await axios.get("/articles", { params });
-    renderArticles(res.data);
+    lastFetchedArticles = res.data;
+    renderArticles(applySearchFilter(lastFetchedArticles));
   }
 
   // TEST_MODE 더미 데이터 판별 함수. collector_naver_api.py의
@@ -383,8 +413,17 @@ function initReview() {
   if (!btnRunReview) return;
 
   const btnApplyCandidates = document.getElementById("btn-apply-candidates");
+  const btnSelectAll = document.getElementById("btn-select-all-candidates");
+  const btnDeselectAll = document.getElementById("btn-deselect-all-candidates");
   const candidatesList = document.getElementById("label-candidates-list");
   let lastCandidates = []; // 가장 최근 리뷰 실행 결과의 label_update_candidates 보관
+
+  btnSelectAll.addEventListener("click", () => {
+    candidatesList.querySelectorAll(".candidate-checkbox").forEach((cb) => (cb.checked = true));
+  });
+  btnDeselectAll.addEventListener("click", () => {
+    candidatesList.querySelectorAll(".candidate-checkbox").forEach((cb) => (cb.checked = false));
+  });
 
   function renderCandidates(candidates) {
     lastCandidates = candidates;

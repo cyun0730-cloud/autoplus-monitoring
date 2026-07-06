@@ -166,6 +166,19 @@ main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
 .filter-btn:hover, .filter-btn.active { background-color: #eef2ff; color: #1a56db; }
 
 #article-list-section { flex: 1; }
+.article-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#article-search-input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  width: 220px;
+}
 .article-card {
   border-bottom: 1px solid #eee;
   padding: 12px 0;

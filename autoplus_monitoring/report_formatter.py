@@ -18,6 +18,7 @@ from docx import Document
 from docx.shared import Pt
 
 from keywords import MEDIA_PRIORITY_ORDER
+from rule_filter import _now_kst_naive
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, "output")
@@ -67,7 +68,7 @@ def generate_coverage_report_docx(articles: list, release_title: str = "", outpu
     run.bold = True
     run.font.size = Pt(14)
 
-    doc.add_paragraph(f"총 게재 건수: {total}건 (집계일: {datetime.now().strftime('%Y-%m-%d')})")
+    doc.add_paragraph(f"총 게재 건수: {total}건 (집계일: {_now_kst_naive().strftime('%Y-%m-%d')})")
 
     table = doc.add_table(rows=1, cols=4)
     table.style = "Light Grid Accent 1"
@@ -85,7 +86,7 @@ def generate_coverage_report_docx(articles: list, release_title: str = "", outpu
             row_cells[2].text = article.get("title", "")
             row_cells[3].text = article.get("url", "")
 
-    filename = f"게재보고_{datetime.now().strftime('%Y%m%d')}.docx"
+    filename = f"게재보고_{_now_kst_naive().strftime('%Y%m%d')}.docx"
     filepath = os.path.join(output_dir, filename)
     doc.save(filepath)
     print(f"[report_formatter] 게재보고 문서 생성 완료 → {filepath}")

@@ -19,6 +19,8 @@ import os
 import json
 from datetime import datetime
 
+from rule_filter import _now_kst_naive
+
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 RELEASE_CALENDAR_PATH = os.path.join(DATA_DIR, "release_calendar.json")
 
@@ -34,11 +36,13 @@ def _load_calendar():
 
 def get_today_releases(today: datetime = None):
     """
-    당일(today, 기본값은 실행 시각) 배포 예정으로 등록된 자료 목록을 반환한다.
+    당일(today, 기본값은 KST 기준 실행 시각) 배포 예정으로 등록된 자료 목록을
+    반환한다. (2026-07-06 수정: 서버가 UTC로 동작하는 해외 리전에 배포될 경우
+    "오늘" 판단이 최대 9시간 어긋날 수 있어 KST 기준으로 통일)
     반환값: [{"date": "YYYY-MM-DD", "title": ..., "keywords": [...]}, ...]
     """
     if today is None:
-        today = datetime.now()
+        today = _now_kst_naive()
     month_key = today.strftime("%Y-%m")
     today_str = today.strftime("%Y-%m-%d")
 
