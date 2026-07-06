@@ -19,8 +19,11 @@ import os
 import json
 from urllib.parse import urlparse
 
+from rule_filter import _now_kst_naive
+
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 MEDIA_MAP_PATH = os.path.join(DATA_DIR, "media_domain_map.json")
+UNCONFIRMED_MEDIA_PATH = os.path.join(DATA_DIR, "unconfirmed_media.json")
 
 # 기자 마스터 DB (실물 파일 없을 시 더미 dict로 대체)
 # 확인 필요: 실제 운영 시에는 팀 내 기자 마스터 DB(csv/excel)를 연동해야 한다.
@@ -122,12 +125,96 @@ def get_unconfirmed_journalists():
     return sorted(_unconfirmed_journalists)
 
 
+# =============================================================================
+# 미확인 매체 영속 저장 + 대시보드 등록 워크플로우 (2026-07-06 추가)
+# -----------------------------------------------------------------------------
+# 배경: 실제 담당자가 수기로 작성한 리포트와 대조해보니, 매번 새로운 매체가
+# 계속 발견됐다(한 번에 13개, 그 다음 대조에서 또 70개 이상). 이걸 개발자가
+# 매번 하나하나 도메인을 검색해 media_domain_map.json에 하드코딩하는 방식은
+# 확장성이 없고, 잘못된 도메인을 추측해 등록하면 오히려 오매칭 위험도 있다.
+#
+# 대신, "미확인 매체"를 실행할 때마다 파일에 누적 기록해두고(예시 기사
+# 제목/URL 포함), 담당자가 대시보드(/settings)에서 실제 화면에 뜬 정보를
+# 보고 직접 매체명/그룹을 입력해 즉시 등록할 수 있도록 UI를 제공한다.
+# 담당자가 원래 매일 보는 실제 매체이므로, 개발자가 추측하는 것보다 훨씬
+# 정확하고 빠르게 계속 채워나갈 수 있다.
+# =============================================================================
+def _load_unconfirmed_media_store():
+    """data/unconfirmed_media.json 을 로드한다 (없으면 빈 dict)."""
+    if not os.path.exists(UNCONFIRMED_MEDIA_PATH):
+        return {}
+    with open(UNCONFIRMED_MEDIA_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _save_unconfirmed_media_store(store: dict):
+    with open(UNCONFIRMED_MEDIA_PATH, "w", encoding="utf-8") as f:
+        json.dump(store, f, ensure_ascii=False, indent=2)
+
+
+def _record_unconfirmed_media(updates: dict):
+    """
+    이번 실행에서 새로 발견된 미확인 도메인들을 기존 저장소에 병합해 저장한다.
+    updates: {domain: {"example_title": str, "example_url": str}}
+    """
+    if not updates:
+        return
+    store = _load_unconfirmed_media_store()
+    now_str = _now_kst_naive().strftime("%Y-%m-%d %H:%M:%S")
+    for domain, info in updates.items():
+        entry = store.get(domain, {"count": 0, "first_seen": now_str})
+        entry["count"] = entry.get("count", 0) + info.get("count", 1)
+        entry["example_title"] = info.get("example_title", entry.get("example_title", ""))
+        entry["example_url"] = info.get("example_url", entry.get("example_url", ""))
+        entry["last_seen"] = now_str
+        store[domain] = entry
+    _save_unconfirmed_media_store(store)
+
+
+def get_unconfirmed_media_store():
+    """대시보드 표시용: 아직 등록되지 않은 매체 도메인과 예시 기사 정보를 반환한다."""
+    return _load_unconfirmed_media_store()
+
+
+def resolve_unconfirmed_media(domain: str, name: str, group: str):
+    """
+    담당자가 미확인 도메인에 실제 매체명/그룹을 지정해 media_domain_map.json에
+    즉시 등록하고, 미확인 목록에서 제거한다. 등록 즉시 현재 실행 중인 서버의
+    메모리(_MEDIA_MAP)에도 반영되어 재시작 없이 다음 기사부터 바로 적용된다.
+    """
+    global _MEDIA_MAP
+
+    domain = (domain or "").strip().lower()
+    name = (name or "").strip()
+    group = (group or "온라인").strip()
+    if not domain or not name:
+        return False, "도메인과 매체명은 필수입니다."
+
+    full_map = {}
+    if os.path.exists(MEDIA_MAP_PATH):
+        with open(MEDIA_MAP_PATH, "r", encoding="utf-8") as f:
+            full_map = json.load(f)
+    full_map[domain] = {"name": name, "group": group}
+    with open(MEDIA_MAP_PATH, "w", encoding="utf-8") as f:
+        json.dump(full_map, f, ensure_ascii=False, indent=2)
+
+    _MEDIA_MAP[domain] = {"name": name, "group": group}
+
+    store = _load_unconfirmed_media_store()
+    store.pop(domain, None)
+    _save_unconfirmed_media_store(store)
+
+    return True, f"'{domain}' → '{name}' ({group})로 등록되었습니다."
+
+
 def normalize_articles(articles: list):
     """
     기사 리스트 전체에 대해 매체명/기자명 정규화를 일괄 적용한다.
     기존 필드(source, journalist)를 정규화된 값으로 덮어쓰고,
     media_group 필드를 새로 추가한다.
     """
+    unconfirmed_updates = {}
+
     for article in articles:
         media_info = normalize_media_name(article.get("url", ""))
         # 이미 source가 채워져 있어도(예: Google RSS) media_domain_map 기준으로
@@ -136,13 +223,22 @@ def normalize_articles(articles: list):
             article["source"] = media_info["name"]
         article["media_group"] = media_info["group"]
 
+        if media_info["name"].startswith("미확인매체_") and media_info["domain"]:
+            domain = media_info["domain"]
+            entry = unconfirmed_updates.setdefault(domain, {"count": 0})
+            entry["count"] += 1
+            entry.setdefault("example_title", article.get("title", ""))
+            entry.setdefault("example_url", article.get("url", ""))
+
         if article.get("journalist"):
             article["journalist"] = normalize_journalist_name(article["journalist"])
+
+    _record_unconfirmed_media(unconfirmed_updates)
 
     unconfirmed_domains = get_unconfirmed_media_domains()
     if unconfirmed_domains:
         print(f"[media_normalizer] 미확인 매체 도메인 {len(unconfirmed_domains)}건 발견: "
-              f"{unconfirmed_domains} → data/media_domain_map.json 에 추가 검토 필요")
+              f"{unconfirmed_domains} → /settings 화면에서 등록 가능")
 
     return articles
 

@@ -286,6 +286,36 @@ function initSettings() {
       location.reload();
     });
   });
+
+  // 미확인 매체 등록 버튼 이벤트 바인딩
+  document.querySelectorAll(".btn-register-media").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const item = btn.closest(".unconfirmed-media-item");
+      const domain = item.dataset.domain;
+      const name = item.querySelector(".unconfirmed-media-name-input").value.trim();
+      const group = item.querySelector(".unconfirmed-media-group-select").value;
+
+      if (!name) {
+        alert("매체명을 입력해주세요.");
+        return;
+      }
+
+      try {
+        const res = await axios.post("/media/resolve", { domain, name, group });
+        if (res.data.success) {
+          item.remove(); // 등록 완료된 항목은 목록에서 즉시 제거 (실시간 반영)
+          const list = document.getElementById("unconfirmed-media-list");
+          if (!list.querySelector(".unconfirmed-media-item")) {
+            list.innerHTML = '<p class="empty-hint">현재 미확인 매체가 없습니다.</p>';
+          }
+        } else {
+          alert(res.data.message);
+        }
+      } catch (e) {
+        alert(e.response?.data?.message || e.message);
+      }
+    });
+  });
 }
 
 // ---------------------------------------------------------------------------

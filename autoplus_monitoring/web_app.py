@@ -484,7 +484,7 @@ def send_email_route():
 # =============================================================================
 @app.route("/settings")
 def settings():
-    """구독자 목록·발송주기(SEND_FREQUENCY)·키워드 현황 설정 화면을 렌더링한다."""
+    """구독자 목록·발송주기(SEND_FREQUENCY)·키워드 현황·미확인 매체 설정 화면을 렌더링한다."""
     subscribers = email_sender.load_subscribers()
     return render_template(
         "settings.html",
@@ -492,7 +492,27 @@ def settings():
         send_frequency=SEND_FREQUENCY,
         monitoring_weekdays=MONITORING_WEEKDAYS,
         keywords_snapshot=keywords.get_keywords_snapshot(),
+        unconfirmed_media=media_normalizer.get_unconfirmed_media_store(),
     )
+
+
+@app.route("/media/unconfirmed")
+def media_unconfirmed():
+    """미확인 매체 도메인 목록(예시 기사 포함)을 JSON으로 반환한다."""
+    return jsonify(media_normalizer.get_unconfirmed_media_store())
+
+
+@app.route("/media/resolve", methods=["POST"])
+def media_resolve():
+    """
+    담당자가 미확인 매체 도메인에 실제 매체명/그룹을 지정해 등록한다.
+    요청 형식: {"domain": "...", "name": "...", "group": "..."}
+    """
+    payload = request.get_json(force=True) or {}
+    success, message = media_normalizer.resolve_unconfirmed_media(
+        payload.get("domain", ""), payload.get("name", ""), payload.get("group", "온라인")
+    )
+    return jsonify({"success": success, "message": message})
 
 
 # =============================================================================

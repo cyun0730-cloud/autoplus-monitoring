@@ -116,6 +116,31 @@ main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
 
 #label-candidates-list li { margin-bottom: 8px; }
 .candidate-reason { color: #777; font-size: 12px; }
+
+.unconfirmed-media-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.unconfirmed-media-example { font-size: 12px; color: #888; margin-top: 3px; }
+.unconfirmed-media-form { display: flex; gap: 6px; align-items: center; }
+.unconfirmed-media-name-input {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  width: 140px;
+}
+.unconfirmed-media-group-select {
+  padding: 5px 6px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+}
 .btn-primary { background-color: #1a56db; color: #fff; }
 .btn-secondary { background-color: #10b981; color: #fff; }
 .btn-outline { background-color: #fff; color: #1a56db; border: 1px solid #1a56db; }

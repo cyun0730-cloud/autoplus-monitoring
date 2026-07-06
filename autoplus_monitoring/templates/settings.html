@@ -103,6 +103,43 @@
       </div>
     </div>
   </section>
+  <section class="card" id="unconfirmed-media-section">
+    <h2>미확인 매체 등록</h2>
+    <p class="note">
+      네이버/구글 수집 결과에서 <code>data/media_domain_map.json</code>에 아직
+      없는 도메인이 발견되면 여기에 쌓입니다. 예시 기사 제목/URL을 확인하고
+      실제 매체명·구분을 입력해 등록하면, 다음 실행부터 "미확인매체_..."
+      대신 정확한 매체명으로 표시됩니다.
+    </p>
+    <div id="unconfirmed-media-list">
+      {% if not unconfirmed_media %}
+      <p class="empty-hint">현재 미확인 매체가 없습니다.</p>
+      {% endif %}
+      {% for domain, info in unconfirmed_media.items() %}
+      <div class="unconfirmed-media-item" data-domain="{{ domain }}">
+        <div class="unconfirmed-media-info">
+          <strong>{{ domain }}</strong> ({{ info.count }}건)
+          <div class="unconfirmed-media-example">
+            예시: <a href="{{ info.example_url }}" target="_blank" rel="noopener">{{ info.example_title }}</a>
+          </div>
+        </div>
+        <div class="unconfirmed-media-form">
+          <input type="text" class="unconfirmed-media-name-input" placeholder="매체명 (예: 뉴스웍스)">
+          <select class="unconfirmed-media-group-select">
+            <option value="통신사">통신사</option>
+            <option value="일간지">일간지</option>
+            <option value="경제지">경제지</option>
+            <option value="스포츠지">스포츠지</option>
+            <option value="전문지/무가지">전문지/무가지</option>
+            <option value="온라인" selected>온라인</option>
+            <option value="오토지">오토지</option>
+          </select>
+          <button class="btn btn-primary btn-register-media">등록</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
 </main>
 
 <script>
