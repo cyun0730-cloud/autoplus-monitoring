@@ -271,22 +271,27 @@ def _is_oem_simple_promotion(article: dict):
 
 def filter_oem_promotion(articles: list):
     """
-    3순위 완성차 키워드(keyword_category == '업계3') 기사 중 신차출시/판매동향/
-    국내전략 관련 표현이 없고 단순 프로모션 표현만 있는 기사를 제외한다.
-    3순위가 아닌 기사는 이 필터의 영향을 받지 않는다.
+    [2026-07-06 변경 - 담당자 요청 반영]
+    기존에는 3순위 완성차 키워드(keyword_category == '업계3') 기사 중
+    "이벤트/프로모션/할인/사은품" 등 단순 프로모션 표현만 있고 "신차/출시/
+    판매/전략" 등 허용 표현이 없는 기사를 자동으로 완전히 제외했다.
 
-    반환값: (통과 기사 리스트, 제외된 기사 리스트)
+    하지만 이 휴리스틱이 새로 추가한 브랜드 키워드의 기사까지 과도하게
+    걸러내는 문제가 있어(신규 브랜드는 초반에 프로모션/시승행사 기사 비중이
+    높은 경우가 많음), 담당자 요청에 따라 **더 이상 기사를 제외하지 않고**
+    프로모션 성격이 있다는 표시(oem_promotion_flag)만 남기도록 변경했다.
+    최종 포함/제외 판단은 2차 AI 채점 단계와 담당자의 직접 라벨 수정에
+    맡긴다 ("정확도 저하 원인은 기술적 한계가 아니라 담당자 판단 기준의
+    미이관"이라는 핵심 전제와도 부합).
+
+    반환값: (전체 기사 리스트 - 제외 없음, 빈 리스트)
+        기존 호출부(apply_all_filters)와의 인터페이스 호환을 위해 튜플
+        형태는 그대로 유지한다.
     """
-    passed, excluded = [], []
     for article in articles:
         if article.get("keyword_category") == "업계3" and _is_oem_simple_promotion(article):
-            article["exclude_reason"] = "3순위 완성차 단순 프로모션 표현만 존재 (신차출시/판매동향/국내전략 표현 없음)"
-            excluded.append(article)
-        else:
-            passed.append(article)
-    if excluded:
-        print(f"[rule_filter] 3순위 완성차 단순 프로모션 {len(excluded)}건 제외")
-    return passed, excluded
+            article["oem_promotion_flag"] = True
+    return articles, []
 
 
 def apply_all_filters(articles: list, days: int = 1):
@@ -296,14 +301,14 @@ def apply_all_filters(articles: list, days: int = 1):
       2) filter_duplicate_sent
       3) filter_sensitive
       4) flag_negative
-      5) filter_oem_promotion
+      5) filter_oem_promotion (2026-07-06부터 제외 없이 태그만 부여 - 아래 함수 docstring 참조)
 
     반환 구조:
       {
         "pass": [...],             # 최종 통과 (AI 채점 대상)
         "vig_sensitive": [...],    # 민감 이슈 (별도 실무 확인)
         "negative_flagged": [...], # pass에 포함되되 NEGATIVE_FLAG=True 인 기사 (참고용 서브셋)
-        "excluded": [...]          # 완전 제외된 기사 (기보고 중복 + 단순 프로모션)
+        "excluded": [...]          # 완전 제외된 기사 (기보고 중복만 해당 - 프로모션은 더 이상 제외 안 함)
       }
     """
     print(f"[rule_filter] 1차 규칙 필터 시작 - 입력 {len(articles)}건")

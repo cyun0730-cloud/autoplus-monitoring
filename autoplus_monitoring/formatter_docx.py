@@ -34,6 +34,7 @@ from docx.oxml import OxmlElement
 
 from keywords import COMPETITOR_KEYWORDS, MEDIA_PRIORITY_ORDER
 from release_calendar import get_today_releases, insert_release_section
+from rule_filter import _now_kst_naive
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -245,7 +246,7 @@ def generate_monitoring_docx(ai_scored_results: dict, negative_flagged: list, vi
 
     title_paragraph = doc.add_paragraph()
     title_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    title_run = title_paragraph.add_run(f"오토플러스 뉴스 모니터링 ({datetime.now().strftime('%Y-%m-%d')})")
+    title_run = title_paragraph.add_run(f"오토플러스 뉴스 모니터링 ({_now_kst_naive().strftime('%Y-%m-%d')})")
     title_run.bold = True
     title_run.font.size = Pt(16)
 
@@ -266,7 +267,7 @@ def generate_monitoring_docx(ai_scored_results: dict, negative_flagged: list, vi
     # 4. 업계 뉴스
     _add_industry_news_section(doc, industry_articles)
 
-    filename = f"모니터링_{datetime.now().strftime('%Y%m%d')}.docx"
+    filename = f"모니터링_{_now_kst_naive().strftime('%Y%m%d')}.docx"
     filepath = os.path.join(output_dir, filename)
     doc.save(filepath)
     print(f"[formatter_docx] 문서 생성 완료 → {filepath}")
@@ -285,7 +286,7 @@ def _update_sent_articles(articles: list):
     else:
         data = {"_comment": "기보고(발송 완료) 기사 URL/제목 이력.", "sent_articles": []}
 
-    today_str = datetime.now().strftime("%Y-%m-%d")
+    today_str = _now_kst_naive().strftime("%Y-%m-%d")
     existing_urls = {item.get("url") for item in data.get("sent_articles", [])}
 
     added = 0
