@@ -29,6 +29,8 @@ from datetime import datetime
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
 
 from keywords import COMPETITOR_KEYWORDS, MEDIA_PRIORITY_ORDER
 from release_calendar import get_today_releases, insert_release_section
@@ -41,11 +43,57 @@ SENT_ARTICLES_PATH = os.path.join(DATA_DIR, "sent_articles.json")
 GRAY_COLOR = RGBColor(0x80, 0x80, 0x80)
 
 
+def _add_hyperlink(paragraph, url, text, font_size_pt=10.5, color="0563C1", underline=True):
+    """
+    python-docx는 하이퍼링크를 기본 지원하지 않으므로, OOXML(w:hyperlink)을
+    직접 구성해 문단에 클릭 가능한 하이퍼링크 run을 추가한다.
+    (2026-07-06 추가: 기사 제목에 URL을 직접 걸기 위한 용도)
+    """
+    part = paragraph.part
+    r_id = part.relate_to(
+        url,
+        "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+        is_external=True,
+    )
+
+    hyperlink = OxmlElement("w:hyperlink")
+    hyperlink.set(qn("r:id"), r_id)
+
+    new_run = OxmlElement("w:r")
+    rPr = OxmlElement("w:rPr")
+
+    sz = OxmlElement("w:sz")
+    sz.set(qn("w:val"), str(int(font_size_pt * 2)))  # docx는 half-point 단위
+    rPr.append(sz)
+
+    if color:
+        c = OxmlElement("w:color")
+        c.set(qn("w:val"), color)
+        rPr.append(c)
+    if underline:
+        u = OxmlElement("w:u")
+        u.set(qn("w:val"), "single")
+        rPr.append(u)
+
+    new_run.append(rPr)
+    t = OxmlElement("w:t")
+    t.text = text
+    new_run.append(t)
+    hyperlink.append(new_run)
+    paragraph._p.append(hyperlink)
+    return hyperlink
+
+
 def _add_article_paragraph(doc, article: dict):
     """
     문서에 기사 한 건을 다음 형식으로 추가한다:
-      ▷ [매체명] 기자명 | 제목 | URL
+      ▷ [매체명] 기자명 | 제목(하이퍼링크로 URL 연결)
       (회색) AI 판단 근거 1줄
+
+    [2026-07-06 변경] 기존에는 "제목 | URL"처럼 제목과 URL을 각각 텍스트로
+    나열했으나, 담당자가 Word 문서에서 제목을 클릭해 바로 기사로 이동할 수
+    있도록 제목 자체에 하이퍼링크를 거는 방식으로 변경했다. URL은 하이퍼링크에
+    포함되므로 더 이상 별도 텍스트로 표시하지 않는다.
     """
     source = article.get("source", "미확인매체")
     journalist = article.get("journalist", "")
@@ -54,8 +102,15 @@ def _add_article_paragraph(doc, article: dict):
     reason = article.get("ai_reason", "")
 
     p = doc.add_paragraph()
-    run = p.add_run(f"▷ [{source}] {journalist} | {title} | {url}")
-    run.font.size = Pt(10.5)
+    prefix_run = p.add_run(f"▷ [{source}] {journalist} | ")
+    prefix_run.font.size = Pt(10.5)
+
+    if url:
+        _add_hyperlink(p, url, title, font_size_pt=10.5)
+    else:
+        # URL이 없는 경우(드묾) 안전하게 일반 텍스트로만 표시
+        title_run = p.add_run(title)
+        title_run.font.size = Pt(10.5)
 
     if reason:
         p2 = doc.add_paragraph()

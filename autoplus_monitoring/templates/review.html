@@ -42,6 +42,19 @@
   </section>
 
   <section class="card">
+    <div class="summary-header">
+      <h3>라벨 업데이트 후보 (체크 후 반영하면 다음 AI 채점부터 학습됩니다)</h3>
+      <button id="btn-apply-candidates" class="btn btn-primary" disabled><i class="fas fa-check"></i> 선택 항목 반영하기</button>
+    </div>
+    <p class="note">
+      아래 체크된 항목이 <code>label_examples.json</code>에 실제로 저장됩니다.
+      "반영하기"를 누르지 않으면 리뷰 결과는 화면에만 표시될 뿐 다음 AI 채점에
+      전혀 학습되지 않으니 꼭 눌러주세요.
+    </p>
+    <ul id="label-candidates-list"><li class="empty-hint">리뷰를 실행하면 결과가 표시됩니다.</li></ul>
+  </section>
+
+  <section class="card">
     <h3>로드맵 참고 메모</h3>
     <p class="note">{{ roadmap_note }}</p>
   </section>

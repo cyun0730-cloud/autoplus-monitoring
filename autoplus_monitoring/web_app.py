@@ -69,6 +69,63 @@ load_dotenv()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 OUTPUT_DIR = os.path.join(BASE_DIR, "output")
+DAILY_ARCHIVE_DIR = os.path.join(DATA_DIR, "daily_archive")
+
+
+# =============================================================================
+# 일자별 결과 누적 저장 (2026-07-06 추가)
+# -----------------------------------------------------------------------------
+# 기존에는 _latest_result가 메모리에만 있어 서버 재시작/재배포 시 사라지고,
+# "오늘 실행한 최신 결과"만 볼 수 있었다(과거 날짜 조회 불가). 실행이 끝날 때마다
+# 그날 날짜의 JSON 파일로 별도 저장해, 대시보드에서 날짜를 선택해 과거 결과를
+# 다시 조회할 수 있도록 누적 데이터베이스(파일 기반)를 구성한다.
+# 같은 날 여러 번 실행하면 그날 파일은 "가장 최근 실행 결과"로 덮어쓴다
+# (실행 회차별 이력까지는 남기지 않음 - 필요 시 파일명에 타임스탬프를 추가해
+# 확장 가능).
+# =============================================================================
+def _archive_path(date_str: str):
+    return os.path.join(DAILY_ARCHIVE_DIR, f"{date_str}.json")
+
+
+def _save_daily_archive(date_str: str):
+    """현재 _latest_result를 그 날짜의 아카이브 파일로 저장한다."""
+    os.makedirs(DAILY_ARCHIVE_DIR, exist_ok=True)
+    payload = {
+        "date": date_str,
+        "saved_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "ai_scored": _latest_result["ai_scored"],
+        "negative_flagged": _latest_result["negative_flagged"],
+        "vig_sensitive": _latest_result["vig_sensitive"],
+        "excluded": _latest_result["excluded"],
+    }
+    with open(_archive_path(date_str), "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+
+
+def _load_daily_archive(date_str: str):
+    """지정한 날짜의 아카이브 파일을 불러온다. 없으면 None."""
+    path = _archive_path(date_str)
+    if not os.path.exists(path):
+        return None
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _list_archive_dates():
+    """저장된 아카이브 날짜 목록을 최신순으로 반환한다 (오늘 날짜는 별도 포함 필요)."""
+    if not os.path.isdir(DAILY_ARCHIVE_DIR):
+        return []
+    dates = [fn[:-5] for fn in os.listdir(DAILY_ARCHIVE_DIR) if fn.endswith(".json")]
+    return sorted(dates, reverse=True)
+
+
+def _list_available_dates():
+    """오늘 날짜(아직 파일로 저장 전이어도 실시간 데이터가 있으므로) + 아카이브 날짜 목록."""
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    dates = _list_archive_dates()
+    if today_str not in dates:
+        dates = [today_str] + dates
+    return dates
 
 FLASK_SECRET_KEY = os.getenv("FLASK_SECRET_KEY", "dev-secret-key")
 FLASK_PORT = int(os.getenv("FLASK_PORT", "5000"))
@@ -139,7 +196,8 @@ def _run_pipeline_core():
 
         _pipeline_state["status"] = "done"
         _pipeline_state["last_run_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print("[web_app] 파이프라인 실행 완료")
+        _save_daily_archive(datetime.now().strftime("%Y-%m-%d"))
+        print("[web_app] 파이프라인 실행 완료 (일자별 아카이브 저장 완료)")
 
     except Exception as e:
         _pipeline_state["status"] = "error"
@@ -152,16 +210,37 @@ def _run_pipeline_core():
 # =============================================================================
 @app.route("/")
 def index():
-    """메인 대시보드: 오늘 결과 요약과 섹션별 필터 UI를 렌더링한다."""
-    included = _latest_result["ai_scored"].get("포함", [])
+    """
+    메인 대시보드: 요약과 섹션별 필터 UI를 렌더링한다.
+    ?date=YYYY-MM-DD 파라미터로 과거 날짜의 누적 아카이브를 조회할 수 있다
+    (없으면 오늘의 실시간 결과를 사용).
+    """
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    selected_date = request.args.get("date", today_str)
+    is_today = (selected_date == today_str)
+
+    if is_today:
+        source = _latest_result
+    else:
+        archived = _load_daily_archive(selected_date)
+        source = archived if archived else {
+            "ai_scored": {"포함": [], "제외": [], "검토필요": []},
+            "negative_flagged": [],
+            "vig_sensitive": [],
+        }
+
+    included = source["ai_scored"].get("포함", [])
     own_count = len([a for a in included if a.get("keyword_category") == "자사"])
     competitor_count = len([a for a in included if a.get("keyword_category") == "경쟁사"])
     industry_count = len([a for a in included if str(a.get("keyword_category", "")).startswith("업계")])
-    warning_count = len(_latest_result["negative_flagged"]) + len(_latest_result["vig_sensitive"])
+    warning_count = len(source["negative_flagged"]) + len(source["vig_sensitive"])
 
     return render_template(
         "index.html",
-        today=datetime.now().strftime("%Y-%m-%d"),
+        today=today_str,
+        selected_date=selected_date,
+        is_today=is_today,
+        available_dates=_list_available_dates(),
         total_count=len(included),
         own_count=own_count,
         competitor_count=competitor_count,
@@ -196,16 +275,21 @@ def status():
 # =============================================================================
 # 기사 목록 API (필터 지원) + 라벨 수정 (실시간 라벨링 루프)
 # =============================================================================
-def _all_articles_flat():
-    """포함/제외/검토필요 전체 기사를 하나의 리스트로 합치고 순번(id)을 부여한다."""
+def _all_articles_flat(source=None):
+    """
+    포함/제외/검토필요 전체 기사를 하나의 리스트로 합치고 순번(id)을 부여한다.
+    source를 지정하지 않으면 오늘의 실시간 결과(_latest_result)를 사용하고,
+    과거 날짜 조회 시에는 아카이브에서 불러온 dict를 source로 넘겨 재사용한다.
+    """
+    source = source if source is not None else _latest_result
     all_articles = []
     for decision in ["포함", "제외", "검토필요"]:
-        for article in _latest_result["ai_scored"].get(decision, []):
+        for article in source["ai_scored"].get(decision, []):
             all_articles.append(article)
-    for article in _latest_result["negative_flagged"]:
+    for article in source["negative_flagged"]:
         if article not in all_articles:
             all_articles.append(article)
-    for article in _latest_result["vig_sensitive"]:
+    for article in source["vig_sensitive"]:
         if article not in all_articles:
             all_articles.append(article)
     for idx, article in enumerate(all_articles):
@@ -213,17 +297,33 @@ def _all_articles_flat():
     return all_articles
 
 
+def _resolve_source(date_param):
+    """date_param이 오늘이거나 없으면 실시간 데이터, 과거 날짜면 아카이브를 반환한다."""
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    if not date_param or date_param == today_str:
+        return _latest_result, True
+    archived = _load_daily_archive(date_param)
+    return archived, False
+
+
 @app.route("/articles")
 def articles():
     """
-    기사 목록 API. decision/section(keyword_category)/flag 파라미터로 필터링 가능.
-    예: /articles?decision=포함&section=경쟁사&flag=negative
+    기사 목록 API. decision/section(keyword_category)/flag/date 파라미터로 필터링 가능.
+    예: /articles?decision=포함&section=경쟁사&flag=negative&date=2026-07-05
+    date를 생략하거나 오늘 날짜를 주면 실시간 결과, 과거 날짜를 주면 그날의
+    아카이브(누적 저장된 결과)를 조회한다.
     """
     decision_filter = request.args.get("decision")
     section_filter = request.args.get("section")
     flag_filter = request.args.get("flag")
+    date_param = request.args.get("date")
 
-    result = _all_articles_flat()
+    source, _is_today = _resolve_source(date_param)
+    if source is None:
+        return jsonify([])  # 해당 날짜에 저장된 결과 없음
+
+    result = _all_articles_flat(source)
 
     if decision_filter:
         result = [a for a in result if a.get("ai_decision") == decision_filter]
@@ -235,6 +335,39 @@ def articles():
         result = [a for a in result if a.get("sensitive_flag")]
 
     return jsonify(result)
+
+
+@app.route("/summary")
+def summary():
+    """
+    대시보드 상단 요약 카운트(자사/경쟁사/업계/경고/전체)를 JSON으로 반환한다.
+    포함/제외 라벨을 수정한 직후 전체 페이지 새로고침 없이 숫자만 실시간으로
+    갱신하기 위한 용도. date 파라미터로 과거 날짜 조회도 지원한다.
+    """
+    date_param = request.args.get("date")
+    source, _is_today = _resolve_source(date_param)
+    if source is None:
+        return jsonify({"error": "해당 날짜의 저장된 결과가 없습니다."}), 404
+
+    included = source["ai_scored"].get("포함", [])
+    own_count = len([a for a in included if a.get("keyword_category") == "자사"])
+    competitor_count = len([a for a in included if a.get("keyword_category") == "경쟁사"])
+    industry_count = len([a for a in included if str(a.get("keyword_category", "")).startswith("업계")])
+    warning_count = len(source["negative_flagged"]) + len(source["vig_sensitive"])
+
+    return jsonify({
+        "total_count": len(included),
+        "own_count": own_count,
+        "competitor_count": competitor_count,
+        "industry_count": industry_count,
+        "warning_count": warning_count,
+    })
+
+
+@app.route("/history/dates")
+def history_dates():
+    """일자별 누적 아카이브 중 조회 가능한 날짜 목록을 최신순으로 반환한다."""
+    return jsonify(_list_available_dates())
 
 
 @app.route("/articles/<int:article_id>/label", methods=["POST"])
@@ -386,6 +519,9 @@ def review_run():
     """
     담당자가 입력한 실제 발송 URL 목록(콤마 구분 문자열 또는 JSON 배열)과
     현재 캐시된 자동화 결과를 대조해 리뷰를 수행한다.
+    (주의: 이 시점에는 label_examples.json에 아직 반영되지 않는다. 화면에서
+    담당자가 후보를 확인하고 "반영하기"를 눌러야 실제로 저장된다 -
+    /review/apply 참조.)
     """
     payload = request.get_json(force=True) or {}
     sent_urls_raw = payload.get("sent_urls", "")
@@ -401,6 +537,37 @@ def review_run():
 
     result = review_mode.run_review_mode(actual_sent_urls, all_auto_articles)
     return jsonify(result)
+
+
+@app.route("/review/apply", methods=["POST"])
+def review_apply():
+    """
+    /review/run이 계산한 label_update_candidates 중 담당자가 승인한 항목만
+    (또는 전체를) 실제 label_examples.json에 반영한다.
+    (2026-07-06 추가: 기존에는 후보를 화면에 보여주기만 하고 실제 반영하는
+    경로가 없어, 리뷰를 아무리 실행해도 다음 채점에 학습되지 않는 문제가
+    있었다. 이 라우트가 그 반영 단계를 담당한다.)
+
+    요청 형식: {"candidates": [...], "approved_indices": [0, 2, ...]}
+    approved_indices를 생략하면 candidates 전체를 반영한다.
+    """
+    payload = request.get_json(force=True) or {}
+    candidates = payload.get("candidates", [])
+    approved_indices = payload.get("approved_indices")  # None이면 전체 반영
+
+    if not candidates:
+        return jsonify({"error": "반영할 후보가 없습니다. 먼저 /review/run으로 리뷰를 실행하세요."}), 400
+
+    total_count = review_mode.apply_label_update_candidates(candidates, approved_indices)
+    applied_count = len(candidates) if approved_indices is None else len(
+        [i for i in approved_indices if 0 <= i < len(candidates)]
+    )
+
+    return jsonify({
+        "status": "applied",
+        "applied_count": applied_count,
+        "total_label_examples": total_count,
+    })
 
 
 # =============================================================================

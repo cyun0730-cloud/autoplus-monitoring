@@ -55,14 +55,41 @@ def _load_sent_articles():
     return urls, titles
 
 
-def filter_by_date(articles: list, days: int = 1):
+def _get_report_window(reference_time=None, boundary_hour: int = 9):
     """
-    발행일 기준 최근 `days`일 이내 기사만 남긴다.
+    "전일 09:00 ~ 금일 09:00" 형태의 고정 리포트 기준 창을 계산한다.
+    파이프라인을 몇 시에 실행하든(예: 11시 스케줄 실행) 항상 동일한
+    24시간 창을 기준으로 기사를 걸러, 실행 시각에 따라 기준일이
+    들쭉날쭉해지는 문제를 방지한다.
+
+    - 실행 시각이 boundary_hour(기본 09시) 이후면: (어제 09시, 오늘 09시]
+    - 실행 시각이 boundary_hour 이전이면: (그제 09시, 어제 09시]
+      (전날 스케줄이 아직 안 돌았거나 수동 실행한 경우를 보수적으로 처리)
+    """
+    now = reference_time or datetime.now()
+    boundary_today = now.replace(hour=boundary_hour, minute=0, second=0, microsecond=0)
+    window_end = boundary_today if now >= boundary_today else boundary_today - timedelta(days=1)
+    window_start = window_end - timedelta(days=1)
+    return window_start, window_end
+
+
+def filter_by_date(articles: list, days: int = 1, window_start=None, window_end=None):
+    """
+    발행일 기준으로 기사를 거른다.
+
+    기본 동작은 "전일 09:00 ~ 금일 09:00" 고정 창(_get_report_window)을
+    사용한다. window_start/window_end를 직접 넘기면 그 값을 우선 사용하고,
+    둘 다 없으면 _get_report_window()로 자동 계산한다.
+    (과거 `days`만 넘기던 구버전 호출 방식과의 호환을 위해 인자는 유지하되,
+    실제 판단 기준은 고정 09시 창으로 통일했다.)
+
     published_at 파싱에 실패하는 기사는(형식이 매체마다 상이함) 보수적으로
     "최신 기사일 가능성"을 존중해 통과시킨다 (놓친 기사 방지가 오탐 방지보다
     우선이라는 PR 실무 판단 반영).
     """
-    cutoff = datetime.now() - timedelta(days=days)
+    if window_start is None or window_end is None:
+        window_start, window_end = _get_report_window()
+
     result = []
     for article in articles:
         published_at = article.get("published_at", "")
@@ -80,7 +107,7 @@ def filter_by_date(articles: list, days: int = 1):
             # 파싱 실패 시 통과 (놓침 방지 우선)
             result.append(article)
             continue
-        if parsed >= cutoff:
+        if window_start <= parsed < window_end:
             result.append(article)
     return result
 

@@ -62,6 +62,25 @@ main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
 .status-done { background-color: #10b981; }
 .status-error { background-color: #ef4444; }
 
+.date-select-label { margin-left: 16px; margin-right: 6px; font-size: 13px; color: #555; }
+#date-select {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background-color: #fff;
+}
+
+.archive-view-banner {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #eef2ff;
+  color: #3730a3;
+  font-size: 13px;
+}
+.archive-view-banner i { margin-right: 6px; }
+
 #action-buttons .btn { margin-left: 8px; }
 .btn {
   display: inline-block;
@@ -72,6 +91,31 @@ main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
   border: none;
   text-decoration: none;
 }
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.label-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.decision-group { margin-bottom: 24px; }
+.decision-group-title {
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e5e7eb;
+}
+.decision-group-count { font-weight: normal; color: #888; font-size: 13px; }
+.group-included .decision-group-title { border-bottom-color: #10b981; color: #047857; }
+.group-pending .decision-group-title { border-bottom-color: #f59e0b; color: #b45309; }
+.group-excluded .decision-group-title { border-bottom-color: #9ca3af; color: #6b7280; }
+.group-excluded .article-card { opacity: 0.7; }
+
+#label-candidates-list li { margin-bottom: 8px; }
+.candidate-reason { color: #777; font-size: 12px; }
 .btn-primary { background-color: #1a56db; color: #fff; }
 .btn-secondary { background-color: #10b981; color: #fff; }
 .btn-outline { background-color: #fff; color: #1a56db; border: 1px solid #1a56db; }

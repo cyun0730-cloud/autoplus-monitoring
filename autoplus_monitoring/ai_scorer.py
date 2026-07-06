@@ -165,24 +165,48 @@ def score_article(article: dict, few_shot_text: str):
     return _parse_llm_json(raw_response)
 
 
-def run_ai_scoring(rule_filter_pass_articles: list):
+def run_ai_scoring(rule_filter_pass_articles: list, max_workers: int = 8):
     """
     1차 규칙 필터를 통과한 기사 리스트에 대해 2차 AI 채점을 수행한다.
     각 기사에 ai_decision, ai_reason, ai_flags 필드를 추가한다.
 
+    [성능 개선 - 병렬 처리]
+    기존에는 기사를 한 건씩 순차 호출해 464건 기준 약 30분이 소요됐다.
+    LLM 호출은 서로 독립적인 요청이므로 ThreadPoolExecutor로 동시에 여러
+    건을 처리하도록 변경했다(기본 동시 8건). LLM 호출은 네트워크 대기가
+    대부분이라 스레드 병렬화만으로도 충분히 효과가 있다(GIL 영향 적음).
+    max_workers는 사용하는 LLM 제공사의 동시 요청 제한(rate limit)에 맞춰
+    필요시 조정 가능하다(너무 크게 잡으면 429 rate limit 오류가 늘 수 있음).
+
     반환값: {"포함": [...], "제외": [...], "검토필요": [...]}
     """
+    import concurrent.futures
+
     examples = _load_label_examples()
     few_shot_text = _build_few_shot_text(examples)
 
     results = {"포함": [], "제외": [], "검토필요": []}
 
-    for article in rule_filter_pass_articles:
-        score = score_article(article, few_shot_text)
-        article["ai_decision"] = score["decision"]
-        article["ai_reason"] = score["reason"]
-        article["ai_flags"] = score["flags"]
-        results[score["decision"]].append(article)
+    if not rule_filter_pass_articles:
+        return results
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_article = {
+            executor.submit(score_article, article, few_shot_text): article
+            for article in rule_filter_pass_articles
+        }
+        for future in concurrent.futures.as_completed(future_to_article):
+            article = future_to_article[future]
+            try:
+                score = future.result()
+            except Exception as e:
+                # 개별 기사 처리 중 예기치 못한 예외가 나도 전체 파이프라인은
+                # 중단되지 않도록 안전하게 "검토필요"로 처리한다.
+                score = {"decision": "검토필요", "reason": f"채점 중 예외 발생({e}) - 기본값 검토필요 처리", "flags": []}
+            article["ai_decision"] = score["decision"]
+            article["ai_reason"] = score["reason"]
+            article["ai_flags"] = score["flags"]
+            results[score["decision"]].append(article)
 
     label_count = len(examples)
     print(
