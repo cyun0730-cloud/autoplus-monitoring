@@ -1,0 +1,382 @@
+/* =============================================================================
+   style.css
+   오토플러스 뉴스 모니터링 대시보드 스타일시트
+   ============================================================================= */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #222;
+}
+
+#main-header {
+  background-color: #1a56db;
+  color: #fff;
+  padding: 14px 24px;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#main-header h1 { font-size: 18px; margin: 0; }
+#main-nav a {
+  color: #dbe6ff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+#main-nav a.active, #main-nav a:hover { color: #fff; font-weight: bold; }
+
+main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.today-date { font-size: 20px; font-weight: bold; margin-right: 12px; }
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #999;
+}
+.status-idle { background-color: #999; }
+.status-running { background-color: #f59e0b; }
+.status-done { background-color: #10b981; }
+.status-error { background-color: #ef4444; }
+
+.date-select-label { margin-left: 16px; margin-right: 6px; font-size: 13px; color: #555; }
+#date-start-input, #date-end-input {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background-color: #fff;
+}
+.date-range-tilde { margin: 0 4px; color: #999; }
+.btn-small { padding: 5px 10px; font-size: 12px; margin-left: 6px; }
+
+.archive-view-banner {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #eef2ff;
+  color: #3730a3;
+  font-size: 13px;
+}
+.archive-view-banner i { margin-right: 6px; }
+
+#action-buttons .btn { margin-left: 8px; }
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.label-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.decision-group { margin-bottom: 24px; }
+.decision-group-title {
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e5e7eb;
+}
+.decision-group-count { font-weight: normal; color: #888; font-size: 13px; }
+.group-included .decision-group-title { border-bottom-color: #10b981; color: #047857; }
+.group-pending .decision-group-title { border-bottom-color: #f59e0b; color: #b45309; }
+.group-excluded .decision-group-title { border-bottom-color: #9ca3af; color: #6b7280; }
+.group-excluded .article-card { opacity: 0.7; }
+
+#label-candidates-list li { margin-bottom: 8px; }
+.candidate-reason { color: #777; font-size: 12px; }
+
+.unconfirmed-media-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.unconfirmed-media-example { font-size: 12px; color: #888; margin-top: 3px; }
+.unconfirmed-media-form { display: flex; gap: 6px; align-items: center; }
+.unconfirmed-media-name-input {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  width: 140px;
+}
+.unconfirmed-media-group-select {
+  padding: 5px 6px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+}
+
+.notion-test-result { margin-left: 10px; font-size: 13px; }
+.notion-test-result.success { color: #15803d; }
+.notion-test-result.error { color: #dc2626; }
+.btn-primary { background-color: #1a56db; color: #fff; }
+.btn-secondary { background-color: #10b981; color: #fff; }
+.btn-outline { background-color: #fff; color: #1a56db; border: 1px solid #1a56db; }
+
+.summary-counts {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.count-box {
+  flex: 1;
+  min-width: 100px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+.count-box .count-num { display: block; font-size: 24px; font-weight: bold; }
+.count-box .count-label { font-size: 12px; color: #666; }
+.count-box.own { background-color: #e6f4ea; }
+.count-box.competitor { background-color: #fff4e5; }
+.count-box.industry { background-color: #eef2ff; }
+.count-box.warning { background-color: #fde8e8; }
+
+.last-run-info { font-size: 12px; color: #888; margin-top: 12px; }
+
+#dashboard-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+#section-filter { width: 220px; flex-shrink: 0; }
+#section-filter h3 { font-size: 13px; color: #666; margin: 16px 0 8px; }
+#section-filter ul { list-style: none; padding: 0; margin: 0; }
+.filter-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.filter-btn:hover, .filter-btn.active { background-color: #eef2ff; color: #1a56db; }
+
+#article-list-section { flex: 1; }
+.article-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#article-search-input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  width: 220px;
+}
+.article-card {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+.article-card .media-badge {
+  display: inline-block;
+  background-color: #eef2ff;
+  color: #1a56db;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-right: 6px;
+}
+.article-card .keyword-badge {
+  background-color: #f0fdf4;
+  color: #15803d;
+}
+.article-card .date-badge {
+  background-color: #fdf4ff;
+  color: #86198f;
+}
+.article-card .article-title { font-size: 14px; font-weight: 600; }
+.article-card .article-title a { color: #222; text-decoration: none; }
+.article-card .article-reason { font-size: 12px; color: #888; font-style: italic; margin-top: 4px; }
+.article-card.negative-flag { background-color: #fff5f5; }
+.article-card.vig-flag { background-color: #fff5f5; border-left: 3px solid #ef4444; padding-left: 10px; }
+
+.label-buttons { margin-top: 6px; }
+.label-buttons button {
+  font-size: 11px;
+  padding: 3px 8px;
+  margin-right: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+.label-buttons button.active-label { background-color: #1a56db; color: #fff; border-color: #1a56db; }
+
+.empty-hint { color: #999; font-size: 13px; }
+
+/* 설정 페이지 */
+#subscriber-add-form { display: flex; gap: 8px; margin-bottom: 12px; }
+#subscriber-add-form input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+#subscriber-list { list-style: none; padding: 0; }
+#subscriber-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+}
+.btn-remove-subscriber { background: none; border: none; color: #ef4444; cursor: pointer; }
+.note { font-size: 12px; color: #888; background: #f8f9fa; padding: 10px; border-radius: 6px; }
+
+/* TEST_MODE 안내 배너 (대시보드 상단) */
+.banner-warning {
+  background-color: #fff8e1;
+  border: 1px solid #f5c518;
+  color: #7a5c00;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.banner-warning i { color: #d97706; margin-right: 6px; }
+.banner-warning code {
+  background: rgba(0,0,0,0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 더미(TEST_MODE) 기사 링크 뱃지 */
+.dummy-url-link { color: #999 !important; cursor: help; }
+.dummy-badge {
+  display: inline-block;
+  background-color: #f59e0b;
+  color: #fff;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 8px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* 키워드 관리 UI */
+#keyword-category-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.keyword-group {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.keyword-group h3 {
+  font-size: 14px;
+  margin: 0 0 10px;
+  color: #333;
+}
+.industry-label-hint {
+  font-size: 11px;
+  font-weight: normal;
+  color: #999;
+}
+.keyword-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+  min-height: 20px;
+}
+.keyword-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #eef2ff;
+  color: #1a56db;
+  font-size: 12px;
+  padding: 4px 6px 4px 10px;
+  border-radius: 14px;
+}
+.keyword-group[data-category="sensitive"] .keyword-chip,
+.keyword-group[data-category="negative"] .keyword-chip {
+  background-color: #fde8e8;
+  color: #b91c1c;
+}
+.btn-remove-keyword {
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 2px;
+}
+.btn-remove-keyword:hover { opacity: 1; }
+.keyword-add-form {
+  display: flex;
+  gap: 8px;
+}
+.keyword-add-form input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* 리뷰 페이지 */
+#sent-urls-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+#main-footer {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  padding: 20px;
+}

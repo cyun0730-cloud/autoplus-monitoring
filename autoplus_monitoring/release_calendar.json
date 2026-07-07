@@ -1,0 +1,248 @@
+{
+  "_comment": "매체 도메인-이름-그룹 매핑표. 확인 필요: 아래 도메인/분류는 인수인계서 및 공개 정보를 토대로 초안 구축한 것으로, 실제 매체 그룹 분류(통신사/일간지/경제지/스포츠지/전문지·무가지/주간지/오토지/온라인)는 정경화 대리·나한글 팀장에게 최종 검증받아야 한다.",
+  "yna.co.kr": {
+    "name": "연합뉴스",
+    "group": "통신사"
+  },
+  "news1.kr": {
+    "name": "뉴스1",
+    "group": "통신사"
+  },
+  "newsis.com": {
+    "name": "뉴시스",
+    "group": "통신사"
+  },
+  "hani.co.kr": {
+    "name": "한겨레",
+    "group": "일간지"
+  },
+  "chosun.com": {
+    "name": "조선일보",
+    "group": "일간지"
+  },
+  "joongang.co.kr": {
+    "name": "중앙일보",
+    "group": "일간지"
+  },
+  "donga.com": {
+    "name": "동아일보",
+    "group": "일간지"
+  },
+  "khan.co.kr": {
+    "name": "경향신문",
+    "group": "일간지"
+  },
+  "seoul.co.kr": {
+    "name": "서울신문",
+    "group": "일간지"
+  },
+  "munhwa.com": {
+    "name": "문화일보",
+    "group": "일간지"
+  },
+  "segye.com": {
+    "name": "세계일보",
+    "group": "일간지"
+  },
+  "kmib.co.kr": {
+    "name": "국민일보",
+    "group": "일간지"
+  },
+  "edaily.co.kr": {
+    "name": "이데일리",
+    "group": "경제지"
+  },
+  "hankyung.com": {
+    "name": "한국경제",
+    "group": "경제지"
+  },
+  "mk.co.kr": {
+    "name": "매일경제",
+    "group": "경제지"
+  },
+  "mt.co.kr": {
+    "name": "머니투데이",
+    "group": "경제지"
+  },
+  "sedaily.com": {
+    "name": "서울경제",
+    "group": "경제지"
+  },
+  "fnnews.com": {
+    "name": "파이낸셜뉴스",
+    "group": "경제지"
+  },
+  "asiae.co.kr": {
+    "name": "아시아경제",
+    "group": "경제지"
+  },
+  "segyebiz.com": {
+    "name": "세계비즈",
+    "group": "경제지"
+  },
+  "heraldcorp.com": {
+    "name": "헤럴드경제",
+    "group": "경제지"
+  },
+  "ekn.kr": {
+    "name": "에너지경제",
+    "group": "경제지"
+  },
+  "sportschosun.com": {
+    "name": "스포츠조선",
+    "group": "스포츠지"
+  },
+  "sportsseoul.com": {
+    "name": "스포츠서울",
+    "group": "스포츠지"
+  },
+  "osen.co.kr": {
+    "name": "OSEN",
+    "group": "스포츠지"
+  },
+  "etnews.com": {
+    "name": "전자신문",
+    "group": "전문지/무가지"
+  },
+  "dt.co.kr": {
+    "name": "디지털타임스",
+    "group": "전문지/무가지"
+  },
+  "electimes.com": {
+    "name": "전기신문",
+    "group": "전문지/무가지"
+  },
+  "metroseoul.co.kr": {
+    "name": "메트로",
+    "group": "전문지/무가지"
+  },
+  "sisajournal.com": {
+    "name": "시사저널",
+    "group": "주간지"
+  },
+  "sisain.co.kr": {
+    "name": "시사IN",
+    "group": "주간지"
+  },
+  "weekly.hankooki.com": {
+    "name": "주간한국",
+    "group": "주간지"
+  },
+  "autoin.co.kr": {
+    "name": "오토IN",
+    "group": "오토지",
+    "_comment": "확인 필요: 실제 도메인 미검증"
+  },
+  "automorning.co.kr": {
+    "name": "오토모닝",
+    "group": "오토지",
+    "_comment": "확인 필요: 실제 도메인 미검증"
+  },
+  "autodiary.kr": {
+    "name": "오토다이어리",
+    "group": "오토지"
+  },
+  "motorgraph.com": {
+    "name": "모터그래프",
+    "group": "오토지"
+  },
+  "carguy.kr": {
+    "name": "카가이",
+    "group": "오토지",
+    "_comment": "확인 필요: 실제 도메인 미검증"
+  },
+  "news.nate.com": {
+    "name": "네이트뉴스",
+    "group": "온라인"
+  },
+  "daum.net": {
+    "name": "다음뉴스",
+    "group": "온라인"
+  },
+  "inews24.com": {
+    "name": "아이뉴스24",
+    "group": "온라인"
+  },
+  "newsway.co.kr": {
+    "name": "뉴스웨이",
+    "group": "온라인"
+  },
+  "eknews.net": {
+    "name": "이뉴스투데이",
+    "group": "온라인",
+    "_comment": "확인 필요: 실제 도메인 미검증 (인수인계서 언급 매체 - 포럼 티켓 구매 이력)"
+  },
+  "wowtv.co.kr": {
+    "name": "한국경제TV",
+    "group": "온라인"
+  },
+  "newdaily.co.kr": {
+    "name": "뉴데일리",
+    "group": "온라인"
+  },
+  "biz.chosun.com": {
+    "name": "조선비즈",
+    "group": "온라인"
+  },
+  "moneys.mt.co.kr": {
+    "name": "머니S",
+    "group": "온라인"
+  },
+  "kbmaeil.com": {
+    "name": "경북매일",
+    "group": "온라인",
+    "_comment": "확인 필요: 지역매체 분류 재검토 필요"
+  },
+  "ziksir.com": {
+    "name": "직썰",
+    "group": "온라인"
+  },
+  "sidae.com": {
+    "name": "동행미디어시대",
+    "group": "경제지"
+  },
+  "dnews.co.kr": {
+    "name": "대한경제",
+    "group": "경제지"
+  },
+  "sisaweek.com": {
+    "name": "시사위크",
+    "group": "온라인"
+  },
+  "bizwnews.com": {
+    "name": "비즈월드",
+    "group": "경제지"
+  },
+  "sportsworldi.com": {
+    "name": "스포츠월드",
+    "group": "스포츠지"
+  },
+  "safetimes.co.kr": {
+    "name": "세이프타임즈",
+    "group": "온라인"
+  },
+  "hankooki.com": {
+    "name": "데일리한국",
+    "group": "온라인"
+  },
+  "sisaon.co.kr": {
+    "name": "시사오늘",
+    "group": "온라인"
+  },
+  "starnewskorea.com": {
+    "name": "스타뉴스",
+    "group": "온라인"
+  },
+  "tf.co.kr": {
+    "name": "더팩트",
+    "group": "온라인"
+  },
+  "newstomato.com": {
+    "name": "뉴스토마토",
+    "group": "경제지"
+  },
+  "g-enews.com": {
+    "name": "글로벌이코노믹",
+    "group": "경제지"
+  }
+}

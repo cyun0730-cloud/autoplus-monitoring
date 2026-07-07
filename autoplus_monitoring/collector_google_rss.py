@@ -1,121 +1,112 @@
-# -*- coding: utf-8 -*-
-"""
-collector_google_rss.py
-===============================================================================
-[모듈 목적]
-Google News RSS(https://news.google.com/rss/search?q={키워드}&hl=ko&gl=KR&ceid=KR:ko)
-를 feedparser로 수집해, collector_naver_api.py의 결과를 보완한다.
-네이버 뉴스 검색 API가 다루지 않는 매체나 최신 기사를 보완 수집하는 목적이다.
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오토플러스 뉴스 모니터링 대시보드</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body data-is-today="{{ 'true' if is_today else 'false' }}" data-today="{{ today }}" data-start-date="{{ start_date }}" data-end-date="{{ end_date }}">
+<header id="main-header">
+  <div class="header-inner">
+    <h1><i class="fas fa-newspaper"></i> 오토플러스 뉴스 모니터링</h1>
+    <nav id="main-nav">
+      <a href="/" class="active">대시보드</a>
+      <a href="/settings">설정</a>
+      <a href="/review">주간 리뷰</a>
+    </nav>
+  </div>
+</header>
 
-[수집 우선순위]
-자사 키워드를 최우선 적용하고, 경쟁사/업계 키워드로 확장 가능한 함수 구조로
-설계한다 (extend_to_competitor_and_industry 참조). 이는 "자사 언급 누락은
-PR팀 입장에서 가장 치명적인 실패"라는 암묵적 판단 기준을 반영한 것이다.
+<main id="dashboard-main">
+  {% if test_mode %}
+  <section id="test-mode-banner" class="card banner-warning">
+    <i class="fas fa-triangle-exclamation"></i>
+    <strong>TEST_MODE 실행 중</strong> —
+    현재 <code>.env</code>의 <code>TEST_MODE=True</code> 설정으로 실제 네이버
+    뉴스 API/구글 RSS를 호출하지 않고, 더미(가짜) 기사 데이터로 전체 파이프라인을
+    시연하고 있습니다. 이 때문에 아래 기사 목록의 링크는
+    <code>https://dummy.example.com/...</code> 형태의 가상 주소이며, 클릭해도
+    실제 기사로 연결되지 않습니다(정상 동작이며 기사 URL 자체의 오류가 아닙니다).
+    네이버 뉴스 검색 API 엔드포인트(<code>https://openapi.naver.com/v1/search/news.json</code>)는
+    <code>collector_naver_api.py</code>에 이미 정확히 반영되어 있습니다.
+    실제 기사 링크가 열리도록 하려면 <code>.env</code>에서
+    <code>TEST_MODE=False</code>로 변경하고 <code>NAVER_CLIENT_ID</code>/
+    <code>NAVER_CLIENT_SECRET</code>(네이버 개발자센터 발급)을 입력한 뒤
+    서비스를 재시작하세요.
+  </section>
+  {% endif %}
+  <section id="summary-section" class="card">
+    <div class="summary-header">
+      <div>
+        <span class="today-date">{{ today }}</span>
+        <span id="pipeline-status" class="status-badge status-{{ pipeline_status }}">{{ pipeline_status }}</span>
+        <label for="date-start-input" class="date-select-label">조회 날짜</label>
+        <input type="date" id="date-start-input" value="{{ start_date }}">
+        <span class="date-range-tilde">~</span>
+        <input type="date" id="date-end-input" value="{{ end_date }}">
+        <button id="btn-date-today" class="btn btn-outline btn-small" title="오늘로 돌아가기"><i class="fas fa-calendar-day"></i> 오늘</button>
+      </div>
+      <div id="action-buttons">
+        <button id="btn-run" class="btn btn-primary" {% if not is_today %}disabled title="과거 날짜 조회 중에는 실행할 수 없습니다. 날짜를 오늘로 변경하세요."{% endif %}><i class="fas fa-play"></i> 모니터링 실행</button>
+        <button id="btn-send-email" class="btn btn-secondary" {% if not is_today %}disabled title="과거 날짜 조회 중에는 발송할 수 없습니다."{% endif %}><i class="fas fa-envelope"></i> 이메일 발송</button>
+        <a href="/download/docx" class="btn btn-outline"><i class="fas fa-file-word"></i> Word 다운로드</a>
+        <button id="btn-coverage-report" class="btn btn-outline"><i class="fas fa-table"></i> 게재보고 다운로드</button>
+        <a href="/download/email-preview" target="_blank" class="btn btn-outline"><i class="fas fa-eye"></i> 메일 미리보기</a>
+      </div>
+    </div>
+    <p id="archive-view-banner" class="archive-view-banner" {% if is_today %}style="display:none;"{% endif %}>
+      <i class="fas fa-clock-rotate-left"></i> <span id="archive-view-banner-text">선택한 날짜(기간)의 저장된 기록을 조회 중입니다 (읽기 전용, 라벨 수정 불가).</span>
+      "오늘" 버튼을 누르면 실시간 화면으로 돌아갑니다.
+    </p>
+    <div class="summary-counts">
+      <div class="count-box"><span class="count-num" id="total-count">{{ total_count }}</span><span class="count-label">전체</span></div>
+      <div class="count-box own"><span class="count-num" id="own-count">{{ own_count }}</span><span class="count-label">자사</span></div>
+      <div class="count-box competitor"><span class="count-num" id="competitor-count">{{ competitor_count }}</span><span class="count-label">경쟁사</span></div>
+      <div class="count-box industry"><span class="count-num" id="industry-count">{{ industry_count }}</span><span class="count-label">업계</span></div>
+      <div class="count-box warning"><span class="count-num" id="warning-count">{{ warning_count }}</span><span class="count-label">경고</span></div>
+    </div>
+    {% if last_run_at %}
+    <p class="last-run-info">마지막 실행: {{ last_run_at }}</p>
+    {% endif %}
+  </section>
 
-[중복 제거]
-네이버 결과와 URL 기준 중복 제거 후 병합한다 (merge_with_naver_results 참조).
+  <div id="dashboard-body">
+    <aside id="section-filter" class="card">
+      <h3>섹션 필터</h3>
+      <ul>
+        <li><button class="filter-btn active" data-section="">전체</button></li>
+        <li><button class="filter-btn" data-section="자사">자사</button></li>
+        <li><button class="filter-btn" data-section="경쟁사">경쟁사</button></li>
+        <li><button class="filter-btn" data-flag="negative">부정 이슈</button></li>
+        <li><button class="filter-btn" data-flag="vig">VIG 민감</button></li>
+      </ul>
+      <h3>업계 우선순위</h3>
+      <ul>
+        <li><button class="filter-btn" data-section="업계1">1순위 중고차/렌터카</button></li>
+        <li><button class="filter-btn" data-section="업계2">2순위 자동차금융</button></li>
+        <li><button class="filter-btn" data-section="업계3">3순위 브랜드뉴스</button></li>
+        <li><button class="filter-btn" data-section="업계4">4순위 업계기획</button></li>
+        <li><button class="filter-btn" data-section="업계5">5순위 기타</button></li>
+      </ul>
+    </aside>
 
-[TEST_MODE]
-.env의 TEST_MODE=True 인 경우 실제 RSS 호출 없이 빈 리스트를 반환한다
-(네이버 수집기의 더미 데이터로 이미 전체 플로우 테스트가 가능하므로, 중복
-더미 데이터 생성을 피하기 위함).
-===============================================================================
-"""
-import os
-import time
-from urllib.parse import quote
+    <section id="article-list-section" class="card">
+      <div class="article-list-header">
+        <h3>기사 목록</h3>
+        <input type="text" id="article-search-input" placeholder="제목/매체명 검색...">
+      </div>
+      <div id="article-list"><p class="empty-hint">모니터링을 실행하면 결과가 여기에 표시됩니다.</p></div>
+    </section>
+  </div>
+</main>
 
-import feedparser
-from dotenv import load_dotenv
+<footer id="main-footer">
+  <p>오토플러스 PR팀 언론 모니터링 자동화 시스템 | "정확도 저하 원인은 기술적 한계가 아니라 담당자 판단 기준의 미이관"</p>
+</footer>
 
-from keywords import OWN_KEYWORDS, COMPETITOR_KEYWORDS, INDUSTRY_KEYWORDS
-
-load_dotenv()
-TEST_MODE = os.getenv("TEST_MODE", "True").lower() == "true"
-
-GOOGLE_NEWS_RSS_TEMPLATE = "https://news.google.com/rss/search?q={query}&hl=ko&gl=KR&ceid=KR:ko"
-
-
-def _fetch_rss_for_keyword(keyword: str, category: str):
-    """단일 키워드에 대해 Google News RSS를 조회하고 기사 리스트로 변환한다."""
-    url = GOOGLE_NEWS_RSS_TEMPLATE.format(query=quote(keyword))
-    articles = []
-    try:
-        feed = feedparser.parse(url)
-        for entry in feed.entries:
-            # Google News RSS의 title은 보통 "기사제목 - 매체명" 형식
-            raw_title = entry.get("title", "")
-            source = ""
-            title = raw_title
-            if " - " in raw_title:
-                title, source = raw_title.rsplit(" - ", 1)
-            articles.append({
-                "title": title.strip(),
-                "url": entry.get("link", ""),
-                "source": source.strip(),
-                "journalist": "",
-                "summary": entry.get("summary", ""),
-                "published_at": entry.get("published", ""),
-                "search_keyword": keyword,
-                "keyword_category": category,
-            })
-    except Exception as e:
-        print(f"[collector_google_rss] 키워드 '{keyword}' RSS 수집 실패: {e}")
-    return articles
-
-
-def collect_own_keywords_only():
-    """자사 키워드만 우선 수집 (기본 호출 함수)."""
-    if TEST_MODE:
-        print("[collector_google_rss] TEST_MODE=True → Google RSS 호출 생략 (빈 리스트 반환)")
-        return []
-    all_articles = []
-    for kw in OWN_KEYWORDS:
-        all_articles.extend(_fetch_rss_for_keyword(kw, "자사"))
-        time.sleep(0.2)
-    return all_articles
-
-
-def extend_to_competitor_and_industry():
-    """
-    자사 키워드 수집으로 부족할 경우, 경쟁사/업계 키워드로 확장 수집한다.
-    운영 부하(요청 과다)를 고려해 기본 파이프라인에서는 자동 호출하지 않고,
-    필요 시 main.py 또는 web_app.py 수동실행 옵션에서 선택적으로 호출하도록
-    별도 함수로 분리해 둔다.
-    """
-    if TEST_MODE:
-        print("[collector_google_rss] TEST_MODE=True → 확장 수집 생략")
-        return []
-    all_articles = []
-    for kw in COMPETITOR_KEYWORDS:
-        all_articles.extend(_fetch_rss_for_keyword(kw, "경쟁사"))
-        time.sleep(0.2)
-    for priority, kws in INDUSTRY_KEYWORDS.items():
-        for kw in kws:
-            all_articles.extend(_fetch_rss_for_keyword(kw, f"업계{priority}"))
-            time.sleep(0.2)
-    return all_articles
-
-
-def merge_with_naver_results(naver_articles: list, rss_articles: list):
-    """
-    네이버 API 수집 결과와 Google RSS 수집 결과를 URL 기준으로 중복 제거하며 병합한다.
-    네이버 결과를 우선으로 하고(먼저 수집된 매체 정보 등을 신뢰), RSS 결과 중
-    URL이 겹치지 않는 항목만 추가한다.
-    """
-    seen_urls = {a["url"] for a in naver_articles if a.get("url")}
-    merged = list(naver_articles)
-    added = 0
-    for a in rss_articles:
-        url = a.get("url")
-        if url and url not in seen_urls:
-            merged.append(a)
-            seen_urls.add(url)
-            added += 1
-    print(f"[collector_google_rss] RSS 보완 수집으로 {added}건 신규 추가 (네이버 결과와 병합)")
-    return merged
-
-
-if __name__ == "__main__":
-    own = collect_own_keywords_only()
-    print(f"[collector_google_rss] 자사 키워드 수집 {len(own)}건")
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+{
+  "_comment": "수집기(collector_*.py)가 수집한 원본 기사 캐시. main.py 실행 시마다 덮어쓰기 된다.",
+  "collected_at": "2026-07-06 08:59:09",
+  "articles": [
+    {
+      "title": "리본카, 여름 성수기 맞아 인증중고차 물량 확대",
+      "url": "https://dummy.example.com/news/20260706/1",
+      "source": "이데일리",
+      "journalist": "",
+      "summary": "리본카, 여름 성수기 맞아 인증중고차 물량 확대 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 04:59",
+      "search_keyword": "리본카",
+      "keyword_category": "자사"
+    },
+    {
+      "title": "오토플러스, 3분기 거래액 전년 대비 30% 증가",
+      "url": "https://dummy.example.com/news/20260706/2",
+      "source": "머니투데이",
+      "journalist": "김기자",
+      "summary": "오토플러스, 3분기 거래액 전년 대비 30% 증가 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 11:59",
+      "search_keyword": "오토플러스",
+      "keyword_category": "자사"
+    },
+    {
+      "title": "케이카, AI 기반 차량 진단 서비스 신규 도입",
+      "url": "https://dummy.example.com/news/20260706/3",
+      "source": "한국경제",
+      "journalist": "박기자",
+      "summary": "케이카, AI 기반 차량 진단 서비스 신규 도입 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 10:59",
+      "search_keyword": "케이카",
+      "keyword_category": "경쟁사"
+    },
+    {
+      "title": "헤이딜러, 여름맞이 세차 쿠폰 증정 이벤트",
+      "url": "https://dummy.example.com/news/20260706/4",
+      "source": "오토IN",
+      "journalist": "이기자",
+      "summary": "헤이딜러, 여름맞이 세차 쿠폰 증정 이벤트 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-05 22:59",
+      "search_keyword": "헤이딜러",
+      "keyword_category": "경쟁사"
+    },
+    {
+      "title": "KB차차차, 10주년 기념 경품 이벤트 진행",
+      "url": "https://dummy.example.com/news/20260706/5",
+      "source": "디지털타임스",
+      "journalist": "김기자",
+      "summary": "KB차차차, 10주년 기념 경품 이벤트 진행 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 04:59",
+      "search_keyword": "KB차차차",
+      "keyword_category": "경쟁사"
+    },
+    {
+      "title": "엔카닷컴, 신규 투자 유치 및 사업 확장 발표",
+      "url": "https://dummy.example.com/news/20260706/6",
+      "source": "전자신문",
+      "journalist": "김기자",
+      "summary": "엔카닷컴, 신규 투자 유치 및 사업 확장 발표 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 15:59",
+      "search_keyword": "엔카닷컴",
+      "keyword_category": "경쟁사"
+    },
+    {
+      "title": "국내 중고차 시장 규모 40조 돌파 전망",
+      "url": "https://dummy.example.com/news/20260706/7",
+      "source": "연합뉴스",
+      "journalist": "박기자",
+      "summary": "국내 중고차 시장 규모 40조 돌파 전망 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 13:59",
+      "search_keyword": "중고차",
+      "keyword_category": "업계1"
+    },
+    {
+      "title": "렌터카 구독서비스 이용자 급증",
+      "url": "https://dummy.example.com/news/20260706/8",
+      "source": "뉴스1",
+      "journalist": "",
+      "summary": "렌터카 구독서비스 이용자 급증 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 07:59",
+      "search_keyword": "구독서비스",
+      "keyword_category": "업계1"
+    },
+    {
+      "title": "캐피탈사, 중고차 금융 상품 다양화",
+      "url": "https://dummy.example.com/news/20260706/9",
+      "source": "서울경제",
+      "journalist": "박기자",
+      "summary": "캐피탈사, 중고차 금융 상품 다양화 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 08:59",
+      "search_keyword": "캐피탈+중고차",
+      "keyword_category": "업계2"
+    },
+    {
+      "title": "BMW, 신형 전기 세단 국내 출시",
+      "url": "https://dummy.example.com/news/20260706/10",
+      "source": "조선일보",
+      "journalist": "이기자",
+      "summary": "BMW, 신형 전기 세단 국내 출시 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 13:59",
+      "search_keyword": "BMW",
+      "keyword_category": "업계3"
+    },
+    {
+      "title": "벤츠 코리아, 여름 드라이빙 페스티벌 개최",
+      "url": "https://dummy.example.com/news/20260706/11",
+      "source": "오토모닝",
+      "journalist": "박기자",
+      "summary": "벤츠 코리아, 여름 드라이빙 페스티벌 개최 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 01:59",
+      "search_keyword": "벤츠",
+      "keyword_category": "업계3"
+    },
+    {
+      "title": "테슬라, 국내 판매량 3개월 연속 1위",
+      "url": "https://dummy.example.com/news/20260706/12",
+      "source": "매일경제",
+      "journalist": "박기자",
+      "summary": "테슬라, 국내 판매량 3개월 연속 1위 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 03:59",
+      "search_keyword": "테슬라",
+      "keyword_category": "업계3"
+    },
+    {
+      "title": "아우디코리아 판촉 사은품 증정 행사",
+      "url": "https://dummy.example.com/news/20260706/13",
+      "source": "메트로",
+      "journalist": "",
+      "summary": "아우디코리아 판촉 사은품 증정 행사 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 13:59",
+      "search_keyword": "아우디",
+      "keyword_category": "업계3"
+    },
+    {
+      "title": "수입차 업계 판매 동향 분석 기획기사",
+      "url": "https://dummy.example.com/news/20260706/14",
+      "source": "한겨레",
+      "journalist": "김기자",
+      "summary": "수입차 업계 판매 동향 분석 기획기사 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 03:59",
+      "search_keyword": "업계 트렌드",
+      "keyword_category": "업계4"
+    },
+    {
+      "title": "국산차 5월 판매 순위 발표",
+      "url": "https://dummy.example.com/news/20260706/15",
+      "source": "동아일보",
+      "journalist": "김기자",
+      "summary": "국산차 5월 판매 순위 발표 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 06:59",
+      "search_keyword": "업계 기획",
+      "keyword_category": "업계4"
+    },
+    {
+      "title": "전기차 충전 인프라 확충 계획 발표",
+      "url": "https://dummy.example.com/news/20260706/16",
+      "source": "국민일보",
+      "journalist": "박기자",
+      "summary": "전기차 충전 인프라 확충 계획 발표 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 17:59",
+      "search_keyword": "인프라",
+      "keyword_category": "업계5"
+    },
+    {
+      "title": "자율주행 관련 법규 개정 추진",
+      "url": "https://dummy.example.com/news/20260706/17",
+      "source": "세계일보",
+      "journalist": "김기자",
+      "summary": "자율주행 관련 법규 개정 추진 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 01:59",
+      "search_keyword": "법규",
+      "keyword_category": "업계5"
+    },
+    {
+      "title": "리본카 차량 결함 논란, 소비자 불만 확산",
+      "url": "https://dummy.example.com/news/20260706/18",
+      "source": "소비자매체",
+      "journalist": "박기자",
+      "summary": "리본카 차량 결함 논란, 소비자 불만 확산 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 02:59",
+      "search_keyword": "리본카",
+      "keyword_category": "자사"
+    },
+    {
+      "title": "오토플러스, VIG파트너스 지분 매각설 재점화",
+      "url": "https://dummy.example.com/news/20260706/19",
+      "source": "머니S",
+      "journalist": "김기자",
+      "summary": "오토플러스, VIG파트너스 지분 매각설 재점화 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-06 00:59",
+      "search_keyword": "오토플러스",
+      "keyword_category": "자사"
+    },
+    {
+      "title": "케이카, 여름맞이 특별 할인 이벤트 진행",
+      "url": "https://dummy.example.com/news/20260706/20",
+      "source": "오토IN",
+      "journalist": "박기자",
+      "summary": "케이카, 여름맞이 특별 할인 이벤트 진행 관련 상세 내용 요약입니다. (TEST_MODE 더미 데이터)",
+      "published_at": "2026-07-05 23:59",
+      "search_keyword": "케이카",
+      "keyword_category": "경쟁사"
+    }
+  ]
+}

@@ -60,6 +60,7 @@ import ai_scorer
 import formatter_docx
 import report_formatter
 import release_calendar
+import notion_sync
 import email_sender
 import review_mode
 import keywords
@@ -287,7 +288,17 @@ def _run_pipeline_core():
 
         _pipeline_state["status"] = "done"
         _pipeline_state["last_run_at"] = _now_kst().strftime("%Y-%m-%d %H:%M:%S")
-        _save_daily_archive(_now_kst().strftime("%Y-%m-%d"))
+        today_str_for_archive = _now_kst().strftime("%Y-%m-%d")
+        _save_daily_archive(today_str_for_archive)
+
+        # Notion 동기화 (Render 재배포 시 로컬 아카이브가 초기화되는 것과 무관하게
+        # 영구 기록을 남기기 위함). 설정 안 돼있으면 notion_sync 내부에서 조용히
+        # 건너뛰고, 실패해도 예외를 여기서 잡아 파이프라인 완료 자체는 막지 않는다.
+        try:
+            notion_sync.push_articles_to_notion(today_str_for_archive, ai_scored.get("포함", []))
+        except Exception as notion_err:
+            print(f"[web_app] Notion 동기화 중 예외 발생(무시하고 계속 진행): {notion_err}")
+
         print("[web_app] 파이프라인 실행 완료 (일자별 아카이브 저장 완료)")
 
     except Exception as e:
@@ -634,6 +645,13 @@ def settings():
         keywords_snapshot=keywords.get_keywords_snapshot(),
         unconfirmed_media=media_normalizer.get_unconfirmed_media_store(),
     )
+
+
+@app.route("/notion/test")
+def notion_test():
+    """Notion 연동 설정이 올바른지 확인한다 (설정 화면의 '연동 확인' 버튼용)."""
+    success, message = notion_sync.test_connection()
+    return jsonify({"success": success, "message": message})
 
 
 @app.route("/media/unconfirmed")
